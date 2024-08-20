@@ -1,7 +1,7 @@
-import { authConfig } from '@/app/api/auth/[...nextauth]/authConfig';
 import { Session, getServerSession } from 'next-auth';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
+import { authConfig } from '@/app/api/auth/[...nextauth]/authConfig';
 
 import {
   Popover,

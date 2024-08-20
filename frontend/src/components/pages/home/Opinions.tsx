@@ -3,9 +3,9 @@
 
 'use client';
 
-import { cn } from '@/lib/utils';
 import { User } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 type Opinion = {
   text: string;

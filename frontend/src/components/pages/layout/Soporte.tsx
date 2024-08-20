@@ -1,8 +1,8 @@
+import Link from 'next/link';
 import {
   NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import Link from 'next/link';
 
 export default function Soporte() {
   return (

@@ -1,7 +1,7 @@
 {
   "extends": ["airbnb", "airbnb-typescript","next/core-web-vitals"],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./frontend/tsconfig.json"
   },
   "rules": {
     "linebreak-style": 0,
@@ -15,6 +15,7 @@
     "no-param-reassign": 0,
     "no-console": 0,
     "@next/next/no-img-element": 0,
-    "max-len": 0
+    "max-len": 0,
+    "import/extensions": 0
   }
 }
