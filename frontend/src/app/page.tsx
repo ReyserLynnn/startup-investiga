@@ -1,9 +1,13 @@
 import Bulletin from '@/components/pages/home/Bulletin';
+import { Hero } from '@/components/pages/home/Hero';
 import Opinions from '@/components/pages/home/Opinions';
+import { PuntosFuertes } from '@/components/pages/home/PuntosFuertes';
 
 export default function Home() {
   return (
     <main className="flex-1 flex flex-col items-center w-full">
+      <Hero />
+      <PuntosFuertes />
       <Opinions />
       <Bulletin />
     </main>
