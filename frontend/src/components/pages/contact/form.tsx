@@ -69,6 +69,7 @@ export function ContactForm() {
               <FormLabel htmlFor="message">Mensaje</FormLabel>
               <FormControl>
                 <Textarea
+                  className="h-[150]"
                   id="message"
                   placeholder="Ingresa tu mensaje"
                   {...field}
