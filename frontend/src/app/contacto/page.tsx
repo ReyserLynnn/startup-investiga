@@ -38,7 +38,6 @@ export default function ContactoPage() {
               Arequipa - Perú
             </li>
           </ul>
-
           <div className="w-full my-10">
             <iframe
               title="map arequipa"
