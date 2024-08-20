@@ -66,6 +66,12 @@ export default function NavBar() {
             </NavigationMenuLink>
           </Link>
 
+          <Link href="/planes" legacyBehavior passHref prefetch={false}>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Planes
+            </NavigationMenuLink>
+          </Link>
+
           <Soporte />
         </NavigationMenuList>
       </NavigationMenu>
