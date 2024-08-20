@@ -1,8 +1,8 @@
+import { AuthOptions } from 'next-auth';
+import GoogleProvider from 'next-auth/providers/google';
 import {
   CLIENT_ID_GOOGLE, CLIENT_SECRET_GOOGLE, NEXT_SECRET,
 } from '@/config/global';
-import { AuthOptions } from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
 
 export const authConfig: AuthOptions = {
   providers: [

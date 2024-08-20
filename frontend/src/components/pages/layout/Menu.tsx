@@ -1,6 +1,5 @@
 'use client';
 
-/* eslint-disable import/extensions */
 import Link from 'next/link';
 import { LogOut } from 'lucide-react';
 import { usePathname } from 'next/navigation';
