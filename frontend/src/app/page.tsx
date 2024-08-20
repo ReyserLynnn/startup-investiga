@@ -1,4 +1,5 @@
 import Bulletin from '@/components/pages/home/Bulletin';
+import { Cta } from '@/components/pages/home/Cta';
 import { Hero } from '@/components/pages/home/Hero';
 import Opinions from '@/components/pages/home/Opinions';
 import { PuntosFuertes } from '@/components/pages/home/PuntosFuertes';
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <PuntosFuertes />
       <ToolsIA />
+      <Cta />
       <Opinions />
       <Bulletin />
     </main>

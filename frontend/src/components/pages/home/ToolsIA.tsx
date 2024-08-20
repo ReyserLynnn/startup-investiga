@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ListCollapse } from 'lucide-react';
+import { GalleryVerticalEnd, ListCollapse } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import {
   Card,
@@ -64,13 +64,20 @@ export function ToolsIA() {
                 className="w-[200px] lg:w-[300px] mx-auto"
               />
 
-              <Button className="shadow-md">
+              <Button className="shadow-md bg-primary">
                 <ListCollapse size={18} className="mr-2" />
                 Más Detalles...
               </Button>
             </CardFooter>
           </Card>
         ))}
+      </div>
+
+      <div className="flex justify-center">
+        <Button variant="outline" className="shadow-md">
+          <GalleryVerticalEnd size={18} className="mr-2" />
+          Ver todos
+        </Button>
       </div>
     </section>
   );
