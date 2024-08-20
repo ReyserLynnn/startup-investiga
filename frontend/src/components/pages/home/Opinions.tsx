@@ -20,12 +20,12 @@ const OPINIONS: Opinion[] = [
     label: 'Estudiante, Universidad Nacional de San Agustín',
   },
   {
-    text: '“Este curso superó mis expectativas. Los docentes son increíbles, y aprendí herramientas clave para mi carrera científica.”',
+    text: '“Este curso superó mis expectativas. aprendí herramientas clave para mi carrera científica.”',
     user: 'Pedro Pérez',
     label: 'Estudiante, Universidad Nacional de San Agustín',
   },
   {
-    text: '“Este curso superó mis expectativas. Los docentes son increíbles, y aprendí herramientas clave para mi carrera científica.”',
+    text: '“Este curso superó mis expectativas. Los docentes son increíbles”',
     user: 'Juan Pérez',
     label: 'Estudiante, Universidad Nacional de San Agustín',
   },
@@ -53,7 +53,7 @@ export default function Opinions() {
   }, [index]);
 
   return (
-    <section className="w-full flex flex-col items-center justify-center gap-10 py-32 px-6">
+    <section className="w-full bg-muted/50 flex flex-col items-center justify-center gap-10 py-20 px-6">
       <img src="/logo.svg" alt="" className="w-full max-w-40" />
       <h1 className="text-4xl text-center w-full max-w-6xl font-medium">
         {OPINIONS[index].text}
