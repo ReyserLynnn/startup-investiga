@@ -3,7 +3,7 @@ import { ContactForm } from '@/components/pages/contact/form';
 
 export default function contactoPage() {
   return (
-    <aside>
+    <aside className="flex-1">
       <div>
         <h2>
           Contactanos
