@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
-export function Login() {
+export default function AuthLogin() {
   return (
     <div className="justify-end flex gap-2 ml-auto md:ml-3">
       <Button variant="ghost" className="hover:bg-secondary hover:text-primary-foreground">

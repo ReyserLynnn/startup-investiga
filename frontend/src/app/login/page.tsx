@@ -1,7 +1,16 @@
 import BackgroundPage from '@/components/pages/auth/BackgroundPage';
 import LoginBox from '@/components/pages/auth/LoginBox';
+import { getServerSession, Session } from 'next-auth';
+import { redirect } from 'next/navigation';
+import { authConfig } from '../api/auth/[...nextauth]/authConfig';
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const session = await getServerSession(authConfig) as Session & { user: { service: any } };
+
+  if (session) {
+    redirect('/');
+  }
+
   return (
     <BackgroundPage
       h1="Iniciar Sesión"

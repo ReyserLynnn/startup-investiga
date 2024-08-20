@@ -1,7 +1,11 @@
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+
+import { signIn } from 'next-auth/react';
 
 export default function LoginBox() {
   return (
@@ -28,7 +32,11 @@ export default function LoginBox() {
       <h1 className="font-medium text-4xl md:text-5xl text-center w-full">
         INICIO DE SESIÓN
       </h1>
-      <button type="button" className="w-full rounded-lg bg-primary/20 text-primary-background py-4">
+      <button
+        onClick={() => signIn('google')}
+        type="button"
+        className="w-full rounded-lg bg-primary/20 text-primary-background py-4"
+      >
         Iniciar sesión con Google
       </button>
       <form action="" className="flex flex-col gap-8">
