@@ -1,13 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { MenuIcon } from 'lucide-react';
 import {
-  MenuIcon,
-} from 'lucide-react';
-import {
-  NavigationMenu, NavigationMenuList, NavigationMenuLink, NavigationMenuItem,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
-  navigationMenuTriggerStyle,
+  NavigationMenu, NavigationMenuList, NavigationMenuLink, navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { Button } from '@/components/ui/button';
 
@@ -18,7 +13,9 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 
-import { Menu } from './pages/Menu';
+import { Menu } from './Menu';
+import { Auth } from './Auth';
+import Soporte from './Soporte';
 
 export default function NavBar() {
   return (
@@ -69,36 +66,11 @@ export default function NavBar() {
             </NavigationMenuLink>
           </Link>
 
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Soporte</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <div className="grid w-[200px] p-2">
-                <Link href="/soporte#quienes-somos" legacyBehavior passHref prefetch={false}>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    ¿Quienes somos?
-                  </NavigationMenuLink>
-                </Link>
-
-                <Link href="/contacto" legacyBehavior passHref prefetch={false}>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Contacto
-                  </NavigationMenuLink>
-                </Link>
-              </div>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
+          <Soporte />
         </NavigationMenuList>
       </NavigationMenu>
 
-      <div className="justify-end flex gap-2 ml-auto md:ml-3">
-        <Button variant="ghost" className="hover:bg-secondary hover:text-primary-foreground">
-          <Link href="/login">Iniciar Sesión</Link>
-        </Button>
-
-        <Button>
-          <Link href="/register">Crear una cuenta</Link>
-        </Button>
-      </div>
+      <Auth />
     </header>
   );
 }

@@ -1,7 +1,7 @@
-import NavBar from '@/components/NavBar';
-
 export default function contactoPage() {
   return (
-    <NavBar />
+    <div className="h-max">
+      hola
+    </div>
   );
 }

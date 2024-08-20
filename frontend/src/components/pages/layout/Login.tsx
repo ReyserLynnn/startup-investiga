@@ -1,16 +1,18 @@
 'use client';
 
-import { CustomLink } from '@/components/ui/CustomLink';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export function Login() {
   return (
-    <>
-      <CustomLink href="/login" variant="ghost">
-        Iniciar sesión
-      </CustomLink>
-      <CustomLink href="/register">
-        Crear una cuenta
-      </CustomLink>
-    </>
+    <div className="justify-end flex gap-2 ml-auto md:ml-3">
+      <Button variant="ghost" className="hover:bg-secondary hover:text-primary-foreground">
+        <Link href="/login">Iniciar Sesión</Link>
+      </Button>
+
+      <Button>
+        <Link href="/register">Crear una cuenta</Link>
+      </Button>
+    </div>
   );
 }
