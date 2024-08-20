@@ -54,13 +54,13 @@ export default function NavBar() {
 
       <NavigationMenu className="hidden md:flex ml-auto">
         <NavigationMenuList>
-          <Link href="/docs" legacyBehavior passHref prefetch={false}>
+          <Link href="/" legacyBehavior passHref prefetch={false}>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Inicio
             </NavigationMenuLink>
           </Link>
 
-          <Link href="/docs" legacyBehavior passHref prefetch={false}>
+          <Link href="/cursos" legacyBehavior passHref prefetch={false}>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Cursos
             </NavigationMenuLink>
