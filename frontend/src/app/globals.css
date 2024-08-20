@@ -63,6 +63,10 @@
   } */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .shadow {
   position: absolute;
   background: hsl(var(--primary) / 0%);
@@ -84,6 +88,23 @@
   to {
     background: hsl(var(--primary) / 80%);
     right: 160px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .shadow {
+    top: 70px;
+  }
+
+  @keyframes shadow-slide {
+    from {
+      background: hsl(var(--primary) / 20%);
+      right: 460px;
+    }
+    to {
+      background: hsl(var(--primary) / 50%);
+      right: 160px;
+    }
   }
 }
 
