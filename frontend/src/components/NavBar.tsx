@@ -4,7 +4,10 @@ import {
   MenuIcon,
 } from 'lucide-react';
 import {
-  NavigationMenu, NavigationMenuList, NavigationMenuLink, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, navigationMenuTriggerStyle,
+  NavigationMenu, NavigationMenuList, NavigationMenuLink, NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { Button } from '@/components/ui/button';
 
@@ -19,7 +22,7 @@ import { Menu } from './pages/Menu';
 
 export default function NavBar() {
   return (
-    <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6">
+    <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6 max-w-6xl">
       <Sheet>
         <SheetTrigger className="md:hidden" asChild>
           <Button className="h-8" variant="outline" size="icon">
