@@ -1,15 +1,16 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 
-"use client"
-import { useState, useEffect } from "react";
-import { ArrowUpToLine } from "lucide-react";
-import { Button } from "@/components/ui/button";
+'use client';
 
-export const ScrollToTop = () => {
+import { useState, useEffect } from 'react';
+import { ArrowUpToLine } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+export function ScrollToTop() {
   const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       if (window.scrollY > 400) {
         setShowTopBtn(true);
       } else {
@@ -38,4 +39,4 @@ export const ScrollToTop = () => {
       )}
     </>
   );
-};
+}
