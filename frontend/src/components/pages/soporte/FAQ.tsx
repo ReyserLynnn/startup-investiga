@@ -50,7 +50,7 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className=" max-w-6xl py-24 sm:py-32 w-full"
+      className=" max-w-6xl py-24 sm:py-32 w-full px-6"
     >
       <h2 className="text-3xl md:text-4xl font-bold mb-4">
         Preguntas
