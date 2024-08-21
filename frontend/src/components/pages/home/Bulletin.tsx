@@ -3,7 +3,7 @@ import { Input } from '@/components/ui/input';
 
 export default function Bulletin() {
   return (
-    <section className="w-full max-w-6xl px-6 flex flex-col mx-6 bg-primary-background rounded-2xl items-center gap-2 py-24 my-24 relative">
+    <section className="w-full max-w-6xl px-6 flex flex-col mx-6 bg-primary-background rounded-2xl items-center gap-2 py-24 my-24 relative overflow-hidden">
       <h1 className="text-primary-foreground text-4xl font-bold text-center">
         Suscríbete a nuestro boletín
       </h1>
