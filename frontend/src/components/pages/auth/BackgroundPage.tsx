@@ -5,7 +5,7 @@ export default function BackgroundPage({
   children, h1, h2, h3, h4,
 }: { children: React.ReactNode, h1: string, h2: string, h3: string, h4: string }) {
   return (
-    <main className="flex-1 flex flex-col w-full relative">
+    <main className="flex-1 flex flex-col w-full relative min-h-screen">
       <section className="flex w-full bg-primary-background flex-1 p-10 max-h-[50vh] pr-8 gap-8">
         <div className="w-full hidden md:flex flex-col xl:flex-row justify-center">
           <div className="flex-1 flex flex-col items-start justify-start gap-4 xl:gap-8 max-w-xl">
