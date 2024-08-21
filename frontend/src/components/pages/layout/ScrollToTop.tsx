@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+
 "use client"
 import { useState, useEffect } from "react";
 import { ArrowUpToLine } from "lucide-react";

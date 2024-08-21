@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-prop-types */
+
 import {
   Accordion,
   AccordionContent,
@@ -78,7 +80,8 @@ export const FAQ = () => {
       </Accordion>
 
       <h3 className="font-medium mt-4">
-      ¿Aún tienes preguntas?{" "}
+        ¿Aún tienes preguntas?
+        {' '}
         <Link
           rel="noreferrer noopener"
           href="/contacto"

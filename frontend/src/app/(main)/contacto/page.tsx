@@ -4,8 +4,7 @@ import { ContactForm } from '@/components/pages/contact/form';
 
 export default function ContactoPage() {
   return (
-    <div className="my-24 max-w-5xl shadow-xl rounded-xl">
-
+    <div className="my-24 max-w-5xl shadow-xl rounded-xl flex-1">
       <div className="flex flex-col items-center ">
         <h2 className="text-4xl font-bold mb-4 text-primary underline underline-offset-8">
           Contáctanos
@@ -39,7 +38,6 @@ export default function ContactoPage() {
               Arequipa - Perú
             </li>
           </ul>
- 
           <div className="w-full my-10">
             <iframe
               title="map arequipa"

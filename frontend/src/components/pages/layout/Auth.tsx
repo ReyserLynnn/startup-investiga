@@ -8,14 +8,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { Login } from './Login';
+import AuthLogin from './AuthLogin';
+import AuthOptions from './AuthOptions';
 
 export async function Auth() {
   const session = await getServerSession(authConfig) as Session & { user: { service: any } };
 
   if (!session) {
     return (
-      <Login />
+      <AuthLogin />
     );
   }
 
@@ -45,7 +46,7 @@ export async function Auth() {
           <span className="text-lg font-medium text-center">
             {session.user.name}
           </span>
-          {/* <AuthOptions session={session} /> */}
+          <AuthOptions />
         </div>
 
       </PopoverContent>

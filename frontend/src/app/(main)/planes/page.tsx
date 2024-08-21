@@ -17,7 +17,7 @@ export default function PlanesPage() {
   return (
     <section
       id="planes"
-      className="container py-24 sm:py-32"
+      className="container py-24 sm:py-32 flex-1"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-center">
         Consigue Acceso

@@ -1,6 +1,6 @@
 export default function cursosPage() {
   return (
-    <div>
+    <div className="flex-1">
       cursos
     </div>
   );
