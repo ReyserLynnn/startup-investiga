@@ -9,7 +9,7 @@ import { signIn } from 'next-auth/react';
 
 export default function LoginBox() {
   return (
-    <div className="w-full flex flex-col gap-10 md:max-w-lg absolute bottom-0 md:right-8 min-h-[94vh] bg-background rounded-3xl px-8 py-16">
+    <div className="w-full flex flex-col gap-10 md:max-w-lg absolute bottom-0 md:right-8 h-full max-h-[55rem] bg-background rounded-t-3xl px-8 py-16 shadow-all">
       <header className="w-full flex justify-between items-start">
         <span className="text-xl">
           <span>
