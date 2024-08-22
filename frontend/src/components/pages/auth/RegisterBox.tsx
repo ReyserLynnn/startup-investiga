@@ -4,48 +4,40 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import React from 'react';
 
-import { z } from 'zod';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function RegisterBox() {
-  const handleSubmitRegister = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const route = useRouter();
+  const [email, setEmail] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
+  const [error, setError] = React.useState('');
 
-    const formData = new FormData(e.currentTarget);
-    const email = formData.get('email') as string;
-    const password = formData.get('password') as string;
-    const username = formData.get('username') as string;
-    const phone = formData.get('phone') as string;
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    const schema = z.object({
-      email: z.string().email(),
-      password: z.string().min(6),
-      username: z.string().min(3),
-      phone: z.string().length(9),
-    });
-
-    const { success, data } = schema.safeParse({
-      email,
-      password,
-      username,
-      phone,
-    });
-
-    if (success) {
-      fetch('/api/auth/signup', {
+    try {
+      const form = { email, password };
+      const response = await fetch('/api/auth/signup', {
         method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }).then((res) => {
-        if (res.ok) {
-          signIn('credentials', { email, password, callbackUrl: '/' });
-        }
-      }).catch((err) => {
-        console.error(err);
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
       });
+      if (!response.ok) {
+        setError('Failed to register user');
+        return;
+      }
+      const data = await response.json();
+      if (data?.token) {
+        route.replace('/');
+        route.refresh();
+      } else {
+        setError('Failed to authenticate user');
+      }
+    } catch (err) {
+      setEmail('Failed to register user');
     }
   };
 
@@ -80,13 +72,21 @@ export default function RegisterBox() {
       >
         Iniciar sesión con Google
       </button>
-      <form onSubmit={handleSubmitRegister} className="flex flex-col gap-8">
+
+      <form onSubmit={onSubmit} className="flex flex-col gap-8">
         <Label className="flex flex-col gap-2 font-normal text-base">
           <span>
             Ingresa tu correo electrónico
           </span>
-          <Input type="text" placeholder="Correo electrónico" />
+          <Input
+            placeholder="Correo electrónico"
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value || '')}
+          />
         </Label>
+        {/*
         <div className="flex gap-8">
           <Label className="w-full">
             <span>Nombre de usuario</span>
@@ -97,15 +97,26 @@ export default function RegisterBox() {
             <Input type="text" placeholder="Teléfono" />
           </Label>
         </div>
+        */}
+
         <Label className="flex flex-col gap-2 font-normal text-base">
           <span>
             Ingresa tu contraseña
           </span>
-          <Input type="password" placeholder="Contraseña" />
+          <Input
+            placeholder="Contraseña"
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value || '')}
+          />
         </Label>
+
         <Button type="submit" size="lg" variant="secondary">
           Iniciar sesión
         </Button>
+
+        {error && <p className="error">{error}</p>}
       </form>
     </div>
   );

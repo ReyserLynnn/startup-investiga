@@ -1,5 +1,4 @@
 /* eslint-disable import/no-named-as-default */
-
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import pb from '@/lib/pocketbase';
@@ -7,10 +6,10 @@ import pb from '@/lib/pocketbase';
 export async function POST(request: Request) {
   try {
     const { email, password } = await request.json();
-    await pb.register(email, password);
+    console.log('form:', { email, password });
 
-    const authResult = await pb.authenticate(email, password);
-    const { record, token } = authResult;
+    const result = await pb.authenticate(email, password);
+    const { record, token } = result;
     record.token = token;
     cookies().set('pb_auth', pb.client.authStore.exportToCookie());
 

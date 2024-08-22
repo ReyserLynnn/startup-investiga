@@ -6,8 +6,41 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
 export default function LoginBox() {
+  const route = useRouter();
+  const [email, setEmail] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
+  const [error, setError] = React.useState('');
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    try {
+      const form = { email, password };
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!response.ok) {
+        setError('Failed to authenticate user');
+        return;
+      }
+      const data = await response.json();
+      if (data?.token) {
+        route.replace('/');
+        route.refresh();
+      } else {
+        setError('Failed to authenticate user');
+      }
+    } catch (err) {
+      setEmail('Failed to authenticate user');
+    }
+  };
+
   return (
     <div className="w-full flex flex-col gap-10 md:max-w-lg absolute bottom-0 md:right-8 h-full max-h-[55rem] bg-background rounded-t-3xl px-8 py-16 shadow-all">
       <header className="w-full flex justify-between items-start">
@@ -39,22 +72,37 @@ export default function LoginBox() {
       >
         Iniciar sesión con Google
       </button>
-      <form action="" className="flex flex-col gap-8">
+
+      <form action="" className="flex flex-col gap-8" onSubmit={onSubmit}>
         <Label className="flex flex-col gap-2 font-normal text-base">
           <span>
             Ingresa tu correo electrónico
           </span>
-          <Input type="text" placeholder="Correo electrónico" />
+          <Input
+            type="email"
+            placeholder="Correo electrónico"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value || '')}
+          />
         </Label>
         <Label className="flex flex-col gap-2 font-normal text-base">
           <span>
             Ingresa tu contraseña
           </span>
-          <Input type="password" placeholder="Contraseña" />
+          <Input
+            type="password"
+            placeholder="Contraseña"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value || '')}
+          />
         </Label>
         <Button type="submit" size="lg" variant="secondary">
           Iniciar sesión
         </Button>
+
+        {error && <p className="error">{error}</p>}
       </form>
     </div>
   );
