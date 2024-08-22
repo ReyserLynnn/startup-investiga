@@ -9,9 +9,12 @@ import { ScrollToTop } from '@/components/pages/layout/ScrollToTop';
 
 export default function Home() {
   return (
-    <main className="flex-1 flex flex-col items-center w-full ">
+    <main>
       <Hero />
       <PuntosFuertes />
+      {/*
+      <Cta2 />
+      */}
       <ToolsIA />
       <Cta />
       <Docentes />

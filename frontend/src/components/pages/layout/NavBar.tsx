@@ -19,7 +19,7 @@ import Soporte from './Soporte';
 
 export default function NavBar() {
   return (
-    <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6 max-w-7xl">
+    <header className="container mx-auto flex h-20 w-full shrink-0 items-center px-4 md:px-6 max-w-7xl">
       <Sheet>
         <SheetTrigger className="md:hidden" asChild>
           <Button className="h-8" variant="outline" size="icon">

@@ -36,7 +36,7 @@ const chartConfig = {
 
 export function HeroChart() {
   return (
-    <Card className="absolute h-[280px] w-[240px] right-[-80px] top-[-50px]  drop-shadow-xl shadow-black/10 dark:shadow-white/10">
+    <Card className="absolute h-[280px] w-[240px] right-[-50px] top-[-50px] drop-shadow-xl shadow-black/10 dark:shadow-white/10">
       <CardHeader className="items-center pb-0">
         <CardTitle>Aceptación</CardTitle>
         <CardDescription>Septiembre 2024</CardDescription>
