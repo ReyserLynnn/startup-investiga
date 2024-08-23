@@ -1,11 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 
 import { signIn } from 'next-auth/react';
+import LoginForm from './loginForm';
 
 export default function LoginBox() {
   return (
@@ -39,23 +37,7 @@ export default function LoginBox() {
       >
         Iniciar sesión con Google
       </button>
-      <form action="" className="flex flex-col gap-8">
-        <Label className="flex flex-col gap-2 font-normal text-base">
-          <span>
-            Ingresa tu correo electrónico
-          </span>
-          <Input type="text" placeholder="Correo electrónico" />
-        </Label>
-        <Label className="flex flex-col gap-2 font-normal text-base">
-          <span>
-            Ingresa tu contraseña
-          </span>
-          <Input type="password" placeholder="Contraseña" />
-        </Label>
-        <Button type="submit" size="lg" variant="secondary">
-          Iniciar sesión
-        </Button>
-      </form>
+      <LoginForm />
     </div>
   );
 }
