@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import React from 'react';
 
-import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import GoogleButton from './GoogleButton';
 
@@ -26,6 +25,7 @@ export default function RegisterBox() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
+
       if (!response.ok) {
         setError('Failed to register user');
         return;
@@ -66,14 +66,6 @@ export default function RegisterBox() {
       <h1 className="font-medium text-4xl md:text-5xl text-center w-full">
         REGISTRO
       </h1>
-
-      <button
-        onClick={() => signIn('google')}
-        type="button"
-        className="w-full rounded-lg bg-primary/20 text-primary-background py-4"
-      >
-        Iniciar sesión con Google
-      </button>
 
       <GoogleButton />
 

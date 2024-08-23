@@ -4,25 +4,30 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import Cookies from 'js-cookie';
 
 import { Home } from 'lucide-react';
 import { pb } from '@/lib/pocketbase';
+import { useRouter } from 'next/navigation';
 
 function GoogleButton() {
+  const route = useRouter();
   const [loading, setLoading] = useState(false);
 
   const handleGoogleLogin = async () => {
     setLoading(true);
 
     try {
-      // Intentamos realizar la autenticación con OAuth2 usando el proveedor de Google
       pb.client.authStore.clear();
       const authData = await pb.client.collection('users').authWithOAuth2({
         provider: 'google',
       });
 
-      const { meta } = authData;
+      const { record, token } = authData;
+      record.token = token;
+      Cookies.set('pb_auth', pb.client.authStore.exportToCookie());
 
+      const { meta } = authData;
       if (meta?.isNew) {
         const formData = new FormData();
 
@@ -34,10 +39,12 @@ function GoogleButton() {
         }
 
         formData.append('name', meta.name);
-        formData.append('avatarUrl', meta.avatarUrl);
         await pb.client.collection('users').update(authData.record.id, formData);
       }
-      console.log('Authentication Data:', authData);
+
+      localStorage.removeItem('pocketbase_auth');
+      route.replace('/');
+      route.refresh();
     } catch (error: any) {
       console.error('Error during authentication:', error.message);
     } finally {

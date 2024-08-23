@@ -2,7 +2,7 @@
 import PocketBase from 'pocketbase';
 import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 
-export const POCKET_BASE_URL = 'http://127.0.0.1:8090';
+export const POCKET_BASE_URL = process.env.NEXT_PUBLIC_POCKETBASE_URL || '';
 
 export class DatabaseClient {
   client: PocketBase;
@@ -14,7 +14,6 @@ export class DatabaseClient {
   async authenticate(email: string, password: string) {
     try {
       const result = await this.client.collection('users').authWithPassword(email, password);
-      console.log('authenticate result:', result);
       if (!result?.token) {
         throw new Error('Invalid email or password');
       }
@@ -32,7 +31,6 @@ export class DatabaseClient {
         password,
         passwordConfirm: password,
       });
-
       return result;
     } catch (err) {
       console.log(err);
