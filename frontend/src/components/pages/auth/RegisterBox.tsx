@@ -8,6 +8,7 @@ import React from 'react';
 
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import GoogleButton from './GoogleButton';
 
 export default function RegisterBox() {
   const route = useRouter();
@@ -65,6 +66,7 @@ export default function RegisterBox() {
       <h1 className="font-medium text-4xl md:text-5xl text-center w-full">
         REGISTRO
       </h1>
+
       <button
         onClick={() => signIn('google')}
         type="button"
@@ -72,6 +74,8 @@ export default function RegisterBox() {
       >
         Iniciar sesión con Google
       </button>
+
+      <GoogleButton />
 
       <form onSubmit={onSubmit} className="flex flex-col gap-8">
         <Label className="flex flex-col gap-2 font-normal text-base">

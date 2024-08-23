@@ -1,7 +1,7 @@
 import { AuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import {
-  CLIENT_ID_GOOGLE, CLIENT_SECRET_GOOGLE, NEXT_SECRET,
+  CLIENT_ID_GOOGLE, CLIENT_SECRET_GOOGLE,
 } from '@/config/global';
 
 export const authConfig: AuthOptions = {
@@ -11,20 +11,4 @@ export const authConfig: AuthOptions = {
       clientSecret: CLIENT_SECRET_GOOGLE,
     }),
   ],
-  secret: NEXT_SECRET,
-  callbacks: {
-    async session({ session }) {
-      if (!session.user) return session;
-
-      if (!session.user.email || !session.user.name || !session.user.image) return session;
-
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          id: crypto.randomUUID(),
-        },
-      };
-    },
-  },
 };
