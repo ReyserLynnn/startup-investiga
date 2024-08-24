@@ -4,11 +4,11 @@ import { cn } from '@/lib/utils';
 
 import { useComboboxContext } from './context';
 
-export const ComboboxEmpty = ({
+export function ComboboxEmpty({
   className,
   children,
   ...props
-}: ComponentPropsWithoutRef<'div'>) => {
+}: ComponentPropsWithoutRef<'div'>) {
   const { filteredItems } = useComboboxContext();
   if (filteredItems && filteredItems.length > 0) return null;
 
@@ -20,4 +20,4 @@ export const ComboboxEmpty = ({
       {children}
     </div>
   );
-};
+}

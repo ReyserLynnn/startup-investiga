@@ -1,4 +1,4 @@
-import pb from "./pocketbase";
+import pb from './pocketbase';
 
 export async function fetchInstitutions() {
   try {
@@ -6,10 +6,10 @@ export async function fetchInstitutions() {
     return institutions.map((institution) => ({
       id: institution.id,
       name: institution.name,
-      author: "Perú",
+      author: 'Perú',
     }));
   } catch (error) {
-    console.error("Error al obtener las instituciones", error);
+    console.error('Error al obtener las instituciones', error);
     return [];
   }
 }

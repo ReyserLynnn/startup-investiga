@@ -8,21 +8,21 @@ import { Input } from '@/components/ui/input';
 import { useComboboxContext } from './context';
 
 export type ComboboxInputProps = Omit<
-  ComponentPropsWithoutRef<'input'>,
-  keyof UseComboboxGetInputPropsReturnValue
+ComponentPropsWithoutRef<'input'>,
+keyof UseComboboxGetInputPropsReturnValue
 >;
 
-export const ComboboxInput = (props: ComboboxInputProps) => {
+export function ComboboxInput(props: ComboboxInputProps) {
   const { getInputProps } = useComboboxContext();
 
   return (
-    <div className='relative w-full' data-combobox-input-wrapper=''>
+    <div className="relative w-full" data-combobox-input-wrapper="">
       <PopoverAnchor asChild>
         <Input {...props} {...getInputProps?.()} />
       </PopoverAnchor>
-      <div className='pointer-events-none absolute inset-y-0 end-3 grid h-full place-items-center'>
-        <ChevronDownIcon className='size-4 opacity-50' />
+      <div className="pointer-events-none absolute inset-y-0 end-3 grid h-full place-items-center">
+        <ChevronDownIcon className="size-4 opacity-50" />
       </div>
     </div>
   );
-};
+}

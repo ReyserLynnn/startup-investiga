@@ -1,5 +1,6 @@
-import pb from "@/lib/pocketbase";
-import { NextResponse } from "next/server";
+import pb from '@/lib/pocketbase';
+
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
@@ -11,9 +12,9 @@ export async function GET() {
       {
         status: 500,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }
+      },
     );
   }
 }

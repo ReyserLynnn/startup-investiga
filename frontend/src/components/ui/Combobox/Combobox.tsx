@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable react/jsx-no-constructed-context-values */
 import {
   useCallback,
   useEffect,
@@ -13,11 +15,9 @@ import type { ComboboxItemBase } from './types';
 
 const { stateChangeTypes } = useCombobox;
 
-const defaultFilter = (inputValue: string, items: ComboboxItemBase[]) =>
-  items.filter(
-    item =>
-      !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase())
-  );
+const defaultFilter = (inputValue: string, items: ComboboxItemBase[]) => items.filter(
+  (item) => !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase()),
+);
 
 export type ComboboxProps = PropsWithChildren<{
   value?: string | null;
@@ -28,37 +28,36 @@ export type ComboboxProps = PropsWithChildren<{
   ) => ComboboxItemBase[];
 }>;
 
-export const ComboBox = ({
+export function ComboBox({
   value,
   onValueChange,
   filterItems = defaultFilter,
   children,
-}: ComboboxProps) => {
-  const [items, setItems] = useState<ComboboxItemBase[]>([]),
-    [filteredItems, setFilteredItems] = useState<ComboboxItemBase[]>(items);
+}: ComboboxProps) {
+  const [items, setItems] = useState<ComboboxItemBase[]>([]);
+  const [filteredItems, setFilteredItems] = useState<ComboboxItemBase[]>(items);
   const [openedOnce, setOpenedOnce] = useState(false);
 
   const stateReducer = useCallback<
-    NonNullable<UseComboboxProps<ComboboxItemBase>['stateReducer']>
+  NonNullable<UseComboboxProps<ComboboxItemBase>['stateReducer']>
   >(
     (prev, { type, changes }) => {
       switch (type) {
         case stateChangeTypes.InputChange: {
           const filteredEnabledItems = filterItems(
             changes.inputValue || prev.inputValue,
-            items
+            items,
           ).filter(({ disabled }) => !disabled);
-          const highlightedIndex =
-            typeof changes.highlightedIndex === 'number'
-              ? changes.highlightedIndex
-              : prev.highlightedIndex;
+          const highlightedIndex = typeof changes.highlightedIndex === 'number'
+            ? changes.highlightedIndex
+            : prev.highlightedIndex;
 
           return {
             ...changes,
             highlightedIndex:
-              changes.inputValue &&
-              filteredEnabledItems.length > 0 &&
-              highlightedIndex < 0
+              changes.inputValue
+              && filteredEnabledItems.length > 0
+              && highlightedIndex < 0
                 ? 0
                 : changes.highlightedIndex,
           };
@@ -68,17 +67,16 @@ export const ComboBox = ({
         case stateChangeTypes.InputClick:
         case stateChangeTypes.InputKeyDownEnter:
         case stateChangeTypes.InputKeyDownEscape: {
-          if (changes.isOpen || !prev.isOpen)
+          if (changes.isOpen || !prev.isOpen) {
             return {
               ...changes,
               inputValue: prev.inputValue,
               selectedItem: prev.selectedItem,
             };
-          if (!prev.inputValue && prev.highlightedIndex < 0)
-            return { ...changes, inputValue: '', selectedItem: null };
+          }
+          if (!prev.inputValue && prev.highlightedIndex < 0) return { ...changes, inputValue: '', selectedItem: null };
 
-          const inputValue =
-            changes.selectedItem?.label || prev.selectedItem?.label || '';
+          const inputValue = changes.selectedItem?.label || prev.selectedItem?.label || '';
           return { ...changes, inputValue };
         }
 
@@ -86,7 +84,7 @@ export const ComboBox = ({
           return changes;
       }
     },
-    [filterItems, items]
+    [filterItems, items],
   );
 
   const {
@@ -101,15 +99,14 @@ export const ComboBox = ({
     setInputValue,
   } = useCombobox({
     items: filteredItems,
-    itemToString: item => (item ? item.label : ''),
-    isItemDisabled: item => item.disabled ?? false,
+    itemToString: (item) => (item ? item.label : ''),
+    isItemDisabled: (item) => item.disabled ?? false,
 
     selectedItem:
       typeof value !== 'undefined'
-        ? items.find(item => item.value === value) || null
+        ? items.find((item) => item.value === value) || null
         : undefined,
-    onSelectedItemChange: ({ selectedItem }) =>
-      onValueChange?.(selectedItem?.value || null),
+    onSelectedItemChange: ({ selectedItem }) => onValueChange?.(selectedItem?.value || null),
 
     stateReducer,
   });
@@ -144,4 +141,4 @@ export const ComboBox = ({
       <Popover open={isOpen}>{children}</Popover>
     </ComboboxContext.Provider>
   );
-};
+}
