@@ -1,3 +1,4 @@
+import { POCKET_BASE_URL } from '@/lib/pocketbase';
 import { RecordModel } from 'pocketbase';
 
 export enum Collections {
@@ -66,3 +67,9 @@ export interface ToolsIa extends RecordModel {
 }
 
 export const expandFields = (fields: string[]) => fields.join(',');
+
+export const getImageUrl = ({
+  url, collectionId, id,
+}: {
+  url: string, collectionId: string, id: string
+}) => `${POCKET_BASE_URL}/api/files/${collectionId}/${id}/${url}`;

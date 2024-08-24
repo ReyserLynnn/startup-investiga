@@ -1,86 +1,10 @@
 import ToolsModal from '@/components/pages/herramientas/ToolsModal';
 import pb from '@/lib/pocketbase';
 import {
-  Collections, expandFields, ToolsIa, ToolsIAFields,
+  Collections, expandFields, getImageUrl, ToolsIa, ToolsIAFields,
 } from '@/types/pb';
 
-// const HERRAMIENTAS: { name:string, image_url:string, homepage:string }[] = [
-//   {
-//     name: 'Chat GPT',
-//     image_url: '/logosIA/chatgpt-logo.svg',
-//     homepage: 'https://chatgpt.com/',
-//   },
-//   {
-//     name: 'Bing',
-//     image_url: '/logosIA/bing-logo.svg',
-//     homepage: 'https://www.bing.com/',
-//   },
-//   {
-//     name: 'Perplexity',
-//     image_url: '/logosIA/perplexity-logo.svg',
-//     homepage: 'https://perplexity.ai/',
-//   },
-//   {
-//     name: 'Copilot',
-//     image_url: '/logosIA/copilot-logo.svg',
-//     homepage: 'https://copilot.microsoft.com/',
-//   },
-//   {
-//     name: 'Gemini',
-//     image_url: '/logosIA/gemini-logo.svg',
-//     homepage: 'https://gemini.google.com/',
-//   },
-//   {
-//     name: 'Quillbot',
-//     image_url: '/logosIA/quillbot-logo.svg',
-//     homepage: 'https://quillbot.com/',
-//   },
-//   {
-//     name: 'Litmaps',
-//     image_url: '/logosIA/litmaps-logo.png',
-//     homepage: 'https://litmaps.com/',
-//   },
-//   {
-//     name: 'Jenni',
-//     image_url: '/logosIA/jenni-logo.webp',
-//     homepage: 'https://jenni.ai/',
-//   },
-//   {
-//     name: 'Typeset',
-//     image_url: '/logosIA/typeset-logo.svg',
-//     homepage: 'https://typeset.io/',
-//   },
-//   {
-//     name: 'Connectedpapers',
-//     image_url: '/logosIA/connectedpapers-logo.jpg',
-//     homepage: 'https://connectedpapers.com/',
-//   },
-//   {
-//     name: 'Paperdigest',
-//     image_url: '/logosIA/paperdigest-logo.png',
-//     homepage: 'paperdigest.org',
-//   },
-//   {
-//     name: 'Editgpt',
-//     image_url: '/logosIA/editgpt-logo.webp',
-//     homepage: 'editgpt.app',
-//   },
-//   {
-//     name: 'Chathub',
-//     image_url: '/logosIA/chathub-logo.jpeg',
-//     homepage: 'chathub.gg',
-//   },
-//   {
-//     name: 'Zotero',
-//     image_url: '/logosIA/zotero-logo.svg',
-//     homepage: 'zotero.com',
-//   },
-//   {
-//     name: 'Keenious',
-//     image_url: '/logosIA/keenious-logo.svg',
-//     homepage: 'keenious.com',
-//   },
-// ];
+export const revalidate = 0;
 
 const getTools = async () => {
   const client = pb.getClient();
@@ -111,7 +35,11 @@ export default async function HerramientasPage() {
               <ToolsModal
                 description={herramienta[ToolsIAFields.DESCRIPTION]}
                 homepage={herramienta[ToolsIAFields.PAGE_URL]}
-                logo={herramienta[ToolsIAFields.LOGO]}
+                logo={getImageUrl({
+                  url: herramienta[ToolsIAFields.LOGO],
+                  collectionId: herramienta[ToolsIAFields.COLLECTION_ID],
+                  id: herramienta[ToolsIAFields.ID],
+                })}
                 name={herramienta[ToolsIAFields.NAME]}
                 numberLikes={Math.floor(Math.random() * 100)}
                 tags={herramienta[ToolsIAFields.EXPAND] ? herramienta[ToolsIAFields.EXPAND][ToolsIAFields.TAGS] : []}
