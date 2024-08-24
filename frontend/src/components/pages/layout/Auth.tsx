@@ -1,55 +1,48 @@
-import { Session, getServerSession } from 'next-auth';
-import Image from 'next/image';
+/* eslint-disable import/no-named-as-default */
 import { ChevronDown } from 'lucide-react';
-import { authConfig } from '@/app/api/auth/[...nextauth]/authConfig';
 
 import {
   Popover,
-  PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import pb from '@/lib/pocketbase';
+import { cookies } from 'next/headers';
+import { use } from 'react';
 import AuthLogin from './AuthLogin';
 import AuthOptions from './AuthOptions';
 
-export async function Auth() {
-  const session = await getServerSession(authConfig) as Session & { user: { service: any } };
+const getUser = async () => {
+  const cookieStore = cookies();
 
-  if (!session) {
+  const result = await pb.getUser(cookieStore);
+
+  return result as any;
+};
+
+export function Auth() {
+  const user = use(getUser());
+
+  if (!user) {
     return (
       <AuthLogin />
     );
   }
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <div className="flex gap-3 items-center hover:cursor-pointer">
-          <Image
-            alt="name"
-            src={session.user.image as string}
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
-          <ChevronDown className="w-5 h-5" />
-        </div>
-      </PopoverTrigger>
-      <PopoverContent className="w-72">
-        <div className="flex flex-col gap-3 items-center pt-5">
-          <Image
-            alt="name"
-            src={session.user.image as string}
-            width={80}
-            height={80}
-            className="rounded-full"
-          />
-          <span className="text-lg font-medium text-center">
-            {session.user.name}
-          </span>
-          <AuthOptions />
-        </div>
+    <>
+      <Popover>
+        <PopoverTrigger asChild>
+          <div className="flex gap-3 items-center hover:cursor-pointer">
 
-      </PopoverContent>
-    </Popover>
+            <ChevronDown className="w-5 h-5" />
+          </div>
+        </PopoverTrigger>
+
+        <span className="text-lg font-medium text-center">
+          {user?.username}
+        </span>
+      </Popover>
+      <AuthOptions />
+    </>
   );
 }

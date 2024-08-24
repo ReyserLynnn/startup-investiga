@@ -19,7 +19,7 @@ import Soporte from './Soporte';
 
 export default function NavBar() {
   return (
-    <header className="container mx-auto flex h-20 w-full shrink-0 items-center px-4 md:px-6 max-w-7xl">
+    <header className="container mx-auto flex h-20 w-full shrink-0 items-center px-4 md:px-6">
       <Sheet>
         <SheetTrigger className="md:hidden" asChild>
           <Button className="h-8" variant="outline" size="icon">
@@ -45,14 +45,18 @@ export default function NavBar() {
         </SheetContent>
       </Sheet>
 
-      <Image src="logo.svg" width={180} height={500} alt="Logo de inveztiga" className="md:hidden ml-3" />
-
-      <Link href="/" className="mr-6 hidden md:flex" prefetch={false}>
-        <Image src="logo.svg" width={180} height={500} alt="Logo de inveztiga" />
+      <Link href="/" className=" hidden md:flex " prefetch={false}>
+        <Image
+          src="logo.svg"
+          width="0"
+          height="0"
+          alt="Logo de inveztiga"
+          className="lg:w-48 w-full h-auto lg:ml-3"
+        />
         <span className="sr-only">Inveztiga</span>
       </Link>
 
-      <NavigationMenu className="hidden md:flex ml-auto">
+      <NavigationMenu className="hidden md:flex ml-auto ">
         <NavigationMenuList>
           <Link href="/" legacyBehavior passHref prefetch={false}>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>

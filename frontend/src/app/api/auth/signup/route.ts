@@ -1,26 +1,50 @@
-export function POST() {
-  /*
-  const { email, password, username, phone } = req.body;
-  const schema = z.object({
-    email: z.string().email(),
-    password: z.string().min(6),
-    username: z.string().min(3),
-    phone: z.string().length(9),
-  });
+/* eslint-disable import/no-named-as-default */
 
-  const {success, data} = schema.safeParse({
-    email,
-    password,
-    username,
-    phone,
-  });
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
+import pb from "@/lib/pocketbase";
 
-  if (success) {
-    guardarUsuario(data);
-    return {status: 200, data: {message: 'Usuario creado con éxito'}};
-  } else {
-    return {status: 400, data: {message: 'Error al crear el usuario'}};
-  */
+export async function POST(request: Request) {
+  try {
+    const {
+      username,
+      email,
+      password,
+      passwordConfirm,
+      name,
+      lastname,
+      phone,
+      institution,
+      degree,
+    } = await request.json();
 
-  return Response.json({ message: 'Usuario creado con éxito' });
+    await pb.register(
+      username,
+      email,
+      password,
+      passwordConfirm,
+      name,
+      lastname,
+      phone,
+      institution,
+      degree
+    );
+
+    const authResult = await pb.authenticate(email, password);
+    const { record, token } = authResult;
+    record.token = token;
+    cookies().set("pb_auth", pb.client.authStore.exportToCookie());
+
+    return NextResponse.json(record);
+  } catch (err: any) {
+    return new Response(
+      JSON.stringify({ error: err.message || err.toString() }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
 }
