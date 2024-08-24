@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
-import Footer from '@/components/pages/layout/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,9 +17,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body className={cn(inter.className, 'w-full min-h-full avif')}>
+      <body className={cn(inter.className, 'w-full min-h-full avif')} suppressHydrationWarning>
         {children}
-        <Footer />
       </body>
     </html>
   );

@@ -1,16 +1,20 @@
 /* eslint-disable import/no-named-as-default */
 
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import Cookies from 'js-cookie';
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import Cookies from "js-cookie";
 
-import { Home } from 'lucide-react';
-import { pb } from '@/lib/pocketbase';
-import { useRouter } from 'next/navigation';
+import { pb } from "@/lib/pocketbase";
+import { useRouter } from "next/navigation";
+import GoogleIcon from "@/components/icons/GoogleIcon";
 
-function GoogleButton() {
+interface GoogleButtonProps {
+  classname?: string;
+}
+
+export function GoogleButton({ classname }: GoogleButtonProps) {
   const route = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -19,13 +23,13 @@ function GoogleButton() {
 
     try {
       pb.client.authStore.clear();
-      const authData = await pb.client.collection('users').authWithOAuth2({
-        provider: 'google',
+      const authData = await pb.client.collection("users").authWithOAuth2({
+        provider: "google",
       });
 
       const { record, token } = authData;
       record.token = token;
-      Cookies.set('pb_auth', pb.client.authStore.exportToCookie());
+      Cookies.set("pb_auth", pb.client.authStore.exportToCookie());
 
       const { meta } = authData;
       if (meta?.isNew) {
@@ -35,18 +39,20 @@ function GoogleButton() {
 
         if (response.ok) {
           const file = await response.blob();
-          formData.append('avatar', file);
+          formData.append("avatar", file);
         }
 
-        formData.append('name', meta.name);
-        await pb.client.collection('users').update(authData.record.id, formData);
+        formData.append("name", meta.name);
+        await pb.client
+          .collection("users")
+          .update(authData.record.id, formData);
       }
 
-      localStorage.removeItem('pocketbase_auth');
-      route.replace('/');
+      localStorage.removeItem("pocketbase_auth");
+      route.replace("/");
       route.refresh();
     } catch (error: any) {
-      console.error('Error during authentication:', error.message);
+      console.error("Error during authentication:", error.message);
     } finally {
       setLoading(false);
     }
@@ -55,14 +61,13 @@ function GoogleButton() {
   return (
     <Button
       type="button"
-      variant="outline"
-      className="border border-slate-500 text-slate-900 hover:text-slate-900"
-      size="lg"
+      variant="ghost"
+      className={`${classname} shadow-sm shadow-gray-200 text-slate-600 hover:text-slate-900 gap-3 hover:bg-gray-50`}
       disabled={loading}
       onClick={handleGoogleLogin}
     >
-      <Home className="mr-2 h-6 w-6" />
-      Continue with Google
+      <GoogleIcon className="w-auto h-5" />
+      Continuar con google
     </Button>
   );
 }
