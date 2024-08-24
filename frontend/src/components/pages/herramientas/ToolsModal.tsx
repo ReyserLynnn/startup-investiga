@@ -7,6 +7,7 @@ import {
   DialogHeader,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { Tags, TagsFields } from '@/types/pb';
 import { HeartIcon } from 'lucide-react';
 
 type ToolsModalProps = {
@@ -14,7 +15,7 @@ type ToolsModalProps = {
   name: string;
   homepage: string;
   video: string;
-  tags: string[];
+  tags: Tags[];
   numberLikes: number;
   description: string;
 };
@@ -74,8 +75,8 @@ export default function ToolsModal({
             <div className="flex gap-2">
               {
               tags.map((tag) => (
-                <Button key={tag} variant="ghost">
-                  {tag}
+                <Button key={tag[TagsFields.ID]} variant="ghost">
+                  {tag[TagsFields.NAME]}
                 </Button>
               ))
             }

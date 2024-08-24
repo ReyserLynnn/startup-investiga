@@ -101,6 +101,10 @@ export class DatabaseClient {
     this.client.authStore.loadFromCookie(cookie?.value || '');
     return this.client.authStore.model;
   }
+
+  getClient() {
+    return this.client;
+  }
 }
 
 const pb = new DatabaseClient();
