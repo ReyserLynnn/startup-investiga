@@ -1,3 +1,5 @@
+import ToolsModal from '@/components/pages/herramientas/ToolsModal';
+
 const HERRAMIENTAS: { name:string, image_url:string, homepage:string }[] = [
   {
     name: 'Chat GPT',
@@ -91,14 +93,16 @@ export default function HerramientasPage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 w-full gap-20 justify-items-center">
           {
             HERRAMIENTAS.map((herramienta) => (
-              <div key={herramienta.name} className="flex items-center justify-center p-0 hover:scale-105 transition-transform rounded-md relative w-32 h-32 group">
-                <img
-                  src={herramienta.image_url}
-                  alt={herramienta.name}
-                  className="w-full h-auto rounded-lg"
-                />
-                <img src={herramienta.image_url} alt={herramienta.name} className="absolute top-0 left-0 blur-xl -z-10 opacity-0 w-full h-auto group-hover:opacity-100 transition-all rounded-lg" />
-              </div>
+              <ToolsModal
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consectetur libero. Nulla facilisi. Nulla nec purus feugiat, molestie ipsum et, consectetur libero. Nulla facilisi."
+                homepage={herramienta.homepage}
+                logo={herramienta.image_url}
+                name={herramienta.name}
+                numberLikes={Math.floor(Math.random() * 100)}
+                tags={['IA', 'Machine Learning', 'Deep Learning']}
+                video="https://res.cloudinary.com/dazt6g3o1/video/upload/v1724428962/juvdebis2n2bkoioxd08.mp4"
+                key={herramienta.name}
+              />
             ))
           }
         </div>

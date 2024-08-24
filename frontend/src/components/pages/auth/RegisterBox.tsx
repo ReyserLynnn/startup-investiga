@@ -41,7 +41,6 @@ export default function RegisterBox() {
       setEmail('Failed to register user');
     }
   };
-
   return (
     <div className="w-full flex flex-col gap-10 md:max-w-lg absolute bottom-0 md:right-8 h-full max-h-[55rem] bg-background rounded-t-3xl px-8 py-16 shadow-all">
       <header className="w-full flex justify-between items-start">
@@ -66,7 +65,6 @@ export default function RegisterBox() {
       <h1 className="font-medium text-4xl md:text-5xl text-center w-full">
         REGISTRO
       </h1>
-
       <GoogleButton />
 
       <form onSubmit={onSubmit} className="flex flex-col gap-8">
