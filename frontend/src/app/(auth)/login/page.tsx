@@ -20,6 +20,10 @@ import { PasswordField, passwordSchema } from "@/components/ui/PasswordField";
 import Link from "next/link";
 import GoogleButton from "@/components/pages/auth/GoogleButton";
 import "animate.css";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { setLazyProp } from "next/dist/server/api-utils";
+import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   email: z
@@ -37,6 +41,10 @@ const formSchema = z.object({
 });
 
 export default function LoginPage() {
+  const route = useRouter();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,9 +53,34 @@ export default function LoginPage() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-  }
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const { email, password } = values;
+
+    try {
+      setLoading(true);
+      const form = { email, password };
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!response.ok) {
+        setError("Failed to authenticate user");
+        return;
+      }
+      const data = await response.json();
+      if (data?.token) {
+        route.replace("/");
+        route.refresh();
+      } else {
+        setError("Failed to authenticate user");
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section id="loginPage" className="bg-white h-screen w-screen">
@@ -64,11 +97,7 @@ export default function LoginPage() {
             />
           </div>
           <div className="flex flex-col items-center justify-center px-4 py-6 mx-auto max-w-md animate__animated animate__fadeInRight">
-            <Link
-              href="/"
-              className=" hidden md:flex"
-              prefetch={false}
-            >
+            <Link href="/" className=" hidden md:flex" prefetch={false}>
               <Image
                 src="logo.svg"
                 width="0"
@@ -86,6 +115,12 @@ export default function LoginPage() {
               Inicia sesión y explora nuevas fronteras en la investigación
               científica.
             </p>
+
+            {error && (
+              <p className=" text-sm pb-3 text-red-600">
+                Correo o contraseña incorrecto. Vuelva a intentarlo
+              </p>
+            )}
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
@@ -116,9 +151,16 @@ export default function LoginPage() {
                   </Link>
                 </div>
 
-                <Button type="submit" className="w-full mt-4">
-                  Iniciar sesión
-                </Button>
+                {loading ? (
+                  <Button disabled className="w-full mt-4">
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Cargando...
+                  </Button>
+                ) : (
+                  <Button type="submit" className="w-full mt-4">
+                    Iniciar sesión
+                  </Button>
+                )}
               </form>
             </Form>
 

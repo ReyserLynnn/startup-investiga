@@ -6,7 +6,6 @@ import pb from '@/lib/pocketbase';
 export async function POST(request: Request) {
   try {
     const { email, password } = await request.json();
-    console.log('form:', { email, password });
 
     const result = await pb.authenticate(email, password);
     const { record, token } = result;
