@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import { pb } from "@/lib/pocketbase";
 import { useRouter } from "next/navigation";
 import GoogleIcon from "@/components/icons/GoogleIcon";
+import { Loader2 } from "lucide-react";
 
 interface GoogleButtonProps {
   classname?: string;
@@ -20,7 +21,6 @@ export function GoogleButton({ classname }: GoogleButtonProps) {
 
   const handleGoogleLogin = async () => {
     setLoading(true);
-
     try {
       pb.client.authStore.clear();
       const authData = await pb.client.collection("users").authWithOAuth2({
@@ -66,7 +66,11 @@ export function GoogleButton({ classname }: GoogleButtonProps) {
       disabled={loading}
       onClick={handleGoogleLogin}
     >
-      <GoogleIcon className="w-auto h-5" />
+      {loading ? (
+        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+      ) : (
+        <GoogleIcon className="w-auto h-5" />
+      )}
       Continuar con google
     </Button>
   );
