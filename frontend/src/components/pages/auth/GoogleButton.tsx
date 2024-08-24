@@ -1,15 +1,16 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable import/no-named-as-default */
 
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import Cookies from "js-cookie";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import Cookies from 'js-cookie';
 
-import { pb } from "@/lib/pocketbase";
-import { useRouter } from "next/navigation";
-import GoogleIcon from "@/components/icons/GoogleIcon";
-import { Loader2 } from "lucide-react";
+import pb from '@/lib/pocketbase';
+import { useRouter } from 'next/navigation';
+import GoogleIcon from '@/components/icons/GoogleIcon';
+import { Loader2 } from 'lucide-react';
 
 interface GoogleButtonProps {
   classname?: string;
@@ -24,7 +25,7 @@ interface FormDataProps {
   degree?: string;
 }
 
-export function GoogleButton({ classname, formDataRegister }: GoogleButtonProps) {
+export default function GoogleButton({ classname, formDataRegister }: GoogleButtonProps) {
   const route = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -32,18 +33,18 @@ export function GoogleButton({ classname, formDataRegister }: GoogleButtonProps)
     setLoading(true);
     try {
       pb.client.authStore.clear();
-      const authData = await pb.client.collection("users").authWithOAuth2({
-        provider: "google",
+      const authData = await pb.client.collection('users').authWithOAuth2({
+        provider: 'google',
       });
 
       const { record, token } = authData;
       record.token = token;
-      Cookies.set("pb_auth", pb.client.authStore.exportToCookie());
+      Cookies.set('pb_auth', pb.client.authStore.exportToCookie());
 
       const { meta } = authData;
       if (meta?.isNew) {
         const formData = new FormData();
-        
+
         for (const key in formDataRegister) {
           if (Object.hasOwnProperty.call(formDataRegister, key)) {
             const value = formDataRegister[key as keyof FormDataProps];
@@ -56,19 +57,19 @@ export function GoogleButton({ classname, formDataRegister }: GoogleButtonProps)
         const response = await fetch(meta.avatarUrl);
         if (response.ok) {
           const file = await response.blob();
-          formData.append("avatar", file);
+          formData.append('avatar', file);
         }
 
         await pb.client
-          .collection("users")
+          .collection('users')
           .update(authData.record.id, formData);
       }
 
-      localStorage.removeItem("pocketbase_auth");
-      route.replace("/");
+      localStorage.removeItem('pocketbase_auth');
+      route.replace('/');
       route.refresh();
     } catch (error: any) {
-      console.error("Error during authentication:", error.message);
+      console.error('Error during authentication:', error.message);
     } finally {
       setLoading(false);
     }
@@ -91,5 +92,3 @@ export function GoogleButton({ classname, formDataRegister }: GoogleButtonProps)
     </Button>
   );
 }
-
-export default GoogleButton;

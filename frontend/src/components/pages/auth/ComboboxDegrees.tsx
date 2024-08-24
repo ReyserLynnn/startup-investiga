@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
-import { CheckIcon } from "lucide-react";
+/* eslint-disable @typescript-eslint/no-shadow */
+import { useEffect, useState } from 'react';
+import { CheckIcon } from 'lucide-react';
 import {
   ComboBox,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
-} from "@/components/ui/Combobox";
+} from '@/components/ui/Combobox';
 
 type DegreesType = {
   id: string;
@@ -18,28 +19,28 @@ interface ComboboxDegreesProps {
   onValueChange: (value: string | null) => void;
 }
 
-export const ComboboxDegrees = ({
+export function ComboboxDegrees({
   value,
   onValueChange,
-}: ComboboxDegreesProps) => {
+}: ComboboxDegreesProps) {
   const [degreesList, setDegreesList] = useState<DegreesType[]>(
-    []
+    [],
   );
 
   useEffect(() => {
     async function fetchDegrees() {
       try {
-        const response = await fetch("/api/list/degrees");
+        const response = await fetch('/api/list/degrees');
         const data = await response.json();
         const dataFormatted: DegreesType[] = data.map(
           (degree: any) => ({
             id: degree.id,
             name: degree.name,
-          })
+          }),
         );
         setDegreesList(dataFormatted);
       } catch (error) {
-        console.error("Error al obtener los grados academicos - cliente", error);
+        console.error('Error al obtener los grados academicos - cliente', error);
       }
     }
 
@@ -50,20 +51,18 @@ export const ComboboxDegrees = ({
     <ComboBox
       value={value}
       onValueChange={onValueChange}
-      filterItems={(inputValue, items) =>
-        items.filter(({ value }) => {
-          const degree = degreesList.find(
-            (degree) => degree.id === value
-          );
-          return (
-            !inputValue || (degree && (degree.name.toLowerCase().includes(inputValue.toLowerCase())))
-          );
-        })
-      }
+      filterItems={(inputValue, items) => items.filter(({ value }) => {
+        const degree = degreesList.find(
+          (degree) => degree.id === value,
+        );
+        return (
+          !inputValue || (degree && (degree.name.toLowerCase().includes(inputValue.toLowerCase())))
+        );
+      })}
     >
       <ComboboxInput placeholder="Selecciona tu grado académico..." />
       <ComboboxContent>
-        {degreesList.map(({ id, name}) => (
+        {degreesList.map(({ id, name }) => (
           <ComboboxItem key={id} value={id} label={name} className="ps-8">
             <span className="text-sm text-foreground">{name}</span>
             {value === id && (
@@ -77,4 +76,4 @@ export const ComboboxDegrees = ({
       </ComboboxContent>
     </ComboBox>
   );
-};
+}

@@ -1,11 +1,19 @@
-"use client";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Step, StepItem, Stepper, useStepper } from "@/components/ui/stepper";
-import { Building, Star, User } from "lucide-react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-use-before-define */
+
+'use client';
+
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import {
+  Step, StepItem, Stepper, useStepper,
+} from '@/components/ui/stepper';
+import { Building, Star, User } from 'lucide-react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 import {
   Form,
   FormControl,
@@ -13,19 +21,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { PhoneInput, getPhoneData } from "@/components/ui/phone-input";
-import { ComboboxInstitutions } from "./ComboboxInstitutions";
-import { ComboboxDegrees } from "./ComboboxDegrees";
-import { PasswordField, passwordSchema } from "@/components/ui/PasswordField";
-import GoogleButton from "./GoogleButton";
-import { useRouter } from "next/navigation";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { PhoneInput, getPhoneData } from '@/components/ui/phone-input';
+import { PasswordField, passwordSchema } from '@/components/ui/PasswordField';
+import { useRouter } from 'next/navigation';
+import { ComboboxInstitutions } from './ComboboxInstitutions';
+import { ComboboxDegrees } from './ComboboxDegrees';
+import GoogleButton from './GoogleButton';
 
 const steps = [
-  { label: "Personal", icon: User },
-  { label: "Académico", icon: Building },
-  { label: "Cuenta", icon: Star },
+  { label: 'Personal', icon: User },
+  { label: 'Académico', icon: Building },
+  { label: 'Cuenta', icon: Star },
 ] satisfies StepItem[];
 
 export default function StepperDemo() {
@@ -75,12 +83,12 @@ export default function StepperDemo() {
 const FirstFormSchema = z.object({
   name: z
     .string()
-    .min(5, { message: "Al menos 5 caracteres" })
-    .max(25, { message: "Máximo 25 caracteres" }),
+    .min(5, { message: 'Al menos 5 caracteres' })
+    .max(25, { message: 'Máximo 25 caracteres' }),
   lastname: z
     .string()
-    .min(5, { message: "Al menos 5 caracteres" })
-    .max(25, { message: "Máximo 25 caracteres" }),
+    .min(5, { message: 'Al menos 5 caracteres' })
+    .max(25, { message: 'Máximo 25 caracteres' }),
   phone: z.string(),
 });
 
@@ -94,9 +102,9 @@ function FirstStepForm({
   const form = useForm<z.infer<typeof FirstFormSchema>>({
     resolver: zodResolver(FirstFormSchema),
     defaultValues: {
-      name: "",
-      lastname: "",
-      phone: "",
+      name: '',
+      lastname: '',
+      phone: '',
     },
   });
 
@@ -104,9 +112,9 @@ function FirstStepForm({
     const phoneData = getPhoneData(data.phone);
 
     if (!phoneData.isValid) {
-      form.setError("phone", {
-        type: "manual",
-        message: "Número de teléfono inválido",
+      form.setError('phone', {
+        type: 'manual',
+        message: 'Número de teléfono inválido',
       });
       return;
     }
@@ -168,10 +176,10 @@ function FirstStepForm({
 const SecondFormSchema = z.object({
   institution: z
     .string()
-    .min(1, { message: "Debe seleccionar una institución." }),
+    .min(1, { message: 'Debe seleccionar una institución.' }),
   degree: z
     .string()
-    .min(1, { message: "Debe seleccionar un grado académico." }),
+    .min(1, { message: 'Debe seleccionar un grado académico.' }),
 });
 
 function SecondStepForm({
@@ -183,8 +191,8 @@ function SecondStepForm({
   const form = useForm<z.infer<typeof SecondFormSchema>>({
     resolver: zodResolver(SecondFormSchema),
     defaultValues: {
-      institution: "",
-      degree: "",
+      institution: '',
+      degree: '',
     },
   });
 
@@ -240,28 +248,28 @@ const ThreeFormSchema = z
     username: z
       .string()
       .min(5, {
-        message: "El nombre de usuario debe tener al menos 5 caracteres.",
+        message: 'El nombre de usuario debe tener al menos 5 caracteres.',
       })
       .max(30, {
-        message: "El nombre de usuario no puede tener más de 30 caracteres.",
+        message: 'El nombre de usuario no puede tener más de 30 caracteres.',
       }),
     email: z
       .string()
       .email({
-        message: "El correo electrónico no es válido",
+        message: 'El correo electrónico no es válido',
       })
       .min(5, {
-        message: "El correo electrónico debe tener al menos 5 caracteres.",
+        message: 'El correo electrónico debe tener al menos 5 caracteres.',
       })
       .max(50, {
-        message: "El correo electrónico no puede tener más de 50 caracteres.",
+        message: 'El correo electrónico no puede tener más de 50 caracteres.',
       }),
     password: passwordSchema,
     passwordConfirm: passwordSchema,
   })
   .refine((data) => data.password === data.passwordConfirm, {
-    message: "Las contraseñas no coinciden.",
-    path: ["password2"],
+    message: 'Las contraseñas no coinciden.',
+    path: ['password2'],
   });
 
 function ThreeStepForm({
@@ -272,15 +280,15 @@ function ThreeStepForm({
   formData: any;
 }) {
   const route = useRouter();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const form = useForm<z.infer<typeof ThreeFormSchema>>({
     resolver: zodResolver(ThreeFormSchema),
     defaultValues: {
-      username: "",
-      email: "",
-      password: "",
-      passwordConfirm: "",
+      username: '',
+      email: '',
+      password: '',
+      passwordConfirm: '',
     },
   });
 
@@ -288,25 +296,25 @@ function ThreeStepForm({
     const updatedData = { ...formData, ...data };
     onUpdateData(updatedData);
 
-    console.log(updatedData)
+    console.log(updatedData);
 
     try {
-      const response = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedData),
       });
 
       if (!response.ok) {
-        setError("Failed to register user");
+        setError('Failed to register user');
         return;
       }
       const data = await response.json();
       if (data?.token) {
-        route.replace("/");
+        route.replace('/');
         route.refresh();
       } else {
-        setError("Failed to authenticate user");
+        setError('Failed to authenticate user');
       }
     } catch (err) {
       console.error(err);
@@ -386,7 +394,7 @@ function StepperFormActions({ isFirstStep = false }) {
   return (
     <div
       className={`flex items-center ${
-        isFirstStep ? "justify-end mr-5" : "justify-around"
+        isFirstStep ? 'justify-end mr-5' : 'justify-around'
       } space-x-2`}
     >
       {!isFirstStep && (
@@ -394,7 +402,7 @@ function StepperFormActions({ isFirstStep = false }) {
           Atrás
         </Button>
       )}
-      <Button type="submit">{isLastStep ? "Registrarme" : "Siguiente"}</Button>
+      <Button type="submit">{isLastStep ? 'Registrarme' : 'Siguiente'}</Button>
     </div>
   );
 }

@@ -1,12 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
-import { CheckIcon } from "lucide-react";
+/* eslint-disable @typescript-eslint/no-shadow */
+import { useEffect, useState } from 'react';
+import { CheckIcon } from 'lucide-react';
 import {
   ComboBox,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
-} from "@/components/ui/Combobox";
+} from '@/components/ui/Combobox';
 
 type InstitutionType = {
   id: string;
@@ -19,29 +20,29 @@ interface ComboboxInstitutionsProps {
   onValueChange: (value: string | null) => void;
 }
 
-export const ComboboxInstitutions = ({
+export function ComboboxInstitutions({
   value,
   onValueChange,
-}: ComboboxInstitutionsProps) => {
+}: ComboboxInstitutionsProps) {
   const [institutionsList, setInstitutionsList] = useState<InstitutionType[]>(
-    []
+    [],
   );
 
   useEffect(() => {
     async function fetchInstitutions() {
       try {
-        const response = await fetch("/api/list/institutions");
+        const response = await fetch('/api/list/institutions');
         const data = await response.json();
         const dataFormatted: InstitutionType[] = data.map(
           (institution: any) => ({
             id: institution.id,
             name: institution.name,
-            locally: "Perú",
-          })
+            locally: 'Perú',
+          }),
         );
         setInstitutionsList(dataFormatted);
       } catch (error) {
-        console.error("Error al obtener las instituciones", error);
+        console.error('Error al obtener las instituciones', error);
       }
     }
 
@@ -52,23 +53,21 @@ export const ComboboxInstitutions = ({
     <ComboBox
       value={value}
       onValueChange={onValueChange}
-      filterItems={(inputValue, items) =>
-        items.filter(({ value }) => {
-          const institution = institutionsList.find(
-            (institution) => institution.id === value
-          );
-          return (
-            !inputValue ||
-            (institution &&
-              (institution.name
+      filterItems={(inputValue, items) => items.filter(({ value }) => {
+        const institution = institutionsList.find(
+          (institution) => institution.id === value,
+        );
+        return (
+          !inputValue
+            || (institution
+              && (institution.name
                 .toLowerCase()
-                .includes(inputValue.toLowerCase()) ||
-                institution.locally
+                .includes(inputValue.toLowerCase())
+                || institution.locally
                   .toLowerCase()
                   .includes(inputValue.toLowerCase())))
-          );
-        })
-      }
+        );
+      })}
     >
       <ComboboxInput placeholder="Selecciona tu institución..." />
       <ComboboxContent>
@@ -87,4 +86,4 @@ export const ComboboxInstitutions = ({
       </ComboboxContent>
     </ComboBox>
   );
-};
+}

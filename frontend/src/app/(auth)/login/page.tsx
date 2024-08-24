@@ -1,11 +1,12 @@
-"use client";
+/* eslint-disable @typescript-eslint/no-shadow */
 
-import Image from "next/image";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { buttonVariants } from "@/components/ui/button";
+'use client';
+
+import Image from 'next/image';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { Button, buttonVariants } from '@/components/ui/button';
 
 import {
   Form,
@@ -14,42 +15,41 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { PasswordField, passwordSchema } from "@/components/ui/PasswordField";
-import Link from "next/link";
-import GoogleButton from "@/components/pages/auth/GoogleButton";
-import "animate.css";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { setLazyProp } from "next/dist/server/api-utils";
-import { Loader2 } from "lucide-react";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { PasswordField, passwordSchema } from '@/components/ui/PasswordField';
+import Link from 'next/link';
+import GoogleButton from '@/components/pages/auth/GoogleButton';
+import 'animate.css';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { Loader2 } from 'lucide-react';
 
 const formSchema = z.object({
   email: z
     .string()
     .email({
-      message: "El correo electónico no es válido",
+      message: 'El correo electónico no es válido',
     })
     .min(5, {
-      message: "El correo electrónico debe tener al menos 5 caracteres.",
+      message: 'El correo electrónico debe tener al menos 5 caracteres.',
     })
     .max(50, {
-      message: "El correo electrónico no puede tener más de 50 caracteres.",
+      message: 'El correo electrónico no puede tener más de 50 caracteres.',
     }),
   password: passwordSchema,
 });
 
 export default function LoginPage() {
   const route = useRouter();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
   });
 
@@ -59,21 +59,21 @@ export default function LoginPage() {
     try {
       setLoading(true);
       const form = { email, password };
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
       if (!response.ok) {
-        setError("Failed to authenticate user");
+        setError('Failed to authenticate user');
         return;
       }
       const data = await response.json();
       if (data?.token) {
-        route.replace("/");
+        route.replace('/');
         route.refresh();
       } else {
-        setError("Failed to authenticate user");
+        setError('Failed to authenticate user');
       }
     } catch (err) {
       console.log(err);
@@ -143,7 +143,7 @@ export default function LoginPage() {
                 <div className="flex justify-end mt-1">
                   <Link
                     className={`${buttonVariants({
-                      variant: "link",
+                      variant: 'link',
                     })} text-sm text-link`}
                     href="/forgotpassword"
                   >
@@ -166,7 +166,7 @@ export default function LoginPage() {
 
             <li className="flex relative flex-col items-center py-8 w-full">
               <p className="text-center px-2 bg-white z-10 text-sm"> O </p>
-              <div className="absolute top-[42px] left-122 min-w-full h-px bg-gradient-to-r from-transparent via-sky-600/40 via-10% to-sky-600/5"></div>
+              <div className="absolute top-[42px] left-122 min-w-full h-px bg-gradient-to-r from-transparent via-sky-600/40 via-10% to-sky-600/5" />
             </li>
 
             <GoogleButton classname="w-full" />
@@ -174,7 +174,7 @@ export default function LoginPage() {
             <div className="w-full flex justify-end mt-10 ">
               <Link
                 className={`${buttonVariants({
-                  variant: "ghost",
+                  variant: 'ghost',
                 })} px-0 text-sm hover:no-underline hover:bg-transparent`}
                 href="/register "
               >
@@ -183,7 +183,7 @@ export default function LoginPage() {
 
               <Link
                 className={`${buttonVariants({
-                  variant: "link",
+                  variant: 'link',
                 })} text-sm`}
                 href="/register "
               >

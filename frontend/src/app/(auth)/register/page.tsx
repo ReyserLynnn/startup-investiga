@@ -1,14 +1,11 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
-import GoogleButton from "@/components/pages/auth/GoogleButton";
-import "animate.css";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { MarqueeDemo } from "@/components/pages/auth/Marquee";
-import StepperDemo from "@/components/pages/auth/StepperRegister";
+import Image from 'next/image';
+import { buttonVariants } from '@/components/ui/button';
+import Link from 'next/link';
+import 'animate.css';
+import { MarqueeDemo } from '@/components/pages/auth/Marquee';
+import StepperDemo from '@/components/pages/auth/StepperRegister';
 
 export default function RegisterPage() {
   return (
@@ -27,13 +24,13 @@ export default function RegisterPage() {
             <StepperDemo />
 
             <li className="flex relative flex-col items-center py-6 w-full">
-              <div className="absolute top-[42px] left-122 min-w-full h-px bg-gradient-to-r from-transparent via-gray-600/40 via-10% to-gray-600/5"></div>
+              <div className="absolute top-[42px] left-122 min-w-full h-px bg-gradient-to-r from-transparent via-gray-600/40 via-10% to-gray-600/5" />
             </li>
 
             <div className="w-full flex justify-center">
               <Link
                 className={`${buttonVariants({
-                  variant: "ghost",
+                  variant: 'ghost',
                 })} px-0 text-xs hover:no-underline hover:bg-transparent`}
                 href="/login"
               >
@@ -42,7 +39,7 @@ export default function RegisterPage() {
 
               <Link
                 className={`${buttonVariants({
-                  variant: "link",
+                  variant: 'link',
                 })} text-xs`}
                 href="/login "
               >
@@ -64,7 +61,7 @@ export default function RegisterPage() {
                 <span className="sr-only">Inveztiga</span>
               </Link>
             </div>
-            <MarqueeDemo></MarqueeDemo>
+            <MarqueeDemo />
           </div>
         </div>
       </div>

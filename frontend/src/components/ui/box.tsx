@@ -1,6 +1,5 @@
-
-import { cn } from "@/lib/utils";
-import React from "react";
+import { cn } from '@/lib/utils';
+import React from 'react';
 
 interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -10,6 +9,6 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(
   ),
 );
 
-Box.displayName = "Box";
+Box.displayName = 'Box';
 
 export { Box };
