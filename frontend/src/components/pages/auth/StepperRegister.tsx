@@ -288,6 +288,8 @@ function ThreeStepForm({
     const updatedData = { ...formData, ...data };
     onUpdateData(updatedData);
 
+    console.log(updatedData)
+
     try {
       const response = await fetch("/api/auth/signup", {
         method: "POST",
