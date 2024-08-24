@@ -17,6 +17,7 @@
     "@next/next/no-img-element": 0,
     "max-len": 0,
     "import/extensions": 0,
-    "import/no-named-as-default": 0
+    "import/no-named-as-default": 0,
+    "react/no-danger": 0
   }
 }
