@@ -26,12 +26,28 @@ export class DatabaseClient {
     }
   }
 
-  async register(email: string, password: string) {
+  async register(
+    username: string,
+    email: string,
+    password: string,
+    passwordConfirm: string,
+    name: string,
+    lastname: string,
+    phone: string,
+    institution: string,
+    degree: string
+  ) {
     try {
       const result = await this.client.collection("users").create({
+        username,
         email,
         password,
-        passwordConfirm: password,
+        passwordConfirm,
+        name,
+        lastname,
+        phone,
+        institution,
+        degree,
       });
       return result;
     } catch (err) {
@@ -50,6 +66,19 @@ export class DatabaseClient {
     } catch (error) {
       console.error(error);
       throw new Error("Error al obtener las instituciones");
+    }
+  }
+
+  async getDegrees() {
+    try {
+      const result = await this.client.collection("degrees").getFullList({
+        sort: "-name",
+      });
+
+      return result;
+    } catch (error) {
+      console.error(error);
+      throw new Error("Error al obtener los grados academicos");
     }
   }
 

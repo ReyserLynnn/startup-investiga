@@ -9,16 +9,18 @@ import * as z from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import GoogleButton from "./GoogleButton";
 import { PhoneInput, getPhoneData } from "@/components/ui/phone-input";
 import { ComboboxInstitutions } from "./ComboboxInstitutions";
+import { ComboboxDegrees } from "./ComboboxDegrees";
+import { PasswordField, passwordSchema } from "@/components/ui/PasswordField";
+import GoogleButton from "./GoogleButton";
+import { useRouter } from "next/navigation";
 
 const steps = [
   { label: "Personal", icon: User },
@@ -57,11 +59,13 @@ export default function StepperDemo() {
             }
             return (
               <Step key={stepProps.label} {...stepProps}>
-                <FinalStepForm formData={formData} />
+                <ThreeStepForm
+                  onUpdateData={handleUpdateData}
+                  formData={formData}
+                />
               </Step>
             );
           })}
-          <MyStepperFooter />
         </Stepper>
       </div>
     </div>
@@ -72,11 +76,11 @@ const FirstFormSchema = z.object({
   name: z
     .string()
     .min(5, { message: "Al menos 5 caracteres" })
-    .max(25, { message: "Maximo 50 catacteres" }),
+    .max(25, { message: "Máximo 25 caracteres" }),
   lastname: z
     .string()
     .min(5, { message: "Al menos 5 caracteres" })
-    .max(25, { message: "Maximo 50 catacteres" }),
+    .max(25, { message: "Máximo 25 caracteres" }),
   phone: z.string(),
 });
 
@@ -102,7 +106,7 @@ function FirstStepForm({
     if (!phoneData.isValid) {
       form.setError("phone", {
         type: "manual",
-        message: "Número de telefono inválido",
+        message: "Número de teléfono inválido",
       });
       return;
     }
@@ -155,14 +159,19 @@ function FirstStepForm({
             </FormItem>
           )}
         />
-        <StepperFormActions />
+        <StepperFormActions isFirstStep />
       </form>
     </Form>
   );
 }
 
 const SecondFormSchema = z.object({
-  institution: z.string().min(1, { message: "Debe seleccionar una institución." }),
+  institution: z
+    .string()
+    .min(1, { message: "Debe seleccionar una institución." }),
+  degree: z
+    .string()
+    .min(1, { message: "Debe seleccionar un grado académico." }),
 });
 
 function SecondStepForm({
@@ -175,12 +184,12 @@ function SecondStepForm({
     resolver: zodResolver(SecondFormSchema),
     defaultValues: {
       institution: "",
+      degree: "",
     },
   });
 
   function onSubmit(data: z.infer<typeof SecondFormSchema>) {
     onUpdateData(data);
-    console.log(data)
     nextStep();
   }
 
@@ -203,74 +212,187 @@ function SecondStepForm({
             </FormItem>
           )}
         />
+
+        <FormField
+          control={form.control}
+          name="degree"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Grado académico</FormLabel>
+              <FormControl>
+                <ComboboxDegrees
+                  value={field.value}
+                  onValueChange={field.onChange}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <StepperFormActions />
       </form>
     </Form>
   );
 }
 
+const ThreeFormSchema = z
+  .object({
+    username: z
+      .string()
+      .min(5, {
+        message: "El nombre de usuario debe tener al menos 5 caracteres.",
+      })
+      .max(30, {
+        message: "El nombre de usuario no puede tener más de 30 caracteres.",
+      }),
+    email: z
+      .string()
+      .email({
+        message: "El correo electrónico no es válido",
+      })
+      .min(5, {
+        message: "El correo electrónico debe tener al menos 5 caracteres.",
+      })
+      .max(50, {
+        message: "El correo electrónico no puede tener más de 50 caracteres.",
+      }),
+    password: passwordSchema,
+    passwordConfirm: passwordSchema,
+  })
+  .refine((data) => data.password === data.passwordConfirm, {
+    message: "Las contraseñas no coinciden.",
+    path: ["password2"],
+  });
 
-function FinalStepForm({ formData }: { formData: any }) {
-  function onSubmit() {
-    console.log("Final data:", formData);
-    // Aquí puedes manejar el envío de los datos combinados
+function ThreeStepForm({
+  onUpdateData,
+  formData,
+}: {
+  onUpdateData: (data: any) => void;
+  formData: any;
+}) {
+  const route = useRouter();
+  const [error, setError] = useState("");
+
+  const form = useForm<z.infer<typeof ThreeFormSchema>>({
+    resolver: zodResolver(ThreeFormSchema),
+    defaultValues: {
+      username: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    },
+  });
+
+  async function onSubmit(data: z.infer<typeof ThreeFormSchema>) {
+    const updatedData = { ...formData, ...data };
+    onUpdateData(updatedData);
+
+    try {
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData),
+      });
+
+      if (!response.ok) {
+        setError("Failed to register user");
+        return;
+      }
+      const data = await response.json();
+      if (data?.token) {
+        route.replace("/");
+        route.refresh();
+      } else {
+        setError("Failed to authenticate user");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return (
-    <div>
-      <h2>Resumen</h2>
-      <pre>{JSON.stringify(formData, null, 2)}</pre>
-      <Button onClick={onSubmit}>Enviar</Button>
-      <GoogleButton classname="w-full" />
-    </div>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Nombre de usuario</FormLabel>
+              <FormControl>
+                <Input placeholder="Ingresa un nombre de usuario" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Correo electrónico</FormLabel>
+              <FormControl>
+                <Input placeholder="Example@email.com" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <PasswordField placeholder="Crea una contraseña" {...field} />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="passwordConfirm"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <PasswordField
+                  label="Confirma tu contraseña"
+                  placeholder="Repite tu contraseña"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <StepperFormActions />
+
+        <GoogleButton classname="w-full" formDataRegister={formData} />
+        {error && <p className="error">{error}</p>}
+      </form>
+    </Form>
   );
 }
 
-function StepperFormActions() {
-  const {
-    prevStep,
-    resetSteps,
-    isDisabledStep,
-    hasCompletedAllSteps,
-    isLastStep,
-    isOptionalStep,
-  } = useStepper();
+function StepperFormActions({ isFirstStep = false }) {
+  const { isLastStep, prevStep } = useStepper();
 
   return (
-    <div className="w-full flex justify-end gap-2">
-      {hasCompletedAllSteps ? (
-        <Button size="sm" onClick={resetSteps}>
-          Reset
+    <div
+      className={`flex items-center ${
+        isFirstStep ? "justify-end mr-5" : "justify-around"
+      } space-x-2`}
+    >
+      {!isFirstStep && (
+        <Button variant="outline" type="button" onClick={prevStep}>
+          Atrás
         </Button>
-      ) : (
-        <>
-          <Button
-            disabled={isDisabledStep}
-            onClick={prevStep}
-            size="sm"
-            variant="secondary"
-          >
-            Prev
-          </Button>
-          <Button size="sm">
-            {isLastStep ? "Finish" : isOptionalStep ? "Skip" : "Next"}
-          </Button>
-        </>
       )}
-    </div>
-  );
-}
-
-function MyStepperFooter() {
-  const { activeStep, resetSteps, steps } = useStepper();
-
-  if (activeStep !== steps.length) {
-    return null;
-  }
-
-  return (
-    <div className="flex items-center justify-end gap-2">
-      <Button onClick={resetSteps}>Reset Stepper with Form</Button>
+      <Button type="submit">{isLastStep ? "Registrarme" : "Siguiente"}</Button>
     </div>
   );
 }

@@ -13,9 +13,18 @@ import { Loader2 } from "lucide-react";
 
 interface GoogleButtonProps {
   classname?: string;
+  formDataRegister?: FormDataProps;
 }
 
-export function GoogleButton({ classname }: GoogleButtonProps) {
+interface FormDataProps {
+  name?: string;
+  lastname?: string;
+  phone?: string;
+  institution?: string;
+  degree?: string;
+}
+
+export function GoogleButton({ classname, formDataRegister }: GoogleButtonProps) {
   const route = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -34,15 +43,22 @@ export function GoogleButton({ classname }: GoogleButtonProps) {
       const { meta } = authData;
       if (meta?.isNew) {
         const formData = new FormData();
+        
+        for (const key in formDataRegister) {
+          if (Object.hasOwnProperty.call(formDataRegister, key)) {
+            const value = formDataRegister[key as keyof FormDataProps];
+            if (value) {
+              formData.append(key, value);
+            }
+          }
+        }
 
         const response = await fetch(meta.avatarUrl);
-
         if (response.ok) {
           const file = await response.blob();
           formData.append("avatar", file);
         }
 
-        formData.append("name", meta.name);
         await pb.client
           .collection("users")
           .update(authData.record.id, formData);

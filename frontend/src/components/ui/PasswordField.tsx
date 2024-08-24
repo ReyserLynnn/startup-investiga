@@ -15,6 +15,7 @@ import { z } from "zod";
 
 type PasswordFieldProps = {
   name?: string;
+  label?: string;
   placeholder?: string;
   description?: string | JSX.Element;
 };
@@ -29,6 +30,7 @@ export const passwordSchema = z
 
 export function PasswordField({
   name = "password",
+  label = "Contraseña",
   placeholder = "●●●●●●●●",
   description,
 }: PasswordFieldProps) {
@@ -41,7 +43,7 @@ export function PasswordField({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>Contraseña</FormLabel>
+          <FormLabel>{label}</FormLabel>
           <FormControl>
             <Box className="relative">
               <Input

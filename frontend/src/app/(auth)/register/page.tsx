@@ -51,7 +51,7 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          <div className="relative hidden lg:block max-w-xl mx-auto">
+          <div className="relative hidden md:block max-w-xl mx-auto">
             <div className="absolute bg-transparent top-[-100px] left-44 z-10">
               <Link href="/" prefetch={false}>
                 <Image
@@ -59,7 +59,7 @@ export default function RegisterPage() {
                   width="0"
                   height="0"
                   alt="Logo de inveztiga"
-                  className="lg:w-50 xl:w-52 mx-auto h-auto"
+                  className="lg:w-50 xl:w-52 w-48 mx-auto h-auto"
                 />
                 <span className="sr-only">Inveztiga</span>
               </Link>
