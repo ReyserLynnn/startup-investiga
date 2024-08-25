@@ -69,7 +69,24 @@ export interface ToolsIa extends RecordModel {
 export const expandFields = (fields: string[]) => fields.join(',');
 
 export const getImageUrl = ({
-  url, collectionId, id,
+  url,
+  collectionId,
+  id,
 }: {
-  url: string, collectionId: string, id: string
+  url: string;
+  collectionId: string;
+  id: string;
 }) => `${POCKET_BASE_URL}/api/files/${collectionId}/${id}/${url}`;
+
+export interface UpdateDataFormUser {
+  id?: string;
+  name?: string;
+  lastname?: string;
+  avatar?: File;
+  bio?: string;
+  phone?: string;
+  courses?: Array<string>;
+  institution?: string;
+  degree?: string;
+  last_login?: string;
+}
