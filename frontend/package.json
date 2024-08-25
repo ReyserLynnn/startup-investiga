@@ -27,6 +27,7 @@
     "cmdk": "1.0.0",
     "cookies-next": "^4.2.1",
     "downshift": "^9.0.8",
+    "framer-motion": "^11.3.30",
     "js-cookie": "^3.0.5",
     "libphonenumber-js": "^1.11.7",
     "lucide-react": "^0.427.0",

@@ -16,6 +16,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 
+import { cn } from '@/lib/utils';
 import { Auth } from './Auth';
 import { Menu } from './Menu';
 import Soporte from './Soporte';
@@ -66,32 +67,35 @@ export default function NavBar() {
 
       <NavigationMenu className="hidden md:flex ml-auto ">
         <NavigationMenuList>
-          <Link
-            href="/"
-            prefetch={false}
-            className={buttonVariants({ variant: 'linkHover2' })}
-          >
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/" legacyBehavior passHref prefetch={false}>
+            <NavigationMenuLink
+              className={cn(
+                buttonVariants({ variant: 'linkHover2' }),
+                navigationMenuTriggerStyle(),
+              )}
+            >
               Inicio
             </NavigationMenuLink>
           </Link>
 
-          <Link
-            href="/cursos"
-            prefetch={false}
-            className={buttonVariants({ variant: 'linkHover2' })}
-          >
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/cursos" legacyBehavior passHref prefetch={false}>
+            <NavigationMenuLink
+              className={cn(
+                buttonVariants({ variant: 'linkHover2' }),
+                navigationMenuTriggerStyle(),
+              )}
+            >
               Cursos
             </NavigationMenuLink>
           </Link>
 
-          <Link
-            href="/herramientas"
-            prefetch={false}
-            className={buttonVariants({ variant: 'linkHover2' })}
-          >
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/herramientas" legacyBehavior passHref prefetch={false}>
+            <NavigationMenuLink
+              className={cn(
+                buttonVariants({ variant: 'linkHover2' }),
+                navigationMenuTriggerStyle(),
+              )}
+            >
               Herramientas
             </NavigationMenuLink>
           </Link>
