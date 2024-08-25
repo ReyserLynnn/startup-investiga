@@ -1,10 +1,13 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { MenuIcon } from 'lucide-react';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
-  NavigationMenu, NavigationMenuList, NavigationMenuLink, navigationMenuTriggerStyle,
+  NavigationMenu,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import { Button } from '@/components/ui/button';
+import { MenuIcon } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import {
   Sheet,
@@ -13,8 +16,8 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 
-import { Menu } from './Menu';
 import { Auth } from './Auth';
+import { Menu } from './Menu';
 import Soporte from './Soporte';
 
 export default function NavBar() {
@@ -35,7 +38,12 @@ export default function NavBar() {
               asChild
             >
               <Link href="/" className="flex items-center gap-2">
-                <Image src="logo.svg" width={180} height={500} alt="Logo de inveztiga" />
+                <Image
+                  src="logo.svg"
+                  width={180}
+                  height={500}
+                  alt="Logo de inveztiga"
+                />
                 <span className="sr-only">Inveztiga</span>
               </Link>
             </Button>
@@ -58,19 +66,31 @@ export default function NavBar() {
 
       <NavigationMenu className="hidden md:flex ml-auto ">
         <NavigationMenuList>
-          <Link href="/" legacyBehavior passHref prefetch={false}>
+          <Link
+            href="/"
+            prefetch={false}
+            className={buttonVariants({ variant: 'linkHover2' })}
+          >
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Inicio
             </NavigationMenuLink>
           </Link>
 
-          <Link href="/cursos" legacyBehavior passHref prefetch={false}>
+          <Link
+            href="/cursos"
+            prefetch={false}
+            className={buttonVariants({ variant: 'linkHover2' })}
+          >
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Cursos
             </NavigationMenuLink>
           </Link>
 
-          <Link href="/herramientas" legacyBehavior passHref prefetch={false}>
+          <Link
+            href="/herramientas"
+            prefetch={false}
+            className={buttonVariants({ variant: 'linkHover2' })}
+          >
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Herramientas
             </NavigationMenuLink>
