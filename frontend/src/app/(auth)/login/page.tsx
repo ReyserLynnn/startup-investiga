@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-
 'use client';
 
-import Image from 'next/image';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
 import { Button, buttonVariants } from '@/components/ui/button';
+import { zodResolver } from '@hookform/resolvers/zod';
+import Image from 'next/image';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
+import GoogleButton from '@/components/pages/auth/GoogleButton';
 import {
   Form,
   FormControl,
@@ -18,12 +17,11 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { PasswordField, passwordSchema } from '@/components/ui/PasswordField';
-import Link from 'next/link';
-import GoogleButton from '@/components/pages/auth/GoogleButton';
 import 'animate.css';
+import { Loader2 } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Loader2 } from 'lucide-react';
 
 const formSchema = z.object({
   email: z
@@ -64,17 +62,14 @@ export default function LoginPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
+
       if (!response.ok) {
-        setError('Failed to authenticate user');
+        setError('Correo o contraseña incorrecto. Vuelva a intentarlo');
         return;
       }
-      const data = await response.json();
-      if (data?.token) {
-        route.replace('/');
-        route.refresh();
-      } else {
-        setError('Failed to authenticate user');
-      }
+
+      route.replace('/');
+      route.refresh();
     } catch (err) {
       console.log(err);
     } finally {
@@ -116,11 +111,7 @@ export default function LoginPage() {
               científica.
             </p>
 
-            {error && (
-              <p className=" text-sm pb-3 text-red-600">
-                Correo o contraseña incorrecto. Vuelva a intentarlo
-              </p>
-            )}
+            {error && <p className=" text-sm pb-3 text-red-600">{error}</p>}
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">

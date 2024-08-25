@@ -18,8 +18,7 @@ export function getPlanesList(): PricingProps[] {
       title: 'Básico',
       popular: 0,
       price: 0,
-      description:
-        'Acceso gratuito a cursos básicos y recursos limitados.',
+      description: 'Acceso gratuito a cursos básicos y recursos limitados.',
       buttonText: 'Empieza Ahora',
       benefitList: [
         '1 Usuario',
@@ -33,8 +32,7 @@ export function getPlanesList(): PricingProps[] {
       title: 'Avanzado',
       popular: 1,
       price: 15,
-      description:
-        'Acceso a cursos avanzados y recursos exclusivos.',
+      description: 'Acceso a cursos avanzados y recursos exclusivos.',
       buttonText: 'Prueba Gratis',
       benefitList: [
         '5 Usuarios',
@@ -48,8 +46,7 @@ export function getPlanesList(): PricingProps[] {
       title: 'Premium',
       popular: 0,
       price: 40,
-      description:
-        'Acceso ilimitado a todos los cursos y recursos premium.',
+      description: 'Acceso ilimitado a todos los cursos y recursos premium.',
       buttonText: 'Contáctanos',
       benefitList: [
         'Usuarios ilimitados',

@@ -1,8 +1,6 @@
-/* eslint-disable import/no-named-as-default */
-
+import pb from '@/lib/pocketbase';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import pb from '@/lib/pocketbase';
 
 export async function POST(request: Request) {
   try {
@@ -31,8 +29,8 @@ export async function POST(request: Request) {
     );
 
     const authResult = await pb.authenticate(email, password);
-    const { record, token } = authResult;
-    record.token = token;
+    const { record } = authResult;
+
     cookies().set('pb_auth', pb.client.authStore.exportToCookie());
 
     return NextResponse.json(record);

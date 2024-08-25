@@ -65,6 +65,11 @@ html {
   scroll-behavior: smooth;
 }
 
+.lucide {
+  width: 16px;
+  height: 16px;
+}
+
 .container {
   width: 100%;
 }

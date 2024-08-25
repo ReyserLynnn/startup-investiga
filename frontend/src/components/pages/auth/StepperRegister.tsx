@@ -1,19 +1,6 @@
-/* eslint-disable import/no-named-as-default */
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable @typescript-eslint/no-use-before-define */
-
 'use client';
 
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import {
-  Step, StepItem, Stepper, useStepper,
-} from '@/components/ui/stepper';
-import { Building, Star, User } from 'lucide-react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
 import {
   Form,
   FormControl,
@@ -23,21 +10,35 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { PhoneInput, getPhoneData } from '@/components/ui/phone-input';
 import { PasswordField, passwordSchema } from '@/components/ui/PasswordField';
+import { PhoneInput, getPhoneData } from '@/components/ui/phone-input';
+import { Step, StepItem, Stepper, useStepper } from '@/components/ui/stepper';
+import { updateDataUser } from '@/lib/updateUser';
+import { UpdateDataFormUser } from '@/types/pb';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Building, Star, User } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { ComboboxInstitutions } from './ComboboxInstitutions';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import z from 'zod';
 import { ComboboxDegrees } from './ComboboxDegrees';
+import { ComboboxInstitutions } from './ComboboxInstitutions';
 import GoogleButton from './GoogleButton';
 
-const steps = [
-  { label: 'Personal', icon: User },
-  { label: 'Académico', icon: Building },
-  { label: 'Cuenta', icon: Star },
-] satisfies StepItem[];
+interface StepperDemoProps {
+  isOAuthLogin?: boolean;
+}
 
-export default function StepperDemo() {
-  const [formData, setFormData] = useState({});
+export default function StepperDemo({
+  isOAuthLogin = false,
+}: StepperDemoProps) {
+  const [formData, setFormData] = useState<UpdateDataFormUser>({});
+
+  const steps = [
+    { label: 'Personal', icon: User },
+    { label: 'Académico', icon: Building },
+    ...(isOAuthLogin ? [] : [{ label: 'Cuenta', icon: Star }]),
+  ] satisfies StepItem[];
 
   function handleUpdateData(newData: any) {
     setFormData((prevData) => ({
@@ -61,7 +62,11 @@ export default function StepperDemo() {
             if (index === 1) {
               return (
                 <Step key={stepProps.label} {...stepProps}>
-                  <SecondStepForm onUpdateData={handleUpdateData} />
+                  <SecondStepForm
+                    onUpdateData={handleUpdateData}
+                    formData={formData}
+                    isOAuthLogin={isOAuthLogin}
+                  />
                 </Step>
               );
             }
@@ -184,9 +189,14 @@ const SecondFormSchema = z.object({
 
 function SecondStepForm({
   onUpdateData,
+  formData,
+  isOAuthLogin,
 }: {
   onUpdateData: (data: any) => void;
+  formData: UpdateDataFormUser;
+  isOAuthLogin: boolean;
 }) {
+  const route = useRouter();
   const { nextStep } = useStepper();
   const form = useForm<z.infer<typeof SecondFormSchema>>({
     resolver: zodResolver(SecondFormSchema),
@@ -196,8 +206,16 @@ function SecondStepForm({
     },
   });
 
-  function onSubmit(data: z.infer<typeof SecondFormSchema>) {
+  async function onSubmit(data: z.infer<typeof SecondFormSchema>) {
+    const updatedData = { ...formData, ...data };
     onUpdateData(data);
+
+    if (isOAuthLogin) {
+      await updateDataUser(updatedData);
+      route.replace('/');
+      route.refresh();
+    }
+
     nextStep();
   }
 
@@ -243,41 +261,36 @@ function SecondStepForm({
   );
 }
 
-const ThreeFormSchema = z
-  .object({
-    username: z
-      .string()
-      .min(5, {
-        message: 'El nombre de usuario debe tener al menos 5 caracteres.',
-      })
-      .max(30, {
-        message: 'El nombre de usuario no puede tener más de 30 caracteres.',
-      }),
-    email: z
-      .string()
-      .email({
-        message: 'El correo electrónico no es válido',
-      })
-      .min(5, {
-        message: 'El correo electrónico debe tener al menos 5 caracteres.',
-      })
-      .max(50, {
-        message: 'El correo electrónico no puede tener más de 50 caracteres.',
-      }),
-    password: passwordSchema,
-    passwordConfirm: passwordSchema,
-  })
-  .refine((data) => data.password === data.passwordConfirm, {
-    message: 'Las contraseñas no coinciden.',
-    path: ['password2'],
-  });
+const ThreeFormSchema = z.object({
+  username: z
+    .string()
+    .min(5, {
+      message: 'El nombre de usuario debe tener al menos 5 caracteres.',
+    })
+    .max(30, {
+      message: 'El nombre de usuario no puede tener más de 30 caracteres.',
+    }),
+  email: z
+    .string()
+    .email({
+      message: 'El correo electrónico no es válido',
+    })
+    .min(5, {
+      message: 'El correo electrónico debe tener al menos 5 caracteres.',
+    })
+    .max(50, {
+      message: 'El correo electrónico no puede tener más de 50 caracteres.',
+    }),
+  password: passwordSchema,
+  passwordConfirm: passwordSchema,
+});
 
 function ThreeStepForm({
   onUpdateData,
   formData,
 }: {
   onUpdateData: (data: any) => void;
-  formData: any;
+  formData: UpdateDataFormUser;
 }) {
   const route = useRouter();
   const [error, setError] = useState('');
@@ -296,7 +309,13 @@ function ThreeStepForm({
     const updatedData = { ...formData, ...data };
     onUpdateData(updatedData);
 
-    console.log(updatedData);
+    if (updatedData.password !== updatedData.passwordConfirm) {
+      form.setError('passwordConfirm', {
+        type: 'manual',
+        message: 'Las contraseñas no coinciden',
+      });
+      return;
+    }
 
     try {
       const response = await fetch('/api/auth/signup', {
@@ -306,16 +325,12 @@ function ThreeStepForm({
       });
 
       if (!response.ok) {
-        setError('Failed to register user');
+        setError('Nombre de usuario o correo ya registrados');
         return;
       }
-      const data = await response.json();
-      if (data?.token) {
-        route.replace('/');
-        route.refresh();
-      } else {
-        setError('Failed to authenticate user');
-      }
+
+      route.replace('/');
+      route.refresh();
     } catch (err) {
       console.error(err);
     }

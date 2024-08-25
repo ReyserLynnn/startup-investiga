@@ -1,18 +1,18 @@
 import {
-  Settings,
-  LucideIcon,
-  User,
-  Mail,
-  Wrench,
-  TvMinimal,
   House,
+  LucideIcon,
+  Mail,
+  Settings,
+  TvMinimal,
+  User,
+  Wrench,
 } from 'lucide-react';
 
 type Menu = {
   href: string;
   label: string;
   active: boolean;
-  icon: LucideIcon
+  icon: LucideIcon;
 };
 
 type Group = {

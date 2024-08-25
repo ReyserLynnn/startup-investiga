@@ -1,11 +1,14 @@
 import {
-  ChartLine, LaptopMinimal, LucideIcon, TvMinimalPlay,
+  ChartLine,
+  LaptopMinimal,
+  LucideIcon,
+  TvMinimalPlay,
 } from 'lucide-react';
 
 type CualidadesProps = {
   label: string;
   color: string;
-  icon: LucideIcon
+  icon: LucideIcon;
   title: string;
   description: string;
 };
@@ -17,8 +20,7 @@ export function getCualidades(): CualidadesProps[] {
       color: 'DCA005',
       icon: LaptopMinimal,
       title: 'Enseñanza',
-      description:
-        'Videos grabados y en vivo, seguimiento de investigadores',
+      description: 'Videos grabados y en vivo, seguimiento de investigadores',
     },
     {
       label: 'Ver más',

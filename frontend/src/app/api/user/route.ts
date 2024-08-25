@@ -2,16 +2,12 @@ import pb from '@/lib/pocketbase';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
-export async function POST(request: Request) {
+export async function GET() {
   try {
-    const { email, password } = await request.json();
+    const cookieStore = cookies();
 
-    const result = await pb.authenticate(email, password);
-    const { record, token } = result;
-    record.token = token;
-    cookies().set('pb_auth', pb.client.authStore.exportToCookie());
-
-    return NextResponse.json(record);
+    const user = await pb.getUser(cookieStore);
+    return NextResponse.json(user);
   } catch (err: any) {
     return new Response(
       JSON.stringify({ error: err.message || err.toString() }),
