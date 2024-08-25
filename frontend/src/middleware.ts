@@ -1,6 +1,3 @@
-/* eslint-disable no-mixed-operators */
-/* eslint-disable consistent-return */
-/* eslint-disable import/no-named-as-default */
 import { NextRequest, NextResponse } from 'next/server';
 import pb from './lib/pocketbase';
 
@@ -11,7 +8,10 @@ export async function middleware(request: NextRequest) {
 
   const authPaths = ['/login', '/register'];
 
-  if (request.nextUrl.pathname && authPaths.some((path) => request.nextUrl.pathname.startsWith(path))) {
+  if (
+    request.nextUrl.pathname &&
+    authPaths.some((path) => request.nextUrl.pathname.startsWith(path))
+  ) {
     if (isLoggedIn) {
       return NextResponse.redirect(new URL('/', request.url));
     }
@@ -29,7 +29,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
-  ],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };

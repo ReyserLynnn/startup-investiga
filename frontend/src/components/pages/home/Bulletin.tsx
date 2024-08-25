@@ -12,8 +12,15 @@ export default function Bulletin() {
           Mantente al tanto de nuestras novedades y actualizaciones.
         </span>
         <div className="bg-primary-foreground rounded-full px-2 py-2 flex gap-2 mt-10">
-          <Input type="email" className="rounded-full" placeholder="Correo electronico" />
-          <Button variant="secondary" className="rounded-full px-12 text-base h-auto py-3">
+          <Input
+            type="email"
+            className="rounded-full"
+            placeholder="Correo electronico"
+          />
+          <Button
+            variant="secondary"
+            className="rounded-full px-12 text-base h-auto py-3"
+          >
             Enviar
           </Button>
         </div>

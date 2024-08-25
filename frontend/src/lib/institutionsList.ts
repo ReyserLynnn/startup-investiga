@@ -3,6 +3,7 @@ import pb from './pocketbase';
 export async function fetchInstitutions() {
   try {
     const institutions = await pb.getInstitutions();
+
     return institutions.map((institution) => ({
       id: institution.id,
       name: institution.name,
