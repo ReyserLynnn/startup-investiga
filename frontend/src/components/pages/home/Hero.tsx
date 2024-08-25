@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { HeroImg } from './HeroImg';
+import { ArrowRightIcon } from 'lucide-react';
 
 export function Hero() {
   return (
@@ -25,17 +26,8 @@ export function Hero() {
             en vivo, diseñados por docentes de excelencia.
           </p>
 
-          <Button className="gap-3 w-full lg:w-1/3 group/btn">
+          <Button className="w-full lg:w-1/3" variant="expandIcon" Icon={ArrowRightIcon} iconPlacement="right">
             Empezar
-
-            <div className="flex items-center opacity-50 group-hover/btn:opacity-100 transition-opacity ">
-              <svg role="img" viewBox="0 0 16 16" fill="currentColor" className="w-0 group-hover/btn:w-2.5 h-2.5 -mr-2.5 ease-out duration-200 transition-all transform-gpu">
-                <path d="M1 9h14a1 1 0 000-2H1a1 1 0 000 2z" />
-              </svg>
-              <svg role="img" viewBox="0 0 16 16" fill="currentColor" className="size-2.5">
-                <path d="M7.293 1.707L13.586 8l-6.293 6.293a1 1 0 001.414 1.414l7-7a.999.999 0 000-1.414l-7-7a1 1 0 00-1.414 1.414z" />
-              </svg>
-            </div>
           </Button>
         </div>
 

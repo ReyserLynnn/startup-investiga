@@ -17,7 +17,8 @@ export function getDocentesList(): TeamProps[] {
       imageUrl: 'https://i.pravatar.cc/150?img=35',
       name: 'Emma Smith',
       position: 'Analista jefe de soporte de aplicaciones',
-      presentation: 'Ex cofundador de Opendoor. Primeros empleados de Spotify y Clearbit.',
+      presentation:
+        'Ex cofundador de Opendoor. Primeros empleados de Spotify y Clearbit.',
       socialNetworks: [
         {
           name: 'Linkedin',
@@ -33,7 +34,8 @@ export function getDocentesList(): TeamProps[] {
       imageUrl: 'https://i.pravatar.cc/150?img=60',
       name: 'John Doe',
       position: 'Director de Análisis y Planificación de Pregrado',
-      presentation: 'Liderar equipos de ingeniería en Figma, Pitch y Protocol Labs.',
+      presentation:
+        'Liderar equipos de ingeniería en Figma, Pitch y Protocol Labs.',
       socialNetworks: [
         {
           name: 'Linkedin',
@@ -49,7 +51,8 @@ export function getDocentesList(): TeamProps[] {
       imageUrl: 'https://i.pravatar.cc/150?img=36',
       name: 'Ashley Ross',
       position: 'Gerente de operaciones y programas de pasantías',
-      presentation: 'Ex desarrollador de interfaz de usuario para Linear, Coinbase y Postscript.',
+      presentation:
+        'Ex desarrollador de interfaz de usuario para Linear, Coinbase y Postscript.',
       socialNetworks: [
         {
           name: 'Linkedin',
@@ -65,7 +68,8 @@ export function getDocentesList(): TeamProps[] {
       imageUrl: 'https://i.pravatar.cc/150?img=17',
       name: 'Bruce Rogers',
       position: 'Gerente de operaciones y programas de pasantías',
-      presentation: 'Ex desarrollador de interfaz de usuario para Linear, Coinbase y Postscript.',
+      presentation:
+        'Ex desarrollador de interfaz de usuario para Linear, Coinbase y Postscript.',
       socialNetworks: [
         {
           name: 'Linkedin',

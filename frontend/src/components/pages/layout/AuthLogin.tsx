@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/button';
 export default function AuthLogin() {
   return (
     <div className="justify-end hidden md:flex gap-2 ml-auto md:ml-3">
-      <Button variant="ghost" className="hover:bg-secondary hover:text-primary-foreground">
+      <Button variant="linkHover2">
         <Link href="/login">Iniciar Sesión</Link>
       </Button>
 
-      <Button>
+      <Button variant="shine">
         <Link href="/register">Crear una cuenta</Link>
       </Button>
     </div>

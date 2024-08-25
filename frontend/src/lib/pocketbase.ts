@@ -1,6 +1,5 @@
-/* eslint-disable consistent-return */
-import PocketBase from 'pocketbase';
 import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
+import PocketBase from 'pocketbase';
 
 export const POCKET_BASE_URL = process.env.NEXT_PUBLIC_POCKETBASE_URL || '';
 

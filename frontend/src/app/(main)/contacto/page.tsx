@@ -1,6 +1,6 @@
+import { ContactForm } from '@/components/pages/contact/form';
 import { GlobeIcon, Mail, PhoneIcon } from 'lucide-react';
 import Link from 'next/link';
-import { ContactForm } from '@/components/pages/contact/form';
 
 export default function ContactoPage() {
   return (
@@ -15,7 +15,9 @@ export default function ContactoPage() {
         <div className="flex flex-col lg:flex-row lg:gap-16 p-8 ">
           <div className="flex-1">
             <p className="text-lg mb-8">
-              Comuníquese para obtener ayuda, realizar consultas o comentarios, garantizando una asistencia rápida y fomentando una experiencia de usuario perfecta.
+              Comuníquese para obtener ayuda, realizar consultas o comentarios,
+              garantizando una asistencia rápida y fomentando una experiencia de
+              usuario perfecta.
             </p>
 
             <ul className="flex flex-col gap-3 text-sm">
@@ -56,6 +58,5 @@ export default function ContactoPage() {
         </div>
       </div>
     </div>
-
   );
 }

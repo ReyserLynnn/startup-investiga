@@ -1,8 +1,5 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -14,6 +11,9 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 import { formSchema } from './schema';
 
 export function ContactForm() {
@@ -54,7 +54,11 @@ export function ContactForm() {
             <FormItem>
               <FormLabel htmlFor="email">Correo electrónico</FormLabel>
               <FormControl>
-                <Input id="email" placeholder="Ingrese su correo electrónico" {...field} />
+                <Input
+                  id="email"
+                  placeholder="Ingrese su correo electrónico"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
