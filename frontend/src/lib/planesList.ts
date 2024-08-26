@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 enum PopularPlanType {
   NO = 0,
   YES = 1,

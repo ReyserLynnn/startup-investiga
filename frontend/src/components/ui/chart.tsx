@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-danger */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-shadow */
@@ -16,16 +17,16 @@ const THEMES = { light: '', dark: '.dark' } as const;
 
 export type ChartConfig = {
   [k in string]: {
-    label?: React.ReactNode
-    icon?: React.ComponentType
+    label?: React.ReactNode;
+    icon?: React.ComponentType;
   } & (
     | { color?: string; theme?: never }
     | { color?: never; theme: Record<keyof typeof THEMES, string> }
-  )
+  );
 };
 
 type ChartContextProps = {
-  config: ChartConfig
+  config: ChartConfig;
 };
 
 const ChartContext = React.createContext<ChartContextProps | null>(null);
@@ -41,16 +42,14 @@ function useChart() {
 }
 
 const ChartContainer = React.forwardRef<
-HTMLDivElement,
-React.ComponentProps<'div'> & {
-  config: ChartConfig
-  children: React.ComponentProps<
+  HTMLDivElement,
+  React.ComponentProps<'div'> & {
+    config: ChartConfig;
+    children: React.ComponentProps<
       typeof RechartsPrimitive.ResponsiveContainer
-  >['children']
-}
->(({
-  id, className, children, config, ...props
-}, ref) => {
+    >['children'];
+  }
+>(({ id, className, children, config, ...props }, ref) => {
   const uniqueId = React.useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, '')}`;
 
@@ -92,12 +91,13 @@ function ChartStyle({ id, config }: { id: string; config: ChartConfig }) {
             ([theme, prefix]) => `
 ${prefix} [data-chart=${id}] {
 ${colorConfig
-              .map(([key, itemConfig]) => {
-                const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme]
-      || itemConfig.color;
-                return color ? `  --color-${key}: ${color};` : null;
-              })
-              .join('\n')}
+  .map(([key, itemConfig]) => {
+    const color =
+      itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
+      itemConfig.color;
+    return color ? `  --color-${key}: ${color};` : null;
+  })
+  .join('\n')}
 }
 `,
           )
@@ -110,15 +110,15 @@ ${colorConfig
 const ChartTooltip = RechartsPrimitive.Tooltip;
 
 const ChartTooltipContent = React.forwardRef<
-HTMLDivElement,
-React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
-React.ComponentProps<'div'> & {
-  hideLabel?: boolean
-  hideIndicator?: boolean
-  indicator?: 'line' | 'dot' | 'dashed'
-  nameKey?: string
-  labelKey?: string
-}
+  HTMLDivElement,
+  React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
+    React.ComponentProps<'div'> & {
+      hideLabel?: boolean;
+      hideIndicator?: boolean;
+      indicator?: 'line' | 'dot' | 'dashed';
+      nameKey?: string;
+      labelKey?: string;
+    }
 >(
   (
     {
@@ -148,9 +148,10 @@ React.ComponentProps<'div'> & {
       const [item] = payload;
       const key = `${labelKey || item.dataKey || item.name || 'value'}`;
       const itemConfig = getPayloadConfigFromPayload(config, item, key);
-      const value = !labelKey && typeof label === 'string'
-        ? config[label as keyof typeof config]?.label || label
-        : itemConfig?.label;
+      const value =
+        !labelKey && typeof label === 'string'
+          ? config[label as keyof typeof config]?.label || label
+          : itemConfig?.label;
 
       if (labelFormatter) {
         return (
@@ -265,17 +266,15 @@ ChartTooltipContent.displayName = 'ChartTooltip';
 const ChartLegend = RechartsPrimitive.Legend;
 
 const ChartLegendContent = React.forwardRef<
-HTMLDivElement,
-React.ComponentProps<'div'> &
-Pick<RechartsPrimitive.LegendProps, 'payload' | 'verticalAlign'> & {
-  hideIcon?: boolean
-  nameKey?: string
-}
+  HTMLDivElement,
+  React.ComponentProps<'div'> &
+    Pick<RechartsPrimitive.LegendProps, 'payload' | 'verticalAlign'> & {
+      hideIcon?: boolean;
+      nameKey?: string;
+    }
 >(
   (
-    {
-      className, hideIcon = false, payload, verticalAlign = 'bottom', nameKey,
-    },
+    { className, hideIcon = false, payload, verticalAlign = 'bottom', nameKey },
     ref,
   ) => {
     const { config } = useChart();
@@ -334,23 +333,24 @@ function getPayloadConfigFromPayload(
     return undefined;
   }
 
-  const payloadPayload = 'payload' in payload
-    && typeof payload.payload === 'object'
-    && payload.payload !== null
-    ? payload.payload
-    : undefined;
+  const payloadPayload =
+    'payload' in payload &&
+    typeof payload.payload === 'object' &&
+    payload.payload !== null
+      ? payload.payload
+      : undefined;
 
   let configLabelKey: string = key;
 
   if (
-    key in payload
-    && typeof payload[key as keyof typeof payload] === 'string'
+    key in payload &&
+    typeof payload[key as keyof typeof payload] === 'string'
   ) {
     configLabelKey = payload[key as keyof typeof payload] as string;
   } else if (
-    payloadPayload
-    && key in payloadPayload
-    && typeof payloadPayload[key as keyof typeof payloadPayload] === 'string'
+    payloadPayload &&
+    key in payloadPayload &&
+    typeof payloadPayload[key as keyof typeof payloadPayload] === 'string'
   ) {
     configLabelKey = payloadPayload[
       key as keyof typeof payloadPayload

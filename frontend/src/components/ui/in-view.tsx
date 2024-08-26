@@ -1,4 +1,7 @@
+/* eslint-disable react/function-component-definition */
+
 'use client';
+
 import {
   motion,
   Transition,

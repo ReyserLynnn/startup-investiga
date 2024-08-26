@@ -77,8 +77,7 @@ export function HeroChart() {
                           y={viewBox.cy}
                           className="fill-foreground text-4xl font-bold"
                         >
-                          {chartData[0].investigadores.toLocaleString()}
-                          %
+                          {chartData[0].investigadores.toLocaleString()}%
                         </tspan>
                         <tspan
                           x={viewBox.cx}

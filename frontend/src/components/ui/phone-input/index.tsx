@@ -86,12 +86,14 @@ export function PhoneInput({
   const [value, handlers, history] = useStateHistory(valueProp);
 
   if (value && value.length > 0) {
-    defaultCountry = parsePhoneNumberFromString(value)?.getPossibleCountries()[0]
-      || defaultCountry;
+    defaultCountry =
+      parsePhoneNumberFromString(value)?.getPossibleCountries()[0] ||
+      defaultCountry;
   }
 
   const [openCommand, setOpenCommand] = React.useState(false);
-  const [countryCode, setCountryCode] = React.useState<CountryCode>(defaultCountry);
+  const [countryCode, setCountryCode] =
+    React.useState<CountryCode>(defaultCountry);
 
   const selectedCountry = countries.find(
     (country) => country.iso2 === countryCode,
@@ -140,9 +142,9 @@ export function PhoneInput({
     if ((event.metaKey || event.ctrlKey) && event.key === 'z') {
       handlers.back();
       if (
-        inputRef.current
-        && history.current > 0
-        && history.history[history.current - 1] !== undefined
+        inputRef.current &&
+        history.current > 0 &&
+        history.history[history.current - 1] !== undefined
       ) {
         event.preventDefault();
         inputRef.current.value = history.history[history.current - 1] || '';
@@ -173,9 +175,7 @@ export function PhoneInput({
             <CommandInput placeholder="Buscar país..." />
             <CommandList>
               <CommandEmpty>País no encontrado</CommandEmpty>
-              <ScrollArea
-                className="[&>[data-radix-scroll-area-viewport]]:max-h-[300px]"
-              >
+              <ScrollArea className="[&>[data-radix-scroll-area-viewport]]:max-h-[300px]">
                 <CommandGroup>
                   {countries.map((country) => (
                     <CommandItem
@@ -209,8 +209,7 @@ export function PhoneInput({
                       {country.name}
                       <span className="text-gray-11 ml-1">
                         (+
-                        {country.phone_code}
-                        )
+                        {country.phone_code})
                       </span>
                     </CommandItem>
                   ))}

@@ -86,46 +86,44 @@ export default function Footer() {
           <div className="w-full flex flex-col items-start justify-start max-w-sm gap-6">
             <img src="/logo.svg" alt="logo" className="w-full max-w-64" />
             <div>
-              Impulsando la investigación con educación innovadora y conexiones globales.
+              Impulsando la investigación con educación innovadora y conexiones
+              globales.
             </div>
           </div>
           <div className="w-full max-w-3xl flex justify-between items-start col-span-1 lg:col-span-2 flex-col lg:flex-row lg:justify-self-end justify-self-center">
-            {
-          NAVLINKS.map(({ links, text, href }) => {
-            if (links) {
-              return (
-                <div key={crypto.randomUUID()} className="flex flex-col gap-3 border-b-[1px] lg:border-b-0 border-web-gray-300 py-4 w-full lg:w-auto">
-                  <Link
-                    href={href}
-                    className="font-bold text-primary-title text-md text-muted-foreground"
+            {NAVLINKS.map(({ links, text, href }) => {
+              if (links) {
+                return (
+                  <div
+                    key={crypto.randomUUID()}
+                    className="flex flex-col gap-3 border-b-[1px] lg:border-b-0 border-web-gray-300 py-4 w-full lg:w-auto"
                   >
-                    {text}
-                  </Link>
-                  <div className="flex flex-col text-lg gap-2 w-full">
-                    {
-                  links.map(({ name: subName, path: subPath }) => (
                     <Link
-                      href={subPath}
-                      key={crypto.randomUUID()}
-                      className="flex items-start text-start hover:underline min-w-fit"
+                      href={href}
+                      className="font-bold text-primary-title text-md text-muted-foreground"
                     >
-                      {subName}
+                      {text}
                     </Link>
-                  ))
-                }
+                    <div className="flex flex-col text-lg gap-2 w-full">
+                      {links.map(({ name: subName, path: subPath }) => (
+                        <Link
+                          href={subPath}
+                          key={crypto.randomUUID()}
+                          className="flex items-start text-start hover:underline min-w-fit"
+                        >
+                          {subName}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              );
-            }
-            return null;
-          })
-        }
+                );
+              }
+              return null;
+            })}
           </div>
         </div>
         <div className="flex w-full items-center justify-between text-muted text-sm">
-          <span>
-            © 2024 Investiga, All rights reserved.
-          </span>
+          <span>© 2024 Investiga, All rights reserved.</span>
           <div className="flex gap-4">
             <Link href="/" className="">
               <FacebookIcon className="w-7 h-7" />
