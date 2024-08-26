@@ -10,9 +10,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import pb, { POCKET_BASE_URL } from '@/lib/pocketbase';
+import pb from '@/lib/pocketbase';
 import { cookies } from 'next/headers';
 import { use } from 'react';
+import { POCKET_BASE_URL } from '@/config/global';
 import AuthLogin from './AuthLogin';
 import LogoutItem from './LogoutItem';
 
