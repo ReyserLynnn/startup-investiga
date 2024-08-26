@@ -1,29 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 import pb from './lib/pocketbase';
 
+const AUTH_PATHS = ['/login', '/register'];
+const NO_AUTH_PATHS = ['/user'];
+
 export async function middleware(request: NextRequest) {
   console.log(`[middleware] ${request.method} ${request.url}`);
 
   const isLoggedIn = await pb.isAuthenticated(request.cookies as any);
+  const { pathname } = request.nextUrl;
 
-  const authPaths = ['/login', '/register'];
-
-  if (
-    request.nextUrl.pathname &&
-    authPaths.some((path) => request.nextUrl.pathname.startsWith(path))
-  ) {
+  if (AUTH_PATHS.some((path) => pathname.startsWith(path))) {
     if (isLoggedIn) {
       return NextResponse.redirect(new URL('/', request.url));
     }
-    return;
-  }
-
-  /*
+  } else if (NO_AUTH_PATHS.some((path) => pathname.startsWith(path))) {
     if (!isLoggedIn) {
-      return NextResponse.redirect(new URL('/auth/login', request.url));
+      return NextResponse.redirect(new URL('/login', request.url));
     }
-
-  */
+  }
 
   return NextResponse.next();
 }
