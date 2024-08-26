@@ -17,7 +17,8 @@ interface FAQProps {
 const FAQList: FAQProps[] = [
   {
     question: '¿Qué tipo de cursos ofrece Inveztiga?',
-    answer: 'Ofrecemos cursos en vivo especializados en la aplicación de IA en investigación científica.',
+    answer:
+      'Ofrecemos cursos en vivo especializados en la aplicación de IA en investigación científica.',
     value: 'item-1',
   },
   {
@@ -48,28 +49,17 @@ const FAQList: FAQProps[] = [
 
 export function FAQ() {
   return (
-    <section
-      id="faq"
-      className=" max-w-6xl py-24 sm:py-32 w-full px-6"
-    >
+    <section id="faq" className=" max-w-6xl py-24 sm:py-32 w-full px-6">
       <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        Preguntas
-        {' '}
+        Preguntas{' '}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           Frecuentes
         </span>
       </h2>
 
-      <Accordion
-        type="single"
-        collapsible
-        className="w-full AccordionRoot"
-      >
+      <Accordion type="single" collapsible className="w-full AccordionRoot">
         {FAQList.map(({ question, answer, value }: FAQProps) => (
-          <AccordionItem
-            key={value}
-            value={value}
-          >
+          <AccordionItem key={value} value={value}>
             <AccordionTrigger className="text-left">
               {question}
             </AccordionTrigger>
@@ -80,8 +70,7 @@ export function FAQ() {
       </Accordion>
 
       <h3 className="font-medium mt-4">
-        ¿Aún tienes preguntas?
-        {' '}
+        ¿Aún tienes preguntas?{' '}
         <Link
           rel="noreferrer noopener"
           href="/contacto"

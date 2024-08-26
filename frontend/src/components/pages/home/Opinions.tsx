@@ -60,28 +60,27 @@ export default function Opinions() {
       </h1>
       <div className="flex flex-col items-center gap-4">
         <User className="w-16 h-16" />
-        <span className="font-semibold">
-          {OPINIONS[index].user}
-        </span>
+        <span className="font-semibold">{OPINIONS[index].user}</span>
         <span className="text-sm text-muted-foreground">
           {OPINIONS[index].label}
         </span>
       </div>
       <div className="flex items-center justify-center gap-4">
-        {
-          OPINIONS.map((_, i) => (
-            <button
-              type="button"
-              key={i}
-              onClick={() => {
-                setIndex(i);
-              }}
-              className={cn('w-4 h-4 rounded-full bg-primary-background transition-all', { 'w-10': i === index })}
-            >
-              <span className="sr-only">{i + 1}</span>
-            </button>
-          ))
-        }
+        {OPINIONS.map((_, i) => (
+          <button
+            type="button"
+            key={i}
+            onClick={() => {
+              setIndex(i);
+            }}
+            className={cn(
+              'w-4 h-4 rounded-full bg-primary-background transition-all',
+              { 'w-10': i === index },
+            )}
+          >
+            <span className="sr-only">{i + 1}</span>
+          </button>
+        ))}
       </div>
     </section>
   );

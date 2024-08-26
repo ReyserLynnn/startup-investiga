@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { POCKET_BASE_URL } from '@/lib/pocketbase';
 import { RecordModel } from 'pocketbase';
 

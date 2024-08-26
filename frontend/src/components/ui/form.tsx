@@ -24,7 +24,7 @@ type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = {
-  name: TName
+  name: TName;
 };
 
 const FormFieldContext = React.createContext<FormFieldContextValue>(
@@ -34,9 +34,7 @@ const FormFieldContext = React.createContext<FormFieldContextValue>(
 function FormField<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({
-  ...props
-}: ControllerProps<TFieldValues, TName>) {
+>({ ...props }: ControllerProps<TFieldValues, TName>) {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />
@@ -68,7 +66,7 @@ const useFormField = () => {
 };
 
 type FormItemContextValue = {
-  id: string
+  id: string;
 };
 
 const FormItemContext = React.createContext<FormItemContextValue>(
@@ -76,8 +74,8 @@ const FormItemContext = React.createContext<FormItemContextValue>(
 );
 
 const FormItem = React.forwardRef<
-HTMLDivElement,
-React.HTMLAttributes<HTMLDivElement>
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   const id = React.useId();
 
@@ -90,8 +88,8 @@ React.HTMLAttributes<HTMLDivElement>
 FormItem.displayName = 'FormItem';
 
 const FormLabel = React.forwardRef<
-React.ElementRef<typeof LabelPrimitive.Root>,
-React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
+  React.ElementRef<typeof LabelPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
 >(({ className, ...props }, ref) => {
   const { error, formItemId } = useFormField();
 
@@ -107,12 +105,11 @@ React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
 FormLabel.displayName = 'FormLabel';
 
 const FormControl = React.forwardRef<
-React.ElementRef<typeof Slot>,
-React.ComponentPropsWithoutRef<typeof Slot>
+  React.ElementRef<typeof Slot>,
+  React.ComponentPropsWithoutRef<typeof Slot>
 >(({ ...props }, ref) => {
-  const {
-    error, formItemId, formDescriptionId, formMessageId,
-  } = useFormField();
+  const { error, formItemId, formDescriptionId, formMessageId } =
+    useFormField();
 
   return (
     <Slot
@@ -131,8 +128,8 @@ React.ComponentPropsWithoutRef<typeof Slot>
 FormControl.displayName = 'FormControl';
 
 const FormDescription = React.forwardRef<
-HTMLParagraphElement,
-React.HTMLAttributes<HTMLParagraphElement>
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => {
   const { formDescriptionId } = useFormField();
 
@@ -148,8 +145,8 @@ React.HTMLAttributes<HTMLParagraphElement>
 FormDescription.displayName = 'FormDescription';
 
 const FormMessage = React.forwardRef<
-HTMLParagraphElement,
-React.HTMLAttributes<HTMLParagraphElement>
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, children, ...props }, ref) => {
   const { error, formMessageId } = useFormField();
   const body = error ? String(error?.message) : children;

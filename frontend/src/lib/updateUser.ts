@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import { UpdateDataFormUser } from '@/types/pb';
 import { getUserData } from './GetUserData';
 import pb from './pocketbase';

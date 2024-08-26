@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-shadow */
 import { useEffect, useState } from 'react';
 import { CheckIcon } from 'lucide-react';
@@ -53,21 +54,23 @@ export function ComboboxInstitutions({
     <ComboBox
       value={value}
       onValueChange={onValueChange}
-      filterItems={(inputValue, items) => items.filter(({ value }) => {
-        const institution = institutionsList.find(
-          (institution) => institution.id === value,
-        );
-        return (
-          !inputValue
-            || (institution
-              && (institution.name
+      filterItems={(inputValue, items) =>
+        items.filter(({ value }) => {
+          const institution = institutionsList.find(
+            (institution) => institution.id === value,
+          );
+          return (
+            !inputValue ||
+            (institution &&
+              (institution.name
                 .toLowerCase()
-                .includes(inputValue.toLowerCase())
-                || institution.locally
+                .includes(inputValue.toLowerCase()) ||
+                institution.locally
                   .toLowerCase()
                   .includes(inputValue.toLowerCase())))
-        );
-      })}
+          );
+        })
+      }
     >
       <ComboboxInput placeholder="Selecciona tu institución..." />
       <ComboboxContent>

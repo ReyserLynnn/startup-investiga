@@ -14,17 +14,16 @@ export default function Feature() {
           />
         </div>
         <div className="flex flex-col w-full gap-4 lg:gap-8 max-w-sm lg:max-w-none">
-          <h1 className="text-2xl text-primary font-bold">
-            Caracteristicas
-          </h1>
-          <h2 className="text-4xl lg:text-5xl">
-            Lo Que Nos Define
-          </h2>
+          <h1 className="text-2xl text-primary font-bold">Caracteristicas</h1>
+          <h2 className="text-4xl lg:text-5xl">Lo Que Nos Define</h2>
           <p>
-            Comprometidos con la excelencia en educación científica, ofrecemos recursos innovadores y apoyo especializado para impulsar tu éxito en la investigación.
+            Comprometidos con la excelencia en educación científica, ofrecemos
+            recursos innovadores y apoyo especializado para impulsar tu éxito en
+            la investigación.
           </p>
           <p className="mt-4 lg:mt-10">
-            Dedicados a la excelencia, brindamos recursos avanzados y apoyo experto para potenciar tu investigación científica.
+            Dedicados a la excelencia, brindamos recursos avanzados y apoyo
+            experto para potenciar tu investigación científica.
           </p>
         </div>
       </div>

@@ -32,7 +32,7 @@ export default async function HerramientasPage() {
             IA{' '}
           </span>
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 w-full gap-20 justify-items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 w-full gap-x-10 md:gap-x-16 gap-y-20 justify-items-center">
           {tools.map((herramienta) => (
             <ToolsModal
               description={herramienta[ToolsIAFields.DESCRIPTION]}

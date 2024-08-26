@@ -29,27 +29,22 @@ export function Docentes() {
   };
 
   return (
-    <section
-      id="docentes"
-      className="container py-24 sm:py-32"
-    >
+    <section id="docentes" className="container py-24 sm:py-32">
       <h2 className="text-3xl md:text-4xl font-bold">
-        Conoce a nuetros
-        {' '}
+        Conoce a nuetros{' '}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           Docentes
         </span>
       </h2>
 
       <p className="mt-4 mb-10 text-xl text-muted-foreground">
-        Conoce a los expertos que transformarán tu aprendizaje con su pasión y vasta experiencia en la enseñanza.
+        Conoce a los expertos que transformarán tu aprendizaje con su pasión y
+        vasta experiencia en la enseñanza.
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-10">
         {docentes.map(
-          ({
-            imageUrl, name, presentation, position, socialNetworks,
-          }) => (
+          ({ imageUrl, name, presentation, position, socialNetworks }) => (
             <Card
               key={name}
               className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"

@@ -1,3 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable react/jsx-no-bind */
+
 'use client';
 
 import { Button } from '@/components/ui/button';
