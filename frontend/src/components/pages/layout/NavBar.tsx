@@ -15,7 +15,7 @@ import Soporte from './Soporte';
 
 export default function NavBar() {
   return (
-    <header className="sticky z-20 md:top-5 w-[96%] md:container mx-auto flex h-14 md:h-20 shrink-0 items-center px-4 md:px-6 md:border-none border md:bg-white bg-red-300 m-5 rounded-xl">
+    <header className="sticky z-20 top-5 w-[96%] md:container mx-auto flex h-14 md:h-20 shrink-0 items-center px-4 md:px-6 md:border-none border md:bg-white bg-slate-50 m-5 rounded-xl">
       <SideBarPhone />
 
       <Link
