@@ -38,7 +38,6 @@ export default function ToolsModal({
           type="button"
           className="flex items-center justify-center p-0 hover:scale-105 transition-transform rounded-md relative w-32 h-32 group"
         >
-          <img src={logo} alt={name} className="w-full h-auto rounded-lg" />
           <img
             src={logo}
             alt={name}
