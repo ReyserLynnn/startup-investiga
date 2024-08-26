@@ -8,8 +8,8 @@ import { Input } from '@/components/ui/input';
 import { useComboboxContext } from './context';
 
 export type ComboboxInputProps = Omit<
-ComponentPropsWithoutRef<'input'>,
-keyof UseComboboxGetInputPropsReturnValue
+  ComponentPropsWithoutRef<'input'>,
+  keyof UseComboboxGetInputPropsReturnValue
 >;
 
 export function ComboboxInput(props: ComboboxInputProps) {

@@ -8,7 +8,7 @@ import { useComboboxContext } from './context';
 import type { ComboboxItemBase } from './types';
 
 export type ComboboxItemProps = ComboboxItemBase &
-ComponentPropsWithoutRef<'li'>;
+  ComponentPropsWithoutRef<'li'>;
 
 export function ComboboxItem({
   label,

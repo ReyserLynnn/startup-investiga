@@ -1,27 +1,33 @@
 const BENEFITS = [
   {
     title: 'Acceso Exclusivo',
-    description: 'Disfruta de materiales y herramientas especializadas solo para miembros de INVESTIGA.',
+    description:
+      'Disfruta de materiales y herramientas especializadas solo para miembros de INVESTIGA.',
   },
   {
     title: 'Asesoría de Expertos',
-    description: 'Conéctate con líderes en investigación que te brindarán orientación personalizada.',
+    description:
+      'Conéctate con líderes en investigación que te brindarán orientación personalizada.',
   },
   {
     title: 'Recursos Avanzados',
-    description: 'Utiliza herramientas innovadoras diseñadas para mejorar tu aprendizaje y proyectos científicos.',
+    description:
+      'Utiliza herramientas innovadoras diseñadas para mejorar tu aprendizaje y proyectos científicos.',
   },
   {
     title: 'Comunidad Internacional',
-    description: 'Colabora y comparte conocimientos con investigadores y académicos de todo el mundo.',
+    description:
+      'Colabora y comparte conocimientos con investigadores y académicos de todo el mundo.',
   },
   {
     title: 'Capacitación Continua',
-    description: 'Participa en cursos y talleres actualizados para mantener tus habilidades a la vanguardia.',
+    description:
+      'Participa en cursos y talleres actualizados para mantener tus habilidades a la vanguardia.',
   },
   {
     title: 'Soporte Eficiente',
-    description: 'Recibe asistencia rápida y efectiva para resolver cualquier duda o problema.',
+    description:
+      'Recibe asistencia rápida y efectiva para resolver cualquier duda o problema.',
   },
 ];
 
@@ -37,29 +43,24 @@ export default function Benefit() {
             Descubre los Beneficios de Unirte a INVESTIGA
           </h1>
           <p className="text-center max-w-xl">
-            Únete a nuestra plataforma para acceder a recursos avanzados, apoyo experto y una comunidad global vibrante para tu investigación científica.
+            Únete a nuestra plataforma para acceder a recursos avanzados, apoyo
+            experto y una comunidad global vibrante para tu investigación
+            científica.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {
-            BENEFITS.map(({ title, description }, i) => (
-              <div
-                key={title}
-                className="flex flex-col items-start justify-start gap-4"
-              >
-                <span className="text-4xl text-primary font-semibold">
-                  0
-                  {i + 1}
-                </span>
-                <h3 className="text-2xl">
-                  {title}
-                </h3>
-                <p className="text-black/80">
-                  {description}
-                </p>
-              </div>
-            ))
-          }
+          {BENEFITS.map(({ title, description }, i) => (
+            <div
+              key={title}
+              className="flex flex-col items-start justify-start gap-4"
+            >
+              <span className="text-4xl text-primary font-semibold">
+                0{i + 1}
+              </span>
+              <h3 className="text-2xl">{title}</h3>
+              <p className="text-black/80">{description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

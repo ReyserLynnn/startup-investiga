@@ -16,13 +16,9 @@ export function ToolsIA() {
   const tiposIA = getTiposIA();
 
   return (
-    <section
-      id="features"
-      className="container py-24 sm:py-32 space-y-8"
-    >
+    <section id="features" className="container py-24 sm:py-32 space-y-8">
       <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
-        Herramientas
-        {' '}
+        Herramientas{' '}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           IA
         </span>
@@ -36,10 +32,7 @@ export function ToolsIA() {
       <div className="flex flex-wrap md:justify-center gap-4">
         {tiposIA.map((tipo: string) => (
           <div key={tipo}>
-            <Badge
-              variant="secondary"
-              className="text-sm"
-            >
+            <Badge variant="secondary" className="text-sm">
               {tipo}
             </Badge>
           </div>

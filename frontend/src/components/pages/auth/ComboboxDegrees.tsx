@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-shadow */
 import { useEffect, useState } from 'react';
 import { CheckIcon } from 'lucide-react';
@@ -23,24 +24,23 @@ export function ComboboxDegrees({
   value,
   onValueChange,
 }: ComboboxDegreesProps) {
-  const [degreesList, setDegreesList] = useState<DegreesType[]>(
-    [],
-  );
+  const [degreesList, setDegreesList] = useState<DegreesType[]>([]);
 
   useEffect(() => {
     async function fetchDegrees() {
       try {
         const response = await fetch('/api/list/degrees');
         const data = await response.json();
-        const dataFormatted: DegreesType[] = data.map(
-          (degree: any) => ({
-            id: degree.id,
-            name: degree.name,
-          }),
-        );
+        const dataFormatted: DegreesType[] = data.map((degree: any) => ({
+          id: degree.id,
+          name: degree.name,
+        }));
         setDegreesList(dataFormatted);
       } catch (error) {
-        console.error('Error al obtener los grados academicos - cliente', error);
+        console.error(
+          'Error al obtener los grados academicos - cliente',
+          error,
+        );
       }
     }
 
@@ -51,14 +51,16 @@ export function ComboboxDegrees({
     <ComboBox
       value={value}
       onValueChange={onValueChange}
-      filterItems={(inputValue, items) => items.filter(({ value }) => {
-        const degree = degreesList.find(
-          (degree) => degree.id === value,
-        );
-        return (
-          !inputValue || (degree && (degree.name.toLowerCase().includes(inputValue.toLowerCase())))
-        );
-      })}
+      filterItems={(inputValue, items) =>
+        items.filter(({ value }) => {
+          const degree = degreesList.find((degree) => degree.id === value);
+          return (
+            !inputValue ||
+            (degree &&
+              degree.name.toLowerCase().includes(inputValue.toLowerCase()))
+          );
+        })
+      }
     >
       <ComboboxInput placeholder="Selecciona tu grado académico..." />
       <ComboboxContent>

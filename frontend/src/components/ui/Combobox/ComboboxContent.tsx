@@ -19,14 +19,15 @@ export function ComboboxContent({
   children,
   ...props
 }: ComponentPropsWithoutRef<typeof PopoverContent>) {
-  const {
-    getMenuProps, isOpen, openedOnce, onItemsChange,
-  } = useComboboxContext();
+  const { getMenuProps, isOpen, openedOnce, onItemsChange } =
+    useComboboxContext();
 
   const childItems = useMemo(
-    () => Children.toArray(children).filter(
-      (child): child is ReactElement<ComboboxItemProps> => isValidElement(child) && child.type === ComboboxItem,
-    ),
+    () =>
+      Children.toArray(children).filter(
+        (child): child is ReactElement<ComboboxItemProps> =>
+          isValidElement(child) && child.type === ComboboxItem,
+      ),
     [children],
   );
 

@@ -3,8 +3,14 @@ import { cva } from 'class-variance-authority';
 import Link, { LinkProps } from 'next/link';
 
 interface ButtonLinkProps extends LinkProps {
-  variant ?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
-  size ?: 'default' | 'sm' | 'lg' | 'icon';
+  variant?:
+    | 'default'
+    | 'destructive'
+    | 'outline'
+    | 'secondary'
+    | 'ghost'
+    | 'link';
+  size?: 'default' | 'sm' | 'lg' | 'icon';
   children: React.ReactNode;
   className?: string;
 }
@@ -14,7 +20,8 @@ const customLinkVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-primary-background text-primary-foreground hover:bg-primary-background/90',
+        default:
+          'bg-primary-background text-primary-foreground hover:bg-primary-background/90',
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         outline:
@@ -39,7 +46,11 @@ const customLinkVariants = cva(
 );
 
 export function CustomLink({
-  className, variant, size, children, ...props
+  className,
+  variant,
+  size,
+  children,
+  ...props
 }: ButtonLinkProps) {
   return (
     <Link

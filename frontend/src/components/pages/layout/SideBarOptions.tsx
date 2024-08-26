@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import { Button } from '@/components/ui/button';
 import { getUserData } from '@/lib/GetUserData';
 import { getMenuList } from '@/lib/menuList';
@@ -45,10 +47,10 @@ export function SideBarOptions({
   return (
     <nav className="h-full w-full">
       <ul className="flex flex-col min-h-[calc(100vh-48px-36px-16px-32px)] items-start space-y-1 px-2">
-        {menuList.map(({ groupLabel, menus }, index) => (
+        {menuList.map(({ groupLabel, menus }) => (
           <li
             className={`w-full ${groupLabel ? 'pt-5' : ''}`}
-            key={`${groupLabel}-${index}`}
+            key={`${groupLabel}`}
           >
             {groupLabel && (
               <p className="text-sm font-medium text-muted-foreground px-4 pb-2 max-w-[248px] truncate">
@@ -57,7 +59,7 @@ export function SideBarOptions({
             )}
 
             {menus.map(({ href, label, icon: Icon, active }) => (
-              <div className="w-full">
+              <div className="w-full" key={`${href}${label}`}>
                 <Button
                   variant={active ? 'link' : 'ghost'}
                   className="w-full justify-start h-10 mb-1"

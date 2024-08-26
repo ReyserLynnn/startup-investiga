@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/jsx-no-constructed-context-values */
 import {
@@ -15,16 +16,19 @@ import type { ComboboxItemBase } from './types';
 
 const { stateChangeTypes } = useCombobox;
 
-const defaultFilter = (inputValue: string, items: ComboboxItemBase[]) => items.filter(
-  (item) => !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase()),
-);
+const defaultFilter = (inputValue: string, items: ComboboxItemBase[]) =>
+  items.filter(
+    (item) =>
+      !inputValue ||
+      item.label.toLowerCase().includes(inputValue.toLowerCase()),
+  );
 
 export type ComboboxProps = PropsWithChildren<{
   value?: string | null;
   onValueChange?: (value: string | null) => void;
   filterItems?: (
     inputValue: string,
-    items: ComboboxItemBase[]
+    items: ComboboxItemBase[],
   ) => ComboboxItemBase[];
 }>;
 
@@ -39,7 +43,7 @@ export function ComboBox({
   const [openedOnce, setOpenedOnce] = useState(false);
 
   const stateReducer = useCallback<
-  NonNullable<UseComboboxProps<ComboboxItemBase>['stateReducer']>
+    NonNullable<UseComboboxProps<ComboboxItemBase>['stateReducer']>
   >(
     (prev, { type, changes }) => {
       switch (type) {
@@ -48,16 +52,17 @@ export function ComboBox({
             changes.inputValue || prev.inputValue,
             items,
           ).filter(({ disabled }) => !disabled);
-          const highlightedIndex = typeof changes.highlightedIndex === 'number'
-            ? changes.highlightedIndex
-            : prev.highlightedIndex;
+          const highlightedIndex =
+            typeof changes.highlightedIndex === 'number'
+              ? changes.highlightedIndex
+              : prev.highlightedIndex;
 
           return {
             ...changes,
             highlightedIndex:
-              changes.inputValue
-              && filteredEnabledItems.length > 0
-              && highlightedIndex < 0
+              changes.inputValue &&
+              filteredEnabledItems.length > 0 &&
+              highlightedIndex < 0
                 ? 0
                 : changes.highlightedIndex,
           };
@@ -74,9 +79,11 @@ export function ComboBox({
               selectedItem: prev.selectedItem,
             };
           }
-          if (!prev.inputValue && prev.highlightedIndex < 0) return { ...changes, inputValue: '', selectedItem: null };
+          if (!prev.inputValue && prev.highlightedIndex < 0)
+            return { ...changes, inputValue: '', selectedItem: null };
 
-          const inputValue = changes.selectedItem?.label || prev.selectedItem?.label || '';
+          const inputValue =
+            changes.selectedItem?.label || prev.selectedItem?.label || '';
           return { ...changes, inputValue };
         }
 
@@ -106,7 +113,8 @@ export function ComboBox({
       typeof value !== 'undefined'
         ? items.find((item) => item.value === value) || null
         : undefined,
-    onSelectedItemChange: ({ selectedItem }) => onValueChange?.(selectedItem?.value || null),
+    onSelectedItemChange: ({ selectedItem }) =>
+      onValueChange?.(selectedItem?.value || null),
 
     stateReducer,
   });
