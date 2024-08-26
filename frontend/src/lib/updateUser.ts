@@ -1,10 +1,9 @@
 import { UpdateDataFormUser } from '@/types/pb';
-import { RecordModel } from 'pocketbase';
+import { getUserData } from './GetUserData';
 import pb from './pocketbase';
 
 export async function updateDataUser(formData: UpdateDataFormUser) {
-  const response = await fetch('/api/user');
-  const user = (await response.json()) as RecordModel;
+  const user = await getUserData();
 
   const updateData = new FormData();
 
