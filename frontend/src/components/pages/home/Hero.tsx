@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { HeroImg } from './HeroImg';
 import { ArrowRightIcon } from 'lucide-react';
+import { HeroImg } from './HeroImg';
 
 export function Hero() {
   return (
@@ -11,10 +11,8 @@ export function Hero() {
             <h1 className="inline">
               <span className="inline bg-gradient-to-r from-[#f5c996]  to-[#fc9d4c] text-transparent bg-clip-text">
                 Descubre
-              </span>
-              {' '}
-              y Aumenta tu
-              {' '}
+              </span>{' '}
+              y Aumenta tu{' '}
               <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
                 Potencial Científico
               </span>
@@ -26,7 +24,12 @@ export function Hero() {
             en vivo, diseñados por docentes de excelencia.
           </p>
 
-          <Button className="w-full lg:w-1/3" variant="expandIcon" Icon={ArrowRightIcon} iconPlacement="right">
+          <Button
+            className="w-full lg:w-1/3"
+            variant="expandIcon"
+            Icon={ArrowRightIcon}
+            iconPlacement="right"
+          >
             Empezar
           </Button>
         </div>

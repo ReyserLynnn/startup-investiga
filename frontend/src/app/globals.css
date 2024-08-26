@@ -65,42 +65,37 @@ html {
   scroll-behavior: smooth;
 }
 
-.lucide {
-  width: 16px;
-  height: 16px;
-}
-
 .container {
   width: 100%;
 }
 
 @media (min-width: 480px) {
   .container {
-      max-width: 480px;
+    max-width: 480px;
   }
 }
 
 @media (min-width: 640px) {
   .container {
-      max-width: 640px;
+    max-width: 640px;
   }
 }
 
 @media (min-width: 768px) {
   .container {
-      max-width: 768px;
+    max-width: 768px;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-      max-width: 1024px;
+    max-width: 1024px;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
-      max-width: 1200px;
+    max-width: 1200px;
   }
 }
 
@@ -177,7 +172,6 @@ html {
   }
 }
 
-
 .joditBox {
   /* all: initial; */
 }
@@ -201,7 +195,6 @@ html {
   margin-inline-end: 0px;
   padding-inline-start: 40px;
 }
-
 
 .joditBox ol li {
   list-style-type: decimal;
