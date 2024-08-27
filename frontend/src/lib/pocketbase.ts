@@ -1,7 +1,11 @@
+import { Collections } from '@/types/pb';
+import { Questions, QuestionsFields } from '@/types/questions';
 import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 import PocketBase from 'pocketbase';
-
-export const POCKET_BASE_URL = process.env.NEXT_PUBLIC_POCKETBASE_URL || '';
+import { ToolsIa, ToolsIAFields } from '@/types/toolsIA';
+import { POCKET_BASE_URL } from '@/config/global';
+import { Responses, ResponsesFields } from '@/types/responses';
+import { expandFields } from './utils';
 
 export class DatabaseClient {
   client: PocketBase;
@@ -79,6 +83,65 @@ export class DatabaseClient {
       console.error(error);
       throw new Error('Error al obtener los grados academicos');
     }
+  }
+
+  async getQuestions() {
+    const questions = await this.client
+      .collection(Collections.QUESTIONS)
+      .getFullList({
+        expand: QuestionsFields.ANSWERS,
+      });
+
+    return questions as Questions[];
+  }
+
+  async getTools() {
+    const tools = await this.client
+      .collection(Collections.TOOLS_IA)
+      .getFullList({
+        expand: expandFields([ToolsIAFields.LIKES, ToolsIAFields.TAGS]),
+      });
+
+    return tools as ToolsIa[];
+  }
+
+  async getResponseByUser({ userId }: { userId: string }) {
+    const response = await this.client
+      .collection(Collections.RESPONSES)
+      .getFullList({
+        filter: `${ResponsesFields.USER} = "${userId}"`,
+        expand: expandFields([
+          ResponsesFields.QUESTION,
+          ResponsesFields.ANSWER,
+          `${ResponsesFields.QUESTION}.${QuestionsFields.ANSWERS}`,
+        ]),
+      });
+
+    return response as Responses[];
+  }
+
+  async createResponse({
+    userId,
+    questionId,
+    answer,
+  }: {
+    userId: string;
+    questionId: string;
+    answer: string;
+  }) {
+    const newResponse = {
+      [ResponsesFields.USER]: userId,
+      [ResponsesFields.QUESTION]: questionId,
+      [ResponsesFields.ANSWER]: answer,
+    };
+
+    console.log(newResponse);
+
+    const response = await this.client
+      .collection(Collections.RESPONSES)
+      .create(newResponse);
+
+    return response as Responses;
   }
 
   async isAuthenticated(cookieStore: ReadonlyRequestCookies) {

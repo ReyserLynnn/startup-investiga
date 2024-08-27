@@ -1,26 +1,12 @@
 import ToolsModal from '@/components/pages/herramientas/ToolsModal';
 import pb from '@/lib/pocketbase';
-import {
-  Collections,
-  expandFields,
-  getImageUrl,
-  ToolsIa,
-  ToolsIAFields,
-} from '@/types/pb';
+import { getImageUrl } from '@/lib/utils';
+import { ToolsIAFields } from '@/types/toolsIA';
 
 export const revalidate = 0;
 
-const getTools = async () => {
-  const client = pb.getClient();
-  const tools = await client.collection(Collections.TOOLS_IA).getFullList({
-    expand: expandFields([ToolsIAFields.LIKES, ToolsIAFields.TAGS]),
-  });
-
-  return tools as ToolsIa[];
-};
-
 export default async function HerramientasPage() {
-  const tools = await getTools();
+  const tools = await pb.getTools();
 
   return (
     <main className="w-full flex-1 flex justify-center items-start py-20">
