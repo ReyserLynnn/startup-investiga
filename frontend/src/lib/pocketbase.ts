@@ -167,6 +167,93 @@ export class DatabaseClient {
   getClient() {
     return this.client;
   }
+
+  async getBestCourses() {
+    try {
+      const result = await this.client.collection('courses').getFullList({
+        filter: 'isBest=true',
+        expand: 'tags',
+      });
+
+      return result;
+    } catch (error) {
+      throw new Error('Error al obtener los mejores cursos');
+    }
+  }
+
+  async getAnyCourses() {
+    try {
+      const result = await this.client.collection('courses').getFullList({
+        expand: 'tags',
+      });
+
+      return result;
+    } catch (error) {
+      throw new Error('Error al obtener todos los cursos');
+    }
+  }
+
+  async getTrendingCourses() {
+    try {
+      const result = await this.client.collection('courses').getFullList({
+        filter: 'isTrending=true',
+        expand: 'tags',
+      });
+
+      return result;
+    } catch (error) {
+      console.error('Error al obtener los mejores cursos:', error);
+      throw new Error('Error al obtener los cursos en tendencia');
+    }
+  }
+
+  async getLiveCourses() {
+    try {
+      const result = await this.client.collection('courses').getFullList({
+        filter: 'is_live=true',
+        expand: 'tags',
+      });
+
+      return result;
+    } catch (error) {
+      throw new Error('Error al obtener los cursos en vivo');
+    }
+  }
+
+  async getFreeCourses() {
+    try {
+      const result = await this.client.collection('courses').getFullList({
+        filter: 'is_free=true',
+        expand: 'tags',
+      });
+
+      return result;
+    } catch (error) {
+      throw new Error('Error al obtener los cursos gratis');
+    }
+  }
+
+  async getFutureCourses() {
+    try {
+      const result = await this.client.collection('courses').getFullList({
+        filter: 'isFuture=true',
+        expand: 'tags',
+      });
+
+      return result;
+    } catch (error) {
+      throw new Error('Error al obtener los cursos futuros');
+    }
+  }
+
+  async getTags() {
+    try {
+      const result = await this.client.collection('tags').getFullList();
+      return result;
+    } catch (error) {
+      throw new Error('Error al obtener los tags');
+    }
+  }
 }
 
 const pb = new DatabaseClient();

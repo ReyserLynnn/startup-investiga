@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false, 
+  reactStrictMode: false,
   images: {
     remotePatterns: [
       {
@@ -9,10 +9,16 @@ const nextConfig = {
       },
       {
         hostname: 'res.cloudinary.com',
-        protocol: 'https'
-      }
-    ]
-  }
+        protocol: 'https',
+      },
+      {
+        hostname: 'images.unsplash.com',
+      },
+      {
+        hostname: 'inveztiga-pb.zapto.org',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

@@ -59,10 +59,10 @@ export default function GoogleButton({
             console.error('Error al actualizar los datos del usuario:', error);
           }
         }
+      } else {
+        route.replace('/');
+        route.refresh();
       }
-
-      route.replace('/');
-      route.refresh();
 
       localStorage.removeItem('pocketbase_auth');
     } catch (error: any) {
