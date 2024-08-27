@@ -14,6 +14,9 @@ const nextConfig = {
       {
         hostname: 'images.unsplash.com',
       },
+      {
+        hostname: 'inveztiga-pb.zapto.org',
+      },
     ],
   },
 };
