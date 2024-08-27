@@ -23,8 +23,6 @@ export interface ToolsIa extends RecordModel {
   [ToolsIAFields.ID]: string;
   [ToolsIAFields.COLLECTION_ID]: string;
   [ToolsIAFields.COLLECTION_NAME]: string;
-  [ToolsIAFields.CREATED]: string;
-  [ToolsIAFields.UPDATED]: string;
   [ToolsIAFields.NAME]: string;
   [ToolsIAFields.LOGO]: string;
   [ToolsIAFields.PAGE_URL]: string;
@@ -36,4 +34,7 @@ export interface ToolsIa extends RecordModel {
     [ToolsIAFields.LIKES]: any;
     [ToolsIAFields.TAGS]: Tags[];
   };
+
+  [ToolsIAFields.CREATED]: string;
+  [ToolsIAFields.UPDATED]: string;
 }

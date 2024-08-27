@@ -11,6 +11,7 @@ export enum TagsFields {
 export interface Tags extends RecordModel {
   [TagsFields.ID]: string;
   [TagsFields.NAME]: string;
+
   [TagsFields.CREATED]: string;
   [TagsFields.UPDATED]: string;
 }

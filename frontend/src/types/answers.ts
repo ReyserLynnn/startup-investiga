@@ -14,6 +14,7 @@ export interface Answers extends RecordModel {
   [AnswersFields.ID]: string;
   [AnswersFields.BODY]: string;
   [AnswersFields.VALUE]: string;
+
   [AnswersFields.CREATED]: string;
   [AnswersFields.UPDATED]: string;
 }

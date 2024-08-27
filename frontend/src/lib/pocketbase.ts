@@ -6,6 +6,8 @@ import { ToolsIa, ToolsIAFields } from '@/types/toolsIA';
 import { POCKET_BASE_URL } from '@/config/global';
 import { Responses, ResponsesFields } from '@/types/responses';
 import { expandFields } from './utils';
+import { Courses } from '@/types/courses';
+import { Tags } from '@/types/tags';
 
 export class DatabaseClient {
   client: PocketBase;
@@ -175,7 +177,7 @@ export class DatabaseClient {
         expand: 'tags',
       });
 
-      return result;
+      return result as Courses[];
     } catch (error) {
       throw new Error('Error al obtener los mejores cursos');
     }
@@ -187,7 +189,7 @@ export class DatabaseClient {
         expand: 'tags',
       });
 
-      return result;
+      return result as Courses[];
     } catch (error) {
       throw new Error('Error al obtener todos los cursos');
     }
@@ -200,7 +202,7 @@ export class DatabaseClient {
         expand: 'tags',
       });
 
-      return result;
+      return result as Courses[];
     } catch (error) {
       console.error('Error al obtener los mejores cursos:', error);
       throw new Error('Error al obtener los cursos en tendencia');
@@ -214,7 +216,7 @@ export class DatabaseClient {
         expand: 'tags',
       });
 
-      return result;
+      return result as Courses[];
     } catch (error) {
       throw new Error('Error al obtener los cursos en vivo');
     }
@@ -227,7 +229,7 @@ export class DatabaseClient {
         expand: 'tags',
       });
 
-      return result;
+      return result as Courses[];
     } catch (error) {
       throw new Error('Error al obtener los cursos gratis');
     }
@@ -240,7 +242,7 @@ export class DatabaseClient {
         expand: 'tags',
       });
 
-      return result;
+      return result as Courses[];
     } catch (error) {
       throw new Error('Error al obtener los cursos futuros');
     }
@@ -249,7 +251,7 @@ export class DatabaseClient {
   async getTags() {
     try {
       const result = await this.client.collection('tags').getFullList();
-      return result;
+      return result as Tags[];
     } catch (error) {
       throw new Error('Error al obtener los tags');
     }
