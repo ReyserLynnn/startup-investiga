@@ -113,6 +113,7 @@ export class DatabaseClient {
         expand: expandFields([
           ResponsesFields.QUESTION,
           ResponsesFields.ANSWER,
+          `${ResponsesFields.QUESTION}.${QuestionsFields.ANSWERS}`,
         ]),
       });
 

@@ -17,6 +17,10 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { useStepper } from '@/components/ui/stepper';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { capitalizeFirstLetter } from '@/lib/utils';
 
 const questionSchema = z.object({
   question: z.string(),
@@ -24,6 +28,18 @@ const questionSchema = z.object({
 });
 
 export default function FormToQuestion({ question }: { question: Questions }) {
+  const {
+    nextStep,
+    prevStep,
+    isDisabledStep,
+    hasCompletedAllSteps,
+    isLastStep,
+  } = useStepper();
+
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof questionSchema>>({
     resolver: zodResolver(questionSchema),
     defaultValues: {
@@ -33,24 +49,33 @@ export default function FormToQuestion({ question }: { question: Questions }) {
   });
 
   const onSubmit = async (values: z.infer<typeof questionSchema>) => {
+    setLoading(true);
     fetch('/api/test', {
       method: 'POST',
       body: JSON.stringify(values),
+    }).finally(() => {
+      if (!isLastStep) {
+        nextStep();
+        setLoading(false);
+      } else {
+        router.push('/test/me/result');
+      }
     });
   };
+
+  useEffect(() => {
+    console.log({ hasCompletedAllSteps, isLastStep });
+  }, [hasCompletedAllSteps, isLastStep]);
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="gap-4 flex flex-col items-start"
+        className="gap-4 flex flex-col items-start my-4"
       >
-        <h3>{question[QuestionsFields.BODY]}</h3>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: question[QuestionsFields.DESCRIPTION],
-          }}
-        />
+        <h3 className="text-3xl font-semibold">
+          {question[QuestionsFields.BODY]}
+        </h3>
         <FormField
           control={form.control}
           name="question"
@@ -72,26 +97,34 @@ export default function FormToQuestion({ question }: { question: Questions }) {
           control={form.control}
           name="answer"
           render={({ field }) => (
-            <FormItem className="">
-              <FormLabel>Notify me about...</FormLabel>
+            <FormItem className="w-full">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: question[QuestionsFields.DESCRIPTION],
+                }}
+                className="mb-6"
+              />
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  className="flex flex-col space-y-1"
+                  className="flex flex-col space-y-1 w-full"
                 >
                   {question[QuestionsFields.EXPAND]?.[
                     QuestionsFields.ANSWERS
                   ].map((answer) => (
                     <FormItem
                       key={answer[AnswersFields.ID]}
-                      className="flex items-center space-x-3 space-y-0"
+                      className="flex items-center space-x-3 space-y-0 w-full"
                     >
-                      <FormControl>
-                        <RadioGroupItem value={answer[AnswersFields.ID]} />
-                      </FormControl>
-                      <FormLabel className="font-normal">
-                        {answer[AnswersFields.BODY]}
+                      <FormLabel className="font-normal flex items-center gap-3 rounded-md border-2 bg-background hover:bg-gray-3 [&:has([data-state=checked])]:border-primary w-full py-3 px-5 text-base [&:has([data-state=checked])]:bg-primary/20">
+                        <FormControl>
+                          <RadioGroupItem
+                            value={answer[AnswersFields.ID]}
+                            className="sr-only"
+                          />
+                        </FormControl>
+                        {capitalizeFirstLetter(answer[AnswersFields.BODY])}
                       </FormLabel>
                     </FormItem>
                   ))}
@@ -101,7 +134,15 @@ export default function FormToQuestion({ question }: { question: Questions }) {
             </FormItem>
           )}
         />
-        <Button type="submit">Siguiente</Button>
+
+        <div className="w-full items-center flex justify-end gap-4">
+          <Button disabled={isDisabledStep} onClick={prevStep} type="button">
+            Prev
+          </Button>
+          <Button disabled={loading} type="submit">
+            {isLastStep ? 'Finish' : 'Siguiente'}
+          </Button>
+        </div>
       </form>
     </Form>
   );

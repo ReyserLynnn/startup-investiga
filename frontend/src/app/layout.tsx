@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body
-        className={cn(inter.className, 'w-full min-h-full avif')}
+        className={cn(inter.className, 'w-full min-h-full avif flex flex-col')}
         suppressHydrationWarning
       >
         {children}
