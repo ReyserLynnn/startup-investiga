@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { capitalizeFirstLetter } from '@/lib/utils';
-import { Tags, TagsFields } from '@/types/pb';
+import { Tags, TagsFields } from '@/types/tags';
 import { HeartIcon } from 'lucide-react';
 
 type ToolsModalProps = {

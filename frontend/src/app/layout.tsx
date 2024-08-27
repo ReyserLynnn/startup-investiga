@@ -25,7 +25,7 @@ export default function RootLayout({
         className={cn(
           poppins.className,
           inter.className,
-          'w-full min-h-full avif',
+          'w-full min-h-full avif flex flex-col',
         )}
         suppressHydrationWarning
       >
