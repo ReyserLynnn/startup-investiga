@@ -1,19 +1,20 @@
+import { POCKET_BASE_URL } from '@/config/global';
+import { Courses } from '@/types/courses';
 import { Collections } from '@/types/pb';
 import { Questions, QuestionsFields } from '@/types/questions';
+import { Responses, ResponsesFields } from '@/types/responses';
+import { Tags } from '@/types/tags';
+import { ToolsIa, ToolsIAFields } from '@/types/toolsIA';
 import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 import PocketBase from 'pocketbase';
-import { ToolsIa, ToolsIAFields } from '@/types/toolsIA';
-import { POCKET_BASE_URL } from '@/config/global';
-import { Responses, ResponsesFields } from '@/types/responses';
 import { expandFields } from './utils';
-import { Courses } from '@/types/courses';
-import { Tags } from '@/types/tags';
 
 export class DatabaseClient {
   client: PocketBase;
 
   constructor() {
     this.client = new PocketBase(POCKET_BASE_URL);
+    this.client.autoCancellation(false);
   }
 
   async authenticate(email: string, password: string) {
@@ -180,7 +181,7 @@ export class DatabaseClient {
 
       return result as Courses[];
     } catch (error) {
-      console.log(error)
+      console.log(error);
       throw new Error('Error al obtener los mejores cursos');
     }
   }

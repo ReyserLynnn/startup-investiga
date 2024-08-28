@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 export default function NoticesCourses() {
   return (
-    <div className="container flex flex-row h-96 w-full rounded-2xl my-5">
-      <div className="relative w-full lg:w-[40%] bg-primary rounded-2xl lg:rounded-r-none overflow-hidden p-10">
+    <div className="w-screen sm:container flex flex-row h-96 md:w-full sm:rounded-2xl sm:my-5">
+      <div className="relative w-full lg:w-[40%] bg-primary sm:rounded-2xl lg:rounded-r-none overflow-hidden p-10">
         <div className="relative flex flex-col justify-center h-full text-white z-20">
           <span className="text-4xl font-bold leading-normal">
             Domina la IA en la Investigación Científica
