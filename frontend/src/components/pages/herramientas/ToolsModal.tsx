@@ -57,11 +57,12 @@ export default function ToolsModal({
               <img
                 src={logo}
                 alt={name}
-                className="w-full h-auto rounded-lg aspect-square max-w-20 md:max-w-36"
+                className="w-full h-auto rounded-lg aspect-square max-w-20 md:max-w-32"
               />
               <a
                 className="text-2xl md:text-4xl font-bold w-full text-center hover:underline"
                 href={homepage}
+                target='_blank'
               >
                 {name}
               </a>
@@ -75,7 +76,7 @@ export default function ToolsModal({
             </Button>
           </div>
         </DialogHeader>
-        <ScrollArea className="flex flex-col gap-4 py-2 max-h-[23rem] md:max-h-[26rem] h-full">
+        <ScrollArea className="flex flex-col gap-4 py-2 max-h-[23rem] md:max-h-[50vh] h-full">
           <div className="flex flex-col gap-2 pr-4">
             <div
               className="joditBox"
