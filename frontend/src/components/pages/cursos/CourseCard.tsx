@@ -6,7 +6,7 @@ import { ShoppingCart, Timer, Users, Video } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const CourseCardList = ({ course }: any) => {
+function CourseCardList({ course }: any) {
   const urlImage = getImageUrl({
     collectionId: course.collectionId,
     id: course.id,
@@ -66,6 +66,6 @@ const CourseCardList = ({ course }: any) => {
       </div>
     </div>
   );
-};
+}
 
 export default CourseCardList;

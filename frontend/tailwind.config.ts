@@ -103,6 +103,9 @@ const config = {
       boxShadow: {
         all: '0px 0px 20px 1px rgba(0,0,0,0.25)',
       },
+      backgroundImage: {
+        'masterclass-1': "url('/img/notice2.webp')",
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

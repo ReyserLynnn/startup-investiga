@@ -28,7 +28,7 @@ export default async function CoursePage({
 
   return (
     <div>
-      <ClientComponent params={{ course: course }} />
+      <ClientComponent params={{ course }} />
     </div>
   );
 }
