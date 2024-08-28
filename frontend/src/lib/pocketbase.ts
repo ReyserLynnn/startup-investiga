@@ -195,6 +195,7 @@ export class DatabaseClient {
 
       return result as Courses[];
     } catch (error) {
+      console.error(error);
       throw new Error('Error al obtener todos los cursos');
     }
   }
