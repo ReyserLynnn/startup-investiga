@@ -1,12 +1,17 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { getImageUrl } from '@/lib/utils';
 import { ShoppingCart, Timer, Users, Video } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 const CourseCardList = ({ course }: any) => {
-  const urlImage = `https://inveztiga-pb.zapto.org/api/files/${course.collectionId}/${course.id}/${course.image}`;
+  const urlImage = getImageUrl({
+    collectionId: course.collectionId,
+    id: course.id,
+    url: course.image
+  })
   const router = useRouter();
 
   return (

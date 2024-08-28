@@ -17,11 +17,6 @@ export default async function TestPage() {
 
   return (
     <main className="flex-1 w-full flex items-center justify-center">
-      {/* <div>
-        {form.map((question) => (
-          <FormToQuestion key={question.id} question={question} />
-        ))}
-      </div> */}
       <StepperTest form={form} />
     </main>
   );

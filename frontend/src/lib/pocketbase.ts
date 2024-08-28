@@ -1,6 +1,6 @@
 import { Collections } from '@/types/pb';
 import { Questions, QuestionsFields } from '@/types/questions';
-import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
+import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 import PocketBase from 'pocketbase';
 import { ToolsIa, ToolsIAFields } from '@/types/toolsIA';
 import { POCKET_BASE_URL } from '@/config/global';
@@ -175,10 +175,12 @@ export class DatabaseClient {
       const result = await this.client.collection('courses').getFullList({
         filter: 'isBest=true',
         expand: 'tags',
+        requestKey: 'bestCoursesApi',
       });
 
       return result as Courses[];
     } catch (error) {
+      console.log(error)
       throw new Error('Error al obtener los mejores cursos');
     }
   }
@@ -187,6 +189,7 @@ export class DatabaseClient {
     try {
       const result = await this.client.collection('courses').getFullList({
         expand: 'tags',
+        requestKey: 'anyCoursesApi',
       });
 
       return result as Courses[];
@@ -200,6 +203,7 @@ export class DatabaseClient {
       const result = await this.client.collection('courses').getFullList({
         filter: 'isTrending=true',
         expand: 'tags',
+        requestKey: 'trendingCoursesApi',
       });
 
       return result as Courses[];
@@ -214,6 +218,7 @@ export class DatabaseClient {
       const result = await this.client.collection('courses').getFullList({
         filter: 'is_live=true',
         expand: 'tags',
+        requestKey: 'liveCoursesApi',
       });
 
       return result as Courses[];
@@ -227,6 +232,7 @@ export class DatabaseClient {
       const result = await this.client.collection('courses').getFullList({
         filter: 'is_free=true',
         expand: 'tags',
+        requestKey: 'freeCoursesApi',
       });
 
       return result as Courses[];
@@ -240,6 +246,7 @@ export class DatabaseClient {
       const result = await this.client.collection('courses').getFullList({
         filter: 'isFuture=true',
         expand: 'tags',
+        requestKey: 'futureCoursesApi',
       });
 
       return result as Courses[];
@@ -250,7 +257,9 @@ export class DatabaseClient {
 
   async getTags() {
     try {
-      const result = await this.client.collection('tags').getFullList();
+      const result = await this.client.collection('tags').getFullList({
+        requestKey: 'tagsApi',
+      });
       return result as Tags[];
     } catch (error) {
       throw new Error('Error al obtener los tags');

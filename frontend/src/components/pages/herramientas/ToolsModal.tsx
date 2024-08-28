@@ -92,7 +92,7 @@ export default function ToolsModal({
         </ScrollArea>
         <DialogFooter>
           <div className="flex justify-between w-full pt-4 border-t-2 border-t-accent">
-            <div className="flex md:gap-2 items-start flex-col md:flex-row">
+            <div className="flex md:gap-2 items-start md:items-center flex-col md:flex-row">
               <span className="font-semibold">Tags: </span>
               {tags.map((tag) => (
                 <Button key={tag[TagsFields.ID]} variant="ghost">

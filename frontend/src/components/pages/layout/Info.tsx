@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function InfoPage() {
   return (
-    <div className="w-screen bg-[#161439] text-white">
+    <div className="w-full bg-[#161439] text-white">
       <div className="container md:container py-2 flex flex-row items-center justify-between ">
         <div className="flex flex-row gap-4">
           <div className="flex flex-row gap-2">

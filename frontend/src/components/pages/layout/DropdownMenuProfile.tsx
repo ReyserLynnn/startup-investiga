@@ -16,6 +16,7 @@ import { use } from 'react';
 import { POCKET_BASE_URL } from '@/config/global';
 import AuthLogin from './AuthLogin';
 import LogoutItem from './LogoutItem';
+import { getImageUrl } from '@/lib/utils';
 
 const getUser = async () => {
   const cookieStore = cookies();
@@ -32,7 +33,11 @@ export function DropdownMenuProfile() {
     return <AuthLogin />;
   }
 
-  const avatarUrl = `${POCKET_BASE_URL}/api/files/${user?.collectionId}/${user?.id}/${user?.avatar}`;
+  const avatarUrl = getImageUrl({
+    collectionId: user.collectionId,
+    id: user.id,
+    url: user.avatar,
+  })
 
   return (
     <DropdownMenu modal={false}>
