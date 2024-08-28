@@ -10,8 +10,9 @@ const CourseCardList = ({ course }: any) => {
   const urlImage = getImageUrl({
     collectionId: course.collectionId,
     id: course.id,
-    url: course.image
-  })
+    url: course.image,
+  });
+
   const router = useRouter();
 
   return (
@@ -57,7 +58,7 @@ const CourseCardList = ({ course }: any) => {
           variant="expandIcon"
           Icon={ShoppingCart}
           iconPlacement="left"
-          onClick={() => router.push(`/cursos/${course.id}`)}
+          onClick={() => router.push(`/cursos/${course.slug}`)}
         >
           Comprar
         </Button>

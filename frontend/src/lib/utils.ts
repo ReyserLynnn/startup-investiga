@@ -1,6 +1,6 @@
+import { POCKET_BASE_URL } from '@/config/global';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { POCKET_BASE_URL } from '@/config/global';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -21,3 +21,11 @@ export const getImageUrl = ({
   collectionId: string;
   id: string;
 }) => `${POCKET_BASE_URL}/api/files/${collectionId}/${id}/${url}`;
+
+export function generateSlug(text: string) {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/[\s\W-]+/g, '-');
+}

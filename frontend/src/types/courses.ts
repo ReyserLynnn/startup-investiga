@@ -1,15 +1,16 @@
 /* eslint-disable no-unused-vars */
 
 import { RecordModel } from 'pocketbase';
-import { Users } from './user';
 import { Modules } from './modules';
 import { Tags } from './tags';
+import { Users } from './user';
 
 export enum CoursesFields {
   ID = 'id',
   NAME = 'name',
   SHORT_DESCRIPTION = 'shortDescription',
   DESCRIPTION = 'description',
+  SLUG = 'slug',
   PRICE = 'price',
   IS_LIVE = 'is_live',
   IS_FREE = 'is_free',
@@ -34,6 +35,7 @@ export interface Courses extends RecordModel {
   [CoursesFields.NAME]: string;
   [CoursesFields.SHORT_DESCRIPTION]: string;
   [CoursesFields.DESCRIPTION]: string;
+  [CoursesFields.SLUG]: string;
   [CoursesFields.PRICE]: number;
   [CoursesFields.IS_LIVE]: boolean;
   [CoursesFields.IS_FREE]: boolean;

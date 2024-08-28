@@ -1,14 +1,10 @@
 import BetterCourses from '@/components/pages/cursos/BetterCourses';
-import CourseCardList from '@/components/pages/cursos/CourseCard';
-import NotCourseCard from '@/components/pages/cursos/NotCourseCard';
+import FutureCourses from '@/components/pages/cursos/FutureCourses';
 import NoticesCourses from '@/components/pages/cursos/NoticesCourses';
 import TredingCourses from '@/components/pages/cursos/TredingCourses';
-import pb from '@/lib/pocketbase';
 import Link from 'next/link';
 
 export default async function CursosPage() {
-  const futureCourses = await pb.getFutureCourses();
-
   return (
     <section
       id="cursosPage"
@@ -37,23 +33,7 @@ export default async function CursosPage() {
 
         <TredingCourses />
 
-        <div className=" flex flex-col items-center gap-5 my-5">
-          <div className="flex items-center font-semibold text-xl">
-            Proximos Talleres en Vivo
-          </div>
-
-          <div className="flex justify-center items-center h-full p-5">
-            <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-4 md:grid-rows-2 lg:grid-rows-1 gap-4 px-5 max-w-7xl">
-              {futureCourses.slice(0, 4).map((course) => (
-                <CourseCardList key={course.id} course={course} />
-              ))}
-
-              {[...Array(4 - futureCourses.length)].map((_, index) => (
-                <NotCourseCard key={index} />
-              ))}
-            </div>
-          </div>
-        </div>
+        <FutureCourses />
 
         <div className="w-screen mt-5 p-8 bg-[#FFEC8A] h-auto text-black">
           <div className="container flex flex-col gap-5 justify-center items-center">
