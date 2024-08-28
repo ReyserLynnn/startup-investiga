@@ -62,7 +62,7 @@ export default function ToolsModal({
               <a
                 className="text-2xl md:text-4xl font-bold w-full text-center hover:underline"
                 href={homepage}
-                target='_blank'
+                target="_blank"
               >
                 {name}
               </a>

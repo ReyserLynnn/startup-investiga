@@ -19,7 +19,7 @@ export default async function TestMeResultPage() {
     <main className="flex-1 w-full flex items-center justify-center flex-col gap-16 pb-40">
       <div className="flex flex-col gap-2 items-center">
         <h1 className="text-3xl font-semibold">Tus resultados</h1>
-        <p className='text-center px-6'>
+        <p className="text-center px-6">
           Aquí puedes ver tus respuestas a las preguntas que has respondido.
           Gracias por participar.
         </p>

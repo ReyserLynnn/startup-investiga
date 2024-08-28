@@ -6,7 +6,7 @@ export default function NotCourseCard() {
   return (
     <div className="relative bg-white shadow-sm rounded-lg overflow-hidden w-full max-w-xs flex flex-col">
       <div className="relative w-full h-44">
-        <div className="absolute w-full h-full bg-black opacity-50 z-10"></div>
+        <div className="absolute w-full h-full bg-black opacity-50 z-10" />
         <Image
           src="/img/notice1.webp"
           alt="Imagen del curso"

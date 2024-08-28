@@ -13,10 +13,9 @@ import {
 import pb from '@/lib/pocketbase';
 import { cookies } from 'next/headers';
 import { use } from 'react';
-import { POCKET_BASE_URL } from '@/config/global';
+import { getImageUrl } from '@/lib/utils';
 import AuthLogin from './AuthLogin';
 import LogoutItem from './LogoutItem';
-import { getImageUrl } from '@/lib/utils';
 
 const getUser = async () => {
   const cookieStore = cookies();
@@ -37,7 +36,7 @@ export function DropdownMenuProfile() {
     collectionId: user.collectionId,
     id: user.id,
     url: user.avatar,
-  })
+  });
 
   return (
     <DropdownMenu modal={false}>
