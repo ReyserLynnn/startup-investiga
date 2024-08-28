@@ -1,5 +1,10 @@
 {
-  "extends": ["airbnb", "airbnb-typescript","next/core-web-vitals"],
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "next/core-web-vitals",
+    "plugin:prettier/recommended"
+  ],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
@@ -14,6 +19,17 @@
     "eslint-disable no-param-reassign": 0,
     "no-param-reassign": 0,
     "no-console": 0,
-    "@next/next/no-img-element": 0
-  }
+    "@next/next/no-img-element": 0,
+    "max-len": 0,
+    "import/extensions": 0,
+    "import/no-named-as-default": 0,
+    "react/no-danger": 0,
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+  },
+  "prettier/prettier": [
+    "error",
+    {
+      "endOfLine": "auto"
+    }
+  ]
 }
