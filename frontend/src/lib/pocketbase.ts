@@ -1,4 +1,5 @@
 import { POCKET_BASE_URL } from '@/config/global';
+import { Comments } from '@/types/comments';
 import { Courses } from '@/types/courses';
 import { Collections } from '@/types/pb';
 import { Questions, QuestionsFields } from '@/types/questions';
@@ -164,6 +165,7 @@ export class DatabaseClient {
     }
 
     this.client.authStore.loadFromCookie(cookie?.value || '');
+    await this.client.collection('users').authRefresh();
     return this.client.authStore.model;
   }
 
@@ -264,6 +266,20 @@ export class DatabaseClient {
       return result as Tags[];
     } catch (error) {
       throw new Error('Error al obtener los tags');
+    }
+  }
+
+  async getCommentsById(id: string) {
+    try {
+      const result = await this.client.collection('comments').getFullList({
+        filter: `course="${id}"`,
+        expand: 'user',
+        requestKey: 'commentsApi',
+      });
+      return result as Comments[];
+    } catch (error) {
+      console.error(error);
+      throw new Error('Error al obtener los cometarios');
     }
   }
 }
