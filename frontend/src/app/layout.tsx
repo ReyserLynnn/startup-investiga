@@ -20,12 +20,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full wf-loaded-stage2 motion-on">
+    <html lang="en" className="wf-loaded-stage2 motion-on">
       <body
         className={cn(
           poppins.className,
           inter.className,
-          'w-full min-h-full avif flex flex-col',
+          'flex flex-col min-h-svh w-full avif ',
         )}
         suppressHydrationWarning
       >

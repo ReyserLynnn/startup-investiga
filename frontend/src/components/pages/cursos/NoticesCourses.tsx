@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 export default function NoticesCourses() {
   return (
-    <div className="container flex flex-row h-96 w-full rounded-2xl my-5">
-      <div className="relative w-full lg:w-[40%] bg-primary rounded-2xl lg:rounded-r-none overflow-hidden p-10">
+    <div className="w-screen sm:container flex flex-row h-96 md:w-full sm:rounded-2xl sm:my-5">
+      <div className="relative w-full lg:w-[40%] bg-primary sm:rounded-2xl lg:rounded-r-none overflow-hidden p-10">
         <div className="relative flex flex-col justify-center h-full text-white z-20">
           <span className="text-4xl font-bold leading-normal">
             Domina la IA en la Investigación Científica
@@ -30,7 +30,7 @@ export default function NoticesCourses() {
           alt="patron de diseño 1"
         />
 
-        <div className="absolute block lg:hidden inset-0 w-full h-full bg-black opacity-50 z-10"></div>
+        <div className="absolute block lg:hidden inset-0 w-full h-full bg-black opacity-50 z-10" />
         <img
           src="/img/notice1.webp"
           alt="patron de diseño 1"
@@ -39,7 +39,7 @@ export default function NoticesCourses() {
       </div>
 
       <div className="hidden lg:block relative w-[60%] rounded-r-2xl overflow-hidden">
-        <div className="absolute w-full h-full bg-black opacity-50"></div>
+        <div className="absolute w-full h-full bg-black opacity-50" />
         <img
           src="/img/notice1.webp"
           alt="patron de diseño 1"

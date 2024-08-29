@@ -9,11 +9,11 @@ export default function InfoPage() {
       <div className="container md:container py-2 flex flex-row items-center justify-between ">
         <div className="flex flex-row gap-4">
           <div className="flex flex-row gap-2">
-            <MapIcon size="16"></MapIcon>
+            <MapIcon size="16" />
             <span className="text-xs">Arequipa, Perú</span>
           </div>
           <div className="flex flex-row gap-2">
-            <Mail size="16"></Mail>
+            <Mail size="16" />
             <span className="text-xs">info@investiga.copm</span>
           </div>
         </div>

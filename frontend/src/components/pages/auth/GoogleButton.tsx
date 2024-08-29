@@ -45,6 +45,7 @@ export default function GoogleButton({
           }
 
           formData.append('id', record.id);
+          formData.append('name', meta.name);
           await pb.client.collection('users').update(record.id, formData);
         } catch (error) {
           console.error('Error al actualizar el avatar del usuario:', error);

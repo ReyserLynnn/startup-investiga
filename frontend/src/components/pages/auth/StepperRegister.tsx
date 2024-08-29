@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { PasswordField, passwordSchema } from '@/components/ui/PasswordField';
-import { PhoneInput, getPhoneData } from '@/components/ui/phone-input';
+import { getPhoneData, PhoneInput } from '@/components/ui/phone-input';
 import { Step, StepItem, Stepper, useStepper } from '@/components/ui/stepper';
 import { updateDataUser } from '@/lib/updateUser';
 import { UpdateDataFormUser } from '@/types/pb';

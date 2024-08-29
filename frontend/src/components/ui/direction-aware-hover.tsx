@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-use-before-define */
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -5,7 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 
-export const DirectionAwareHover = ({
+export function DirectionAwareHover({
   imageUrl,
   children,
   childrenClassName,
@@ -17,7 +20,7 @@ export const DirectionAwareHover = ({
   childrenClassName?: string;
   imageClassName?: string;
   className?: string;
-}) => {
+}) {
   const ref = useRef<HTMLDivElement>(null);
 
   const [direction, setDirection] = useState<
@@ -114,7 +117,7 @@ export const DirectionAwareHover = ({
       </AnimatePresence>
     </motion.div>
   );
-};
+}
 
 const variants = {
   initial: {
