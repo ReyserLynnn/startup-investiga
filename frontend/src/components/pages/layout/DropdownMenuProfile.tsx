@@ -12,6 +12,7 @@ import { getImageUrl } from '@/lib/utils';
 import { Users } from '@/types/user';
 import { cookies } from 'next/headers';
 import { use } from 'react';
+import { getImageUrl } from '@/lib/utils';
 import AuthLogin from './AuthLogin';
 import AvatarDropdownProfile from './AvatarDropdownProfile';
 import LogoutItem from './LogoutItem';
@@ -35,7 +36,7 @@ export function DropdownMenuProfile() {
     collectionId: user.collectionId,
     id: user.id,
     url: user.avatar,
-  }) as string;
+  });
 
   return (
     <DropdownMenu modal={false}>

@@ -6,7 +6,6 @@ import { Courses } from '@/types/courses';
 import { BookOpen, ShoppingCart, Timer, Users, Video } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-
 interface Props {
   course: Courses;
   isMyCourse?: Boolean;
@@ -84,6 +83,6 @@ const CourseCardList = ({ course, isMyCourse = false }: Props) => {
       )}
     </div>
   );
-};
+}
 
 export default CourseCardList;

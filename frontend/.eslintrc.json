@@ -24,12 +24,12 @@
     "import/extensions": 0,
     "import/no-named-as-default": 0,
     "react/no-danger": 0,
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
-  },
-  "prettier/prettier": [
-    "error",
-    {
-      "endOfLine": "auto"
-    }
-  ]
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
 }

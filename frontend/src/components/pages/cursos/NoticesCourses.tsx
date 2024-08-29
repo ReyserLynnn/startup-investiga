@@ -30,7 +30,7 @@ export default function NoticesCourses() {
           alt="patron de diseño 1"
         />
 
-        <div className="absolute block lg:hidden inset-0 w-full h-full bg-black opacity-50 z-10"></div>
+        <div className="absolute block lg:hidden inset-0 w-full h-full bg-black opacity-50 z-10" />
         <img
           src="/img/notice1.webp"
           alt="patron de diseño 1"
@@ -39,7 +39,7 @@ export default function NoticesCourses() {
       </div>
 
       <div className="hidden lg:block relative w-[60%] rounded-r-2xl overflow-hidden">
-        <div className="absolute w-full h-full bg-black opacity-50"></div>
+        <div className="absolute w-full h-full bg-black opacity-50" />
         <img
           src="/img/notice1.webp"
           alt="patron de diseño 1"

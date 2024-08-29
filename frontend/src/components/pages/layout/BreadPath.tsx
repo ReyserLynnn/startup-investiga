@@ -1,4 +1,5 @@
 'use client';
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,7 +12,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Fragment } from 'react';
 
-const BreadPath = ({ title }: { title: string }) => {
+function BreadPath({ title }: { title: string }) {
   const pathname = usePathname();
   const pathParts = pathname.split('/').filter((path) => path);
 
@@ -58,6 +59,6 @@ const BreadPath = ({ title }: { title: string }) => {
       </div>
     </div>
   );
-};
+}
 
 export default BreadPath;

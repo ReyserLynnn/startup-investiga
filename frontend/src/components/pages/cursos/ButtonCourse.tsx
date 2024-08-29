@@ -1,3 +1,6 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable @typescript-eslint/no-shadow */
+
 'use client';
 
 import { Button } from '@/components/ui/button';

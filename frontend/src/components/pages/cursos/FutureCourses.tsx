@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import pb from '@/lib/pocketbase';
 import CourseCardList from './CourseCard';
 import NotCourseCard from './NotCourseCard';
