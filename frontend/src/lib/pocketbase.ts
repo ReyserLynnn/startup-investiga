@@ -195,7 +195,7 @@ export class DatabaseClient {
       const result = await this.client.collection('courses').getFullList({
         filter: 'isBest=true',
         expand: 'tags',
-        requestKey: 'bestCoursesApi',
+        requestKey: 'bestCoursesApiii',
       });
 
       return result as Courses[];

@@ -19,8 +19,8 @@ export default async function MisCursosPage() {
   const myCourses = userComplete.expand?.courses as Courses;
 
   return (
-    <section className="relative bg-white w-full h-full overflow-hidden my-10">
+    <main className="flex-grow relative bg-white w-full h-full overflow-hidden my-10">
       <ClientComponentMisCursos courses={myCourses} />
-    </section>
+    </main>
   );
 }

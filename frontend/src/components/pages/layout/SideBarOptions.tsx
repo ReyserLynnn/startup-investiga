@@ -62,7 +62,7 @@ export function SideBarOptions({
               <div className="w-full" key={`${href}${label}`}>
                 <Button
                   variant={active ? 'link' : 'ghost'}
-                  className="w-full justify-start h-10 mb-1"
+                  className="w-full justify-start h-10 mb-1 hover:bg-transparent hover:text-primary "
                   asChild
                   onClick={setOpen ? () => setOpen(false) : () => {}}
                 >

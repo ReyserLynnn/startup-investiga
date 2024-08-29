@@ -37,7 +37,7 @@ export default function ClientComponent({
   return (
     <main
       id="CoursePage"
-      className="relative w-full h-full overflow-hidden bg-white my-10"
+      className="relative flex-grow w-full h-full overflow-hidden bg-white my-10"
     >
       <div className="container mx-auto flex-1 flex flex-col gap-10 px-3">
         <TitleCourse course={course} />

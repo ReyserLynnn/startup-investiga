@@ -80,7 +80,7 @@ const NAVLINKS = [
 
 export default function Footer() {
   return (
-    <footer className="relative w-full border-section pt-10 flex justify-center items-start bg-slate-900">
+    <footer className=" w-full border-section pt-10 flex justify-center items-start bg-slate-900">
       <div className="w-full max-w-7xl mb-10 px-6 flex flex-col gap-16 text-primary-foreground">
         <div className="grid grid-cols-1 lg:grid-cols-3  gap-x-10 gap-y-14 w-full">
           <div className="w-full flex flex-col items-start justify-start max-w-sm gap-6">

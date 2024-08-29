@@ -48,13 +48,11 @@ export default async function CoursePage({
   }
 
   return (
-    <div>
-      <ClientComponent
-        course={course}
-        comments={comments}
-        hasAccess={hasAccess}
-        user={user}
-      />
-    </div>
+    <ClientComponent
+      course={course}
+      comments={comments}
+      hasAccess={hasAccess}
+      user={user}
+    />
   );
 }

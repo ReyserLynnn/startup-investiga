@@ -4,24 +4,24 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import pb from '@/lib/pocketbase';
 import { getImageUrl } from '@/lib/utils';
+import { Users } from '@/types/user';
 import { cookies } from 'next/headers';
 import { use } from 'react';
 import AuthLogin from './AuthLogin';
+import AvatarDropdownProfile from './AvatarDropdownProfile';
 import LogoutItem from './LogoutItem';
 import OptionsDropdownProfile from './OptionsDropdownProfile';
 
 const getUser = async () => {
   const cookieStore = cookies();
-
   const result = await pb.getUser(cookieStore);
 
-  return result as any;
+  return result as Users;
 };
 
 export function DropdownMenuProfile() {
@@ -35,7 +35,7 @@ export function DropdownMenuProfile() {
     collectionId: user.collectionId,
     id: user.id,
     url: user.avatar,
-  });
+  }) as string;
 
   return (
     <DropdownMenu modal={false}>
@@ -48,9 +48,12 @@ export function DropdownMenuProfile() {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end">
-        <DropdownMenuLabel>{user?.username}</DropdownMenuLabel>
+        <AvatarDropdownProfile user={user} avatarUrl={avatarUrl} />
+
         <DropdownMenuSeparator />
+
         <OptionsDropdownProfile />
+
         <DropdownMenuSeparator />
         <LogoutItem />
       </DropdownMenuContent>

@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Courses } from '@/types/courses';
 import { useState } from 'react';
+import CtaCourse from '../curso/CtaCourse';
 import CourseCardList from '../cursos/CourseCard';
 
 const filters = [
@@ -46,6 +47,8 @@ export default function ClientComponentMisCursos({ courses }: Props) {
             <CourseCardList key={course.id} course={course} isMyCourse />
           ))}
         </div>
+
+        <CtaCourse />
       </div>
     </div>
   );

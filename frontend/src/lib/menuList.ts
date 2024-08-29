@@ -50,7 +50,7 @@ export function getMenuList(pathname: string): Group[] {
         {
           href: '/soporte',
           label: 'Soporte',
-          active: pathname.includes('/soporte#quienes-somos'),
+          active: pathname.includes('/soporte'),
           icon: Wrench,
         },
         {
