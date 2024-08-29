@@ -1,4 +1,5 @@
 'use client';
+
 import {
   DropdownMenuGroup,
   DropdownMenuItem,
@@ -13,7 +14,7 @@ export default function OptionsDropdownProfile() {
   return (
     <>
       <DropdownMenuGroup>
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => router.push(`/user/editar-perfil`)}>
           <User2 className="mr-2 h-4 w-4" />
           <span>Mi perfil</span>
         </DropdownMenuItem>

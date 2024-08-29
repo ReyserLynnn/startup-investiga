@@ -1,4 +1,5 @@
 'use client';
+
 import { buttonVariants } from '@/components/ui/button';
 import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';

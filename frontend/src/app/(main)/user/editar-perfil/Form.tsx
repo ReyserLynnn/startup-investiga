@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 'use client';
 
 import { useState } from 'react';
@@ -64,8 +67,8 @@ export default function RhfWithAction({ user }: Props) {
     formState: { errors },
   } = form;
 
-  const processForm: SubmitHandler<Inputs> = async (data) => {
-    const phoneData = getPhoneData(data.phone);
+  const processForm: SubmitHandler<Inputs> = async (dataForm) => {
+    const phoneData = getPhoneData(dataForm.phone);
 
     if (!phoneData.isValid) {
       console.log(phoneData);
@@ -76,7 +79,7 @@ export default function RhfWithAction({ user }: Props) {
       return;
     }
 
-    const result = await sendFormEditProfile(data);
+    const result = await sendFormEditProfile(dataForm);
 
     if (!result) {
       console.log('Algo salió mal');
