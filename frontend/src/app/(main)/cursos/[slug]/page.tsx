@@ -50,7 +50,12 @@ export default async function CoursePage({
   return (
     <div>
       <ClientComponent
-        params={{ course: course, comments: comments, hasAccess: hasAccess }}
+        params={{
+          course: course,
+          comments: comments,
+          hasAccess: hasAccess,
+          user: user,
+        }}
       />
     </div>
   );
