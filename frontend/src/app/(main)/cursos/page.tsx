@@ -8,7 +8,7 @@ export default async function CursosPage() {
   return (
     <section
       id="cursosPage"
-      className="relative bg-white overflow-hidden h-full"
+      className="relative flex-grow bg-white overflow-hidden min-h-screen flex flex-col"
     >
       <div className="relative container mx-auto flex flex-col items-center justify-center px-6">
         <NoticesCourses />
@@ -34,21 +34,21 @@ export default async function CursosPage() {
         <TredingCourses />
 
         <FutureCourses />
+      </div>
 
-        <div className="w-screen mt-5 p-8 bg-[#FFEC8A] h-auto text-black">
-          <div className="container flex flex-col gap-5 justify-center items-center">
-            <span className="font-semibold text-2xl text-center">
-              Obtenga recomendaciones de aprendizaje personalizadas según sus
-              necesidades
-            </span>
+      <div className=" mt-auto w-screen min-mt-5 p-8 bg-[#FFEC8A] h-auto text-black">
+        <div className="container flex flex-col gap-5 justify-center items-center">
+          <span className="font-semibold text-2xl text-center">
+            Obtenga recomendaciones de aprendizaje personalizadas según sus
+            necesidades
+          </span>
 
-            <Link
-              className="rounded-lg px-4 py-2 bg-transparent border-2 border-black font-medium"
-              href="/register"
-            >
-              Unirme a Inveztiga
-            </Link>
-          </div>
+          <Link
+            className="rounded-lg px-4 py-2 bg-transparent border-2 border-black font-medium"
+            href="/register"
+          >
+            Unirme a Inveztiga
+          </Link>
         </div>
       </div>
     </section>

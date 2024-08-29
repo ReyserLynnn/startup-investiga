@@ -2,11 +2,16 @@
 
 import { Button } from '@/components/ui/button';
 import { getImageUrl } from '@/lib/utils';
-import { ShoppingCart, Timer, Users, Video } from 'lucide-react';
+import { Courses } from '@/types/courses';
+import { BookOpen, ShoppingCart, Timer, Users, Video } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+interface Props {
+  course: Courses;
+  isMyCourse?: Boolean;
+}
 
-function CourseCardList({ course }: any) {
+const CourseCardList = ({ course, isMyCourse = false }: Props) => {
   const urlImage = getImageUrl({
     collectionId: course.collectionId,
     id: course.id,
@@ -18,7 +23,7 @@ function CourseCardList({ course }: any) {
   return (
     <div
       key={course.id}
-      className="bg-white shadow-sm rounded-lg overflow-hidden w-full max-w-xs flex flex-col"
+      className="bg-white shadow-sm rounded-lg overflow-hidden w-full max-w-xs flex flex-col "
     >
       <div className="relative w-full h-44">
         <Image
@@ -52,18 +57,30 @@ function CourseCardList({ course }: any) {
         </div>
       </div>
 
-      <div className="flex flex-row items-center justify-between mt-auto p-3">
+      {isMyCourse ? (
         <Button
-          className="text-xs h-7 rounded-lg px-2 bg-secondary"
+          className="text-xs h-7 rounded-lg px-2 bg-primary m-3 shadow-md"
           variant="expandIcon"
-          Icon={ShoppingCart}
+          Icon={BookOpen}
           iconPlacement="left"
           onClick={() => router.push(`/cursos/${course.slug}`)}
         >
-          Comprar
+          Ir
         </Button>
-        <span className="text-xs">S/{course.price} Soles</span>
-      </div>
+      ) : (
+        <div className="flex flex-row items-center justify-between mt-auto p-3">
+          <Button
+            className="text-xs h-7 rounded-lg px-2 bg-secondary"
+            variant="expandIcon"
+            Icon={ShoppingCart}
+            iconPlacement="left"
+            onClick={() => router.push(`/cursos/${course.slug}`)}
+          >
+            Comprar
+          </Button>
+          <span className="text-xs">S/{course.price} Soles</span>
+        </div>
+      )}
     </div>
   );
 }

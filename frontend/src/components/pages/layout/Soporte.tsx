@@ -8,24 +8,24 @@ import {
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Soporte() {
+  const pathname = usePathname();
+
   return (
     <NavigationMenuItem>
-      <NavigationMenuTrigger>Soporte</NavigationMenuTrigger>
+      <NavigationMenuTrigger
+        className={
+          pathname === '/soporte' || pathname === '/contacto'
+            ? 'text-primary'
+            : ''
+        }
+      >
+        Conócenos
+      </NavigationMenuTrigger>
       <NavigationMenuContent>
         <div className="grid w-[200px] p-2">
-          <Link href="/soporte" legacyBehavior passHref prefetch={false}>
-            <NavigationMenuLink
-              className={cn(
-                buttonVariants({ variant: 'linkHover2' }),
-                navigationMenuTriggerStyle(),
-              )}
-            >
-              Soporte
-            </NavigationMenuLink>
-          </Link>
-
           <Link
             href="/soporte#quienes-somos"
             legacyBehavior
@@ -50,6 +50,17 @@ export default function Soporte() {
               )}
             >
               Contacto
+            </NavigationMenuLink>
+          </Link>
+
+          <Link href="/soporte" legacyBehavior passHref prefetch={false}>
+            <NavigationMenuLink
+              className={cn(
+                buttonVariants({ variant: 'linkHover2' }),
+                navigationMenuTriggerStyle(),
+              )}
+            >
+              Soporte
             </NavigationMenuLink>
           </Link>
 

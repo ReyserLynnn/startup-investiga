@@ -4,6 +4,7 @@
 import { RecordModel } from 'pocketbase';
 import { Modules } from './modules';
 import { Tags } from './tags';
+import { Teacher } from './teacher';
 import { Users } from './user';
 
 export enum CoursesFields {
@@ -51,7 +52,7 @@ export interface Courses extends RecordModel {
   [CoursesFields.DURATION]: number;
   [CoursesFields.TAGS]: string[];
   [CoursesFields.EXPAND]?: {
-    [CoursesFields.TEACHER]: Users;
+    [CoursesFields.TEACHER]: Teacher;
     [CoursesFields.MODULES]: Modules[];
     [CoursesFields.ALUMNS]: Users[];
     [CoursesFields.TAGS]: Tags[];

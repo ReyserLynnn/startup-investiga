@@ -21,9 +21,9 @@ import parsePhoneNumberFromString, {
   AsYouType,
   type CarrierCode,
   type CountryCallingCode,
+  type CountryCode,
   type E164Number,
   type NationalNumber,
-  type CountryCode,
   type NumberType,
 } from 'libphonenumber-js';
 import { Check, ChevronsUpDown } from 'lucide-react';
@@ -154,7 +154,7 @@ export function PhoneInput({
 
   return (
     <div className={cn('flex gap-2', className)}>
-      <Popover open={openCommand} onOpenChange={setOpenCommand} modal>
+      <Popover open={openCommand} onOpenChange={setOpenCommand} modal={false}>
         <PopoverTrigger asChild>
           <Button
             variant="outline"

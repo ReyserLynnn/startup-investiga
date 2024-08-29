@@ -1,10 +1,12 @@
 import { POCKET_BASE_URL } from '@/config/global';
+import { Comments } from '@/types/comments';
 import { Courses } from '@/types/courses';
 import { Collections } from '@/types/pb';
 import { Questions, QuestionsFields } from '@/types/questions';
 import { Responses, ResponsesFields } from '@/types/responses';
 import { Tags } from '@/types/tags';
 import { ToolsIa, ToolsIAFields } from '@/types/toolsIA';
+import { Users } from '@/types/user';
 import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 import PocketBase from 'pocketbase';
 import { expandFields } from './utils';
@@ -164,6 +166,7 @@ export class DatabaseClient {
     }
 
     this.client.authStore.loadFromCookie(cookie?.value || '');
+    await this.client.collection('users').authRefresh();
     return this.client.authStore.model;
   }
 
@@ -171,12 +174,28 @@ export class DatabaseClient {
     return this.client;
   }
 
+  async getMyCourses(id: string) {
+    try {
+      const result = await this.client
+        .collection('users')
+        .getFirstListItem(`id="${id}"`, {
+          expand: 'courses',
+          requestKey: 'getMyCoursesApi',
+        });
+
+      return result as Users;
+    } catch (error) {
+      console.log(error);
+      throw new Error('error al obtener mis cursos');
+    }
+  }
+
   async getBestCourses() {
     try {
       const result = await this.client.collection('courses').getFullList({
         filter: 'isBest=true',
         expand: 'tags',
-        requestKey: 'bestCoursesApi',
+        requestKey: 'bestCoursesApiii',
       });
 
       return result as Courses[];
@@ -265,6 +284,20 @@ export class DatabaseClient {
       return result as Tags[];
     } catch (error) {
       throw new Error('Error al obtener los tags');
+    }
+  }
+
+  async getCommentsById(id: string) {
+    try {
+      const result = await this.client.collection('comments').getFullList({
+        filter: `course="${id}"`,
+        expand: 'user',
+        requestKey: 'commentsApi',
+      });
+      return result as Comments[];
+    } catch (error) {
+      console.error(error);
+      throw new Error('Error al obtener los cometarios');
     }
   }
 }
