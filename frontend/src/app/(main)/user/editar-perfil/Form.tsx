@@ -29,10 +29,6 @@ import { Users } from '@/types/user';
 import { User2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-const accept = {
-  'image/*': [],
-};
-
 interface Props {
   user: Users;
 }
