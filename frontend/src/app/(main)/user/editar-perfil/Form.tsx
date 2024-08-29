@@ -37,6 +37,7 @@ type Inputs = z.infer<typeof EditProfileFormSchema>;
 
 export default function RhfWithAction({ user }: Props) {
   const route = useRouter();
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [data, setData] = useState<Inputs>();
 
   const avatarUrl = getImageUrl({
@@ -64,6 +65,7 @@ export default function RhfWithAction({ user }: Props) {
     formState: { errors },
   } = form;
 
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   const processForm: SubmitHandler<Inputs> = async (data) => {
     const phoneData = getPhoneData(data.phone);
 

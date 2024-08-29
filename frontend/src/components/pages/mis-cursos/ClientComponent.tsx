@@ -1,4 +1,5 @@
 'use client';
+
 import { Button } from '@/components/ui/button';
 import { Courses } from '@/types/courses';
 import { useState } from 'react';

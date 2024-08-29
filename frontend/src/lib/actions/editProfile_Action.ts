@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+
 'use server';
 
 import { z } from 'zod';

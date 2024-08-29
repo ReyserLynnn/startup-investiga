@@ -14,9 +14,5 @@ const getUser = async () => {
 export default function ContactPage() {
   const user = use(getUser());
 
-  return (
-    <>
-      <RhfWithAction user={user} />
-    </>
-  );
+  return <RhfWithAction user={user} />;
 }
