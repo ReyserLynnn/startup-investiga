@@ -1,11 +1,9 @@
-import { BadgePercent, Library, LifeBuoy, Settings, User2 } from 'lucide-react';
+import { User2 } from 'lucide-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -16,6 +14,7 @@ import { cookies } from 'next/headers';
 import { use } from 'react';
 import AuthLogin from './AuthLogin';
 import LogoutItem from './LogoutItem';
+import OptionsDropdownProfile from './OptionsDropdownProfile';
 
 const getUser = async () => {
   const cookieStore = cookies();
@@ -51,33 +50,7 @@ export function DropdownMenuProfile() {
       <DropdownMenuContent className="w-56" align="end">
         <DropdownMenuLabel>{user?.username}</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <User2 className="mr-2 h-4 w-4" />
-            <span>Mi perfil</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Library className="mr-2 h-4 w-4" />
-            <span>Mis Cursos</span>
-          </DropdownMenuItem>
-          {/* <DropdownMenuItem>
-            <CreditCard className="mr-2 h-4 w-4" />
-            <span>Mi Cartera</span>
-          </DropdownMenuItem> */}
-          <DropdownMenuItem>
-            <Settings className="mr-2 h-4 w-4" />
-            <span>Configuración</span>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LifeBuoy className="mr-2 h-4 w-4" />
-          <span>Soporte</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem disabled>
-          <BadgePercent className="mr-2 h-4 w-4" />
-          <span>Planes</span>
-        </DropdownMenuItem>
+        <OptionsDropdownProfile />
         <DropdownMenuSeparator />
         <LogoutItem />
       </DropdownMenuContent>

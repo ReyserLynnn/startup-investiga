@@ -14,8 +14,6 @@ export async function generateStaticParams() {
 }
 
 const getUser = async () => {
-  await pb.client.collection('users').authRefresh();
-
   const cookieStore = cookies();
   const result = await pb.getUser(cookieStore);
 
@@ -42,20 +40,20 @@ export default async function CoursePage({
   }
 
   const comments = await pb.getCommentsById(course[CoursesFields.ID]);
-
   const user = await getUser();
 
-  const hasAccess = user?.courses.includes(course[CoursesFields.ID]);
+  let hasAccess = false;
+  if (user) {
+    hasAccess = user?.courses.includes(course[CoursesFields.ID]);
+  }
 
   return (
     <div>
       <ClientComponent
-        params={{
-          course: course,
-          comments: comments,
-          hasAccess: hasAccess,
-          user: user,
-        }}
+        course={course}
+        comments={comments}
+        hasAccess={hasAccess}
+        user={user}
       />
     </div>
   );

@@ -16,16 +16,18 @@ import TitleCourse from './TitleCourse';
 const labelInfo = ['Descripción', 'Conoce más', 'Reseñas'];
 
 interface Props {
-  params: {
-    course: Courses;
-    comments: Comments[];
-    hasAccess: Boolean;
-    user: Users;
-  };
+  course: Courses;
+  comments: Comments[];
+  hasAccess: Boolean;
+  user: Users;
 }
 
-export default function ClientComponent({ params }: Props) {
-  const { course, comments, hasAccess, user } = params;
+export default function ClientComponent({
+  course,
+  comments,
+  hasAccess = false,
+  user,
+}: Props) {
   const [info, setInfo] = useState(labelInfo[0]);
 
   const handleClick = (name: string) => {

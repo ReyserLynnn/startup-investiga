@@ -37,7 +37,7 @@ export function getMenuList(pathname: string): Group[] {
       groupLabel: '',
       menus: [
         {
-          href: '/',
+          href: '/cursos',
           label: 'Cursos',
           active: pathname.includes('/cursos'),
           icon: TvMinimal,
@@ -65,13 +65,13 @@ export function getMenuList(pathname: string): Group[] {
       groupLabel: 'Configuración',
       menus: [
         {
-          href: '/user',
+          href: '/perfil',
           label: 'Mi perfil',
           active: pathname.includes('/user'),
           icon: User,
         },
         {
-          href: '/Mi cuenta',
+          href: '/cuenta',
           label: 'Mi cuenta',
           active: pathname.includes('/account'),
           icon: Settings,

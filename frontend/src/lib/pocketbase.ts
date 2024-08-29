@@ -6,6 +6,7 @@ import { Questions, QuestionsFields } from '@/types/questions';
 import { Responses, ResponsesFields } from '@/types/responses';
 import { Tags } from '@/types/tags';
 import { ToolsIa, ToolsIAFields } from '@/types/toolsIA';
+import { Users } from '@/types/user';
 import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 import PocketBase from 'pocketbase';
 import { expandFields } from './utils';
@@ -165,12 +166,28 @@ export class DatabaseClient {
     }
 
     this.client.authStore.loadFromCookie(cookie?.value || '');
-    await this.client.collection('users').authRefresh();
+    // await this.client.collection('users').authRefresh();
     return this.client.authStore.model;
   }
 
   getClient() {
     return this.client;
+  }
+
+  async getMyCourses(id: string) {
+    try {
+      const result = await this.client
+        .collection('users')
+        .getFirstListItem(`id="${id}"`, {
+          expand: 'courses',
+          requestKey: 'getMyCoursesApi',
+        });
+
+      return result as Users;
+    } catch (error) {
+      console.log(error);
+      throw new Error('error al obtener mis cursos');
+    }
   }
 
   async getBestCourses() {
