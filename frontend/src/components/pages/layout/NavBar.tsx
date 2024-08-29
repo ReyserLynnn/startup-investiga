@@ -7,7 +7,7 @@ import SideBarPhone from './SideBarPhone';
 
 export default function NavBar() {
   return (
-    <header className="w-full bg-white drop-shadow-md z-50">
+    <header className="w-full bg-white drop-shadow-sm z-50">
       <div className="w-full container md:container mx-auto flex h-14 md:h-16 items-center px-4 md:px-6 bg-white">
         <SideBarPhone />
 
