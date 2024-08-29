@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import { cn } from '@/lib/utils';
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { mergeRefs } from 'react-merge-refs';
+
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
@@ -15,7 +17,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       const updateTextareaHeight = () => {
         if (ref) {
           ref.style.height = 'auto';
-          ref.style.height = ref?.scrollHeight + 'px';
+          ref.style.height = `${ref?.scrollHeight}px`;
         }
       };
 

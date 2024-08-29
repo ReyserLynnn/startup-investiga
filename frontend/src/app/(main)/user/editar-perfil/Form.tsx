@@ -40,6 +40,7 @@ type Inputs = z.infer<typeof EditProfileFormSchema>;
 
 export default function RhfWithAction({ user }: Props) {
   const route = useRouter();
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [data, setData] = useState<Inputs>();
 
   const avatarUrl = getImageUrl({

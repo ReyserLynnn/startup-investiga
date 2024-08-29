@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-shadow */
@@ -69,7 +70,7 @@ interface Props {
 //   2000,
 // );
 
-export default function PlayerCourse({ course, hasAccess, user }: Props) {
+export default function PlayerCourse({ course, hasAccess }: Props) {
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [selectedSession, setSelectedSession] = useState<string | null>(null);
   const [videoEnded, setVideoEnded] = useState<Boolean>(false);
