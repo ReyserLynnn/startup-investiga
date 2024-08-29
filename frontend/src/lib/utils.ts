@@ -22,6 +22,16 @@ export const getImageUrl = ({
   id: string;
 }) => `${POCKET_BASE_URL}/api/files/${collectionId}/${id}/${url}`;
 
+export const getVideoUrl = ({
+  url,
+  collectionId,
+  id,
+}: {
+  url: string;
+  collectionId: string;
+  id: string;
+}) => `${POCKET_BASE_URL}/api/files/${collectionId}/${id}/${url}`;
+
 export function generateSlug(text: string) {
   return text
     .toString()

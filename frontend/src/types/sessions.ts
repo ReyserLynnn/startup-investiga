@@ -8,6 +8,7 @@ export enum SessionsFields {
   DESCRIPTION = 'description',
   DURATION = 'duration',
   POSTER = 'poster',
+  VIDEO = 'video',
 
   CREATED = 'created',
   UPDATED = 'updated',
@@ -19,6 +20,7 @@ export interface Sessions extends RecordModel {
   [SessionsFields.DESCRIPTION]: string;
   [SessionsFields.DURATION]: number;
   [SessionsFields.POSTER]: string;
+  [SessionsFields.VIDEO]: string;
 
   [SessionsFields.CREATED]: string;
   [SessionsFields.UPDATED]: string;

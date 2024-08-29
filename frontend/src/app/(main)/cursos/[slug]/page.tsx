@@ -26,7 +26,7 @@ const getCourseBySlug = async (slug: string) => {
   return (await pb.client
     .collection('courses')
     .getFirstListItem(`slug="${slug}"`, {
-      expand: 'modules,modules.sessions,tags',
+      expand: 'modules,modules.sessions,tags,teacher',
     })) as Courses;
 };
 
