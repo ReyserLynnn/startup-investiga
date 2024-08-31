@@ -6,7 +6,6 @@ import { redirect } from 'next/navigation';
 
 const getUser = async () => {
   const cookieStore = cookies();
-
   const result = await pb.getUser(cookieStore);
 
   return result as any;
@@ -21,9 +20,7 @@ export default async function MisCursosPage() {
 
   const userComplete = await pb.getMyCourses(user.id);
 
-  const myCourses = userComplete.expand?.courses as Courses;
-
-  console.log(myCourses);
+  const myCourses = userComplete.expand?.courses as Courses[];
 
   return (
     <main className="flex-grow relative bg-white w-full h-full overflow-hidden my-10">
