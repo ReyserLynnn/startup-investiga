@@ -8,11 +8,11 @@ import { usePathname } from 'next/navigation';
 
 const links = [
   { href: '/user/editar-perfil', text: 'Editar perfil' },
-  { href: '/user/editar-cuenta', text: 'Seguridad de la cuenta' },
-  { href: '/user/administrar-membresia', text: 'Membresía' },
-  { href: '/user/editar-metodos-de-pago', text: 'Métodos de pago' },
-  { href: '/user/editar-notificaciones', text: 'Notificaciones' },
-  { href: '/user/editar-privacidad', text: 'Privacidad' },
+  // { href: '/user/editar-cuenta', text: 'Seguridad de la cuenta' },
+  // { href: '/user/administrar-membresia', text: 'Membresía' },
+  // { href: '/user/editar-metodos-de-pago', text: 'Métodos de pago' },
+  // { href: '/user/editar-notificaciones', text: 'Notificaciones' },
+  // { href: '/user/editar-privacidad', text: 'Privacidad' },
   // { href: '/user/cerrar-cuenta', text: 'Cerrar cuenta' },
 ];
 
