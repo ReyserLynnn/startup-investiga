@@ -3,7 +3,6 @@
 
 'use client';
 
-import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { sendFormEditProfile } from '@/lib/actions/editProfile_Action';
@@ -12,7 +11,6 @@ import { z } from 'zod';
 
 import { ComboboxDegrees } from '@/components/pages/auth/ComboboxDegrees';
 import { ComboboxInstitutions } from '@/components/pages/auth/ComboboxInstitutions';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -22,35 +20,29 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
 
+import AvatarUpload from '@/components/pages/user/AvatarUpload';
+import { InputBlock } from '@/components/ui/InputBlock';
 import { getPhoneData, PhoneInput } from '@/components/ui/phone-input';
 import { Textarea } from '@/components/ui/textarea';
-import { EditProfileFormSchema } from '@/lib/schemas/edit-profile';
-import { getImageUrl } from '@/lib/utils';
-import { Users } from '@/types/user';
-import { User2 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import pb from '@/lib/pocketbase';
+import { EditProfileSchema } from '@/lib/schemas/EditProfileSchema';
+import { Users, UsersFields } from '@/types/user';
+import { Loader2, SendHorizonal } from 'lucide-react';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 interface Props {
   user: Users;
 }
 
-type Inputs = z.infer<typeof EditProfileFormSchema>;
+type FormSchema = z.infer<typeof EditProfileSchema>;
 
-export default function RhfWithAction({ user }: Props) {
-  const route = useRouter();
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  const [data, setData] = useState<Inputs>();
+export default function EditProfileForm({ user }: Props) {
+  const [loading, setLoading] = useState(false);
 
-  const avatarUrl = getImageUrl({
-    url: user.avatar,
-    collectionId: user.collectionId,
-    id: user.id,
-  }) as string;
-
-  const form = useForm<Inputs>({
-    resolver: zodResolver(EditProfileFormSchema),
+  const form = useForm<FormSchema>({
+    resolver: zodResolver(EditProfileSchema),
     defaultValues: {
       username: user.username,
       name: user.name,
@@ -59,58 +51,77 @@ export default function RhfWithAction({ user }: Props) {
       phone: user.phone,
       institution: user.institution,
       degree: user.degree,
+      id: user[UsersFields.ID],
     },
   });
 
   const {
     handleSubmit,
-    reset,
     formState: { errors },
   } = form;
 
-  const processForm: SubmitHandler<Inputs> = async (dataForm) => {
+  const onSubmit: SubmitHandler<FormSchema> = async (dataForm) => {
     const phoneData = getPhoneData(dataForm.phone);
 
     if (!phoneData.isValid) {
-      console.log(phoneData);
       form.setError('phone', {
         type: 'manual',
         message: 'Número de teléfono inválido',
       });
       return;
     }
+    setLoading(true);
 
-    const result = await sendFormEditProfile(dataForm);
+    const { avatar, ...userForm } = dataForm;
 
-    if (!result) {
-      console.log('Algo salió mal');
-      return;
+    try {
+      if (avatar) {
+        const formAvatar = new FormData();
+        formAvatar.append('avatar', avatar);
+        formAvatar.append('id', dataForm.id);
+
+        await pb.client.collection('users').update(dataForm.id, formAvatar);
+      }
+
+      const resultForm = await sendFormEditProfile(userForm);
+
+      if (!resultForm) {
+        toast.error('Hubo un error al editar el perfil, intentelo de nuevo');
+        return;
+      }
+
+      toast.success('Perfil editado exitosamente');
+    } catch (error) {
+      toast.error('Hubo un error al editar el perfil, intentelo de nuevo');
+    } finally {
+      setLoading(false);
     }
-
-    if (result.error) {
-      console.log(result.error);
-      return;
-    }
-
-    reset();
-    setData(result.data);
-    route.refresh();
   };
 
   return (
-    <section className="flex flex-col gap-4 items-center justify-center">
-      <Avatar className="size-36 cursor-pointer ring-offset-2 ring-2 ring-slate-200">
-        <AvatarImage src={avatarUrl} alt="Reyser" />
-        <AvatarFallback>
-          <User2 size="45" />
-        </AvatarFallback>
-      </Avatar>
-
+    <section className="flex flex-col items-center justify-center mt-10">
       <Form {...form}>
         <form
-          onSubmit={handleSubmit(processForm)}
-          className="flex flex-1 flex-col gap-4 sm:w-1/2"
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-1 flex-col gap-5 w-full lg:w-2/3"
         >
+          <FormField
+            control={form.control}
+            name="avatar"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <AvatarUpload
+                    user={user}
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <FormField
             control={form.control}
             name="name"
@@ -118,7 +129,11 @@ export default function RhfWithAction({ user }: Props) {
               <FormItem>
                 <FormLabel>Nombres</FormLabel>
                 <FormControl>
-                  <Input placeholder="Ingresa tus nombres" {...field} />
+                  <InputBlock
+                    root={{ variant: 'underlined', size: 'sm' }}
+                    placeholder="Ingresa tus nombres"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage>{errors.name?.message}</FormMessage>
               </FormItem>
@@ -132,7 +147,11 @@ export default function RhfWithAction({ user }: Props) {
               <FormItem>
                 <FormLabel>Apellidos</FormLabel>
                 <FormControl>
-                  <Input placeholder="Ingresa tus apellidos" {...field} />
+                  <InputBlock
+                    root={{ variant: 'underlined', size: 'sm' }}
+                    placeholder="Ingresa tus apellidos"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage>{errors.lastname?.message}</FormMessage>
               </FormItem>
@@ -149,6 +168,24 @@ export default function RhfWithAction({ user }: Props) {
                   <PhoneInput {...field} />
                 </FormControl>
                 <FormMessage>{errors.phone?.message}</FormMessage>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nombre de usuario</FormLabel>
+                <FormControl>
+                  <InputBlock
+                    root={{ variant: 'underlined', size: 'sm' }}
+                    placeholder="Ingresa un nombre de usuario"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage>{errors.username?.message}</FormMessage>
               </FormItem>
             )}
           />
@@ -205,28 +242,17 @@ export default function RhfWithAction({ user }: Props) {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Nombre de usuario</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Ingresa un nombre de usuario"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage>{errors.username?.message}</FormMessage>
-              </FormItem>
-            )}
-          />
-
           <Button
             type="submit"
-            className="self-center w-36 rounded-xl hover:bg-secondary"
+            className="self-center w-36 rounded-xl bg-primary gap-2 hover:bg-[#161439] mt-10"
+            disabled={loading}
           >
-            Submit
+            Guardar
+            {loading ? (
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            ) : (
+              <SendHorizonal size="18" />
+            )}
           </Button>
         </form>
       </Form>

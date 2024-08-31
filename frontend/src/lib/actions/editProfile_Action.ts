@@ -2,20 +2,32 @@
 
 'use server';
 
+import { cookies } from 'next/headers';
 import { z } from 'zod';
-import { EditProfileFormSchema } from '../schemas/edit-profile';
+import pb from '../pocketbase';
+import { EditProfileSchema } from '../schemas/EditProfileSchema';
 
-type Inputs = z.infer<typeof EditProfileFormSchema>;
+type formSchema = z.infer<typeof EditProfileSchema>;
 
-export async function sendFormEditProfile(data: Inputs) {
-  const result = EditProfileFormSchema.safeParse(data);
-
-  if (result.success) {
-    console.log('Envío del formulario exitoso:', data);
-    return { success: true, data: result.data };
-  }
+export async function sendFormEditProfile(data: formSchema) {
+  const result = EditProfileSchema.safeParse(data);
 
   if (result.error) {
     return { success: false, error: result.error.format() };
+  }
+
+  if (result.success) {
+    const record = await pb.client.collection('users').update(data.id, data);
+
+    const cookieStore = cookies();
+    const cookie = cookieStore.get('pb_auth');
+    if (cookie) {
+      pb.client.authStore.loadFromCookie(cookie.value);
+      await pb.client.collection('users').authRefresh();
+
+      cookies().set('pb_auth', pb.client.authStore.exportToCookie());
+    }
+
+    return { success: true, data: record };
   }
 }

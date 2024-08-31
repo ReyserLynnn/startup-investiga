@@ -2,6 +2,7 @@ import ClientComponentMisCursos from '@/components/pages/mis-cursos/ClientCompon
 import pb from '@/lib/pocketbase';
 import { Courses } from '@/types/courses';
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 const getUser = async () => {
   const cookieStore = cookies();
@@ -14,9 +15,15 @@ const getUser = async () => {
 export default async function MisCursosPage() {
   const user = await getUser();
 
+  if (!user) {
+    redirect('/cursos');
+  }
+
   const userComplete = await pb.getMyCourses(user.id);
 
   const myCourses = userComplete.expand?.courses as Courses;
+
+  console.log(myCourses);
 
   return (
     <main className="flex-grow relative bg-white w-full h-full overflow-hidden my-10">

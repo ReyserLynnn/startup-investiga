@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const EditProfileFormSchema = z.object({
+export const EditProfileSchema = z.object({
   username: z.string().max(35, { message: 'Máximo 35 caracteres' }),
 
   name: z.string().max(35, { message: 'Máximo 35 caracteres' }),
@@ -20,4 +20,6 @@ export const EditProfileFormSchema = z.object({
   degree: z
     .string()
     .min(1, { message: 'Debe seleccionar un grado académico.' }),
+  id: z.string(),
+  avatar: z.instanceof(File).optional(),
 });
