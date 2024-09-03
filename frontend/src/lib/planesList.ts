@@ -8,6 +8,7 @@ type PricingProps = {
   title: string;
   popular: PopularPlanType;
   price: string;
+  href: string;
   description: string;
   buttonText: string;
   benefitList: string[];
@@ -19,6 +20,7 @@ export function getPlanesList(): PricingProps[] {
       title: 'Gratuito',
       popular: 0,
       price: 'Gratis',
+      href: '/login',
       description:
         'Accede a cursos básicos y herramientas esenciales sin costo.',
       buttonText: 'Comienza Gratis',
@@ -32,6 +34,7 @@ export function getPlanesList(): PricingProps[] {
       title: 'Premium',
       popular: 1,
       price: '10',
+      href: '/login',
       description:
         'Disfruta de acceso completo a todos los cursos y herramientas avanzadas para maximizar tu investigación.',
       buttonText: 'Únete al Plan Premium',

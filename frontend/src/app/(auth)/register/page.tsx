@@ -1,11 +1,11 @@
 'use client';
 
-import Image from 'next/image';
-import { buttonVariants } from '@/components/ui/button';
-import Link from 'next/link';
-import 'animate.css';
 import { MarqueeDemo } from '@/components/pages/auth/Marquee';
 import StepperDemo from '@/components/pages/auth/StepperRegister';
+import { buttonVariants } from '@/components/ui/button';
+import 'animate.css';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function RegisterPage() {
   return (
@@ -31,7 +31,7 @@ export default function RegisterPage() {
               <Link
                 className={`${buttonVariants({
                   variant: 'ghost',
-                })} px-0 text-xs hover:no-underline hover:bg-transparent`}
+                })} px-0 text-sm hover:no-underline hover:bg-transparent`}
                 href="/login"
               >
                 ¿Ya tienes una cuenta?
@@ -40,7 +40,7 @@ export default function RegisterPage() {
               <Link
                 className={`${buttonVariants({
                   variant: 'link',
-                })} text-xs`}
+                })} text-sm`}
                 href="/login "
               >
                 Iniciar sesión

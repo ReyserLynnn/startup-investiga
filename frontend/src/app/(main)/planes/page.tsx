@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/card';
 import { getPlanesList } from '@/lib/planesList';
 import { Check } from 'lucide-react';
+import Link from 'next/link';
 
 export default function PlanesPage() {
   const planesList = getPlanesList();
@@ -50,11 +51,15 @@ export default function PlanesPage() {
                 <span className="text-muted-foreground"> /mes</span>
               </div>
 
-              <CardDescription>{pricing.description}</CardDescription>
+              <CardDescription className="min-h-[70px]">
+                {pricing.description}
+              </CardDescription>
             </CardHeader>
 
             <CardContent>
-              <Button className="w-full">{pricing.buttonText}</Button>
+              <Button className="w-full" asChild>
+                <Link href={pricing.href}>{pricing.buttonText}</Link>
+              </Button>
             </CardContent>
 
             <hr className="w-4/5 m-auto mb-4" />
