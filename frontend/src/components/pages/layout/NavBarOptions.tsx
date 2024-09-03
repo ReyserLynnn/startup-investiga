@@ -54,6 +54,18 @@ export default function NavBarOptions() {
           </NavigationMenuLink>
         </Link>
 
+        <Link href="/planes" legacyBehavior passHref prefetch={false}>
+          <NavigationMenuLink
+            className={cn(
+              buttonVariants({ variant: 'linkHover2' }),
+              navigationMenuTriggerStyle(),
+              pathname === '/planes' ? 'text-primary' : '',
+            )}
+          >
+            Planes
+          </NavigationMenuLink>
+        </Link>
+
         <Soporte />
       </NavigationMenuList>
     </NavigationMenu>

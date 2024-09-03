@@ -4,22 +4,23 @@ import { Input } from '@/components/ui/input';
 export default function Bulletin() {
   return (
     <section className="w-full flex justify-center">
-      <div className="w-full container px-6 flex flex-col mx-6 bg-primary-background rounded-2xl items-center gap-2 py-24 my-24 relative overflow-hidden">
+      <div className="w-full container px-6 flex flex-col mx-6 bg-[#1B283F] rounded-2xl items-center gap-2 py-24 my-24 relative overflow-hidden">
         <h1 className="text-primary-foreground text-4xl font-bold text-center">
-          Suscríbete a nuestro boletín
+          Mantente Actualizado
         </h1>
-        <span className="text-primary-foreground text-lg text-center">
-          Mantente al tanto de nuestras novedades y actualizaciones.
+        <span className="text-primary-foreground text-lg text-center md:w-[60%] px-3">
+          Suscríbete para recibir las últimas novedades y actualizaciones sobre
+          nuestros cursos y herramientas de IA.
         </span>
-        <div className="bg-primary-foreground rounded-full px-2 py-2 flex gap-2 mt-10">
+        <div className="bg-primary-foreground rounded-xl px-2 py-2 flex gap-2 mt-10  items-center ">
           <Input
             type="email"
-            className="rounded-full"
+            className="rounded-xl h-11"
             placeholder="Correo electronico"
           />
           <Button
             variant="secondary"
-            className="rounded-full px-12 text-base h-auto py-3"
+            className="rounded-xl px-12 text-base h-auto py-3"
           >
             Enviar
           </Button>
