@@ -235,9 +235,9 @@ m-63 -29 c0 -5 -6 -14 -14 -20 -11 -9 -16 -9 -21 0 -4 6 -1 15 6 20 18 11 29
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(38.005 20.5144) rotate(-129.304) scale(17.3033 16.2706)"
         >
-          <stop offset="0.0955758" stop-color="#00AEFF" />
-          <stop offset="0.773185" stop-color="#2253CE" />
-          <stop offset="1" stop-color="#0736C4" />
+          <stop offset="0.0955758" stopColor="#00AEFF" />
+          <stop offset="0.773185" stopColor="#2253CE" />
+          <stop offset="1" stopColor="#0736C4" />
         </radialGradient>
         <radialGradient
           id="paint1_radial_56201_15503"
@@ -247,9 +247,9 @@ m-63 -29 c0 -5 -6 -14 -14 -20 -11 -9 -16 -9 -21 0 -4 6 -1 15 6 20 18 11 29
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(11.1215 32.8171) rotate(51.84) scale(15.9912 15.5119)"
         >
-          <stop stop-color="#FFB657" />
-          <stop offset="0.633728" stop-color="#FF5F3D" />
-          <stop offset="0.923392" stop-color="#C02B3C" />
+          <stop stopColor="#FFB657" />
+          <stop offset="0.633728" stopColor="#FF5F3D" />
+          <stop offset="0.923392" stopColor="#C02B3C" />
         </radialGradient>
         <linearGradient
           id="paint2_linear_56201_15503"
@@ -259,10 +259,10 @@ m-63 -29 c0 -5 -6 -14 -14 -20 -11 -9 -16 -9 -21 0 -4 6 -1 15 6 20 18 11 29
           y2="33.9751"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.156162" stop-color="#0D91E1" />
-          <stop offset="0.487484" stop-color="#52B471" />
-          <stop offset="0.652394" stop-color="#98BD42" />
-          <stop offset="0.937361" stop-color="#FFC800" />
+          <stop offset="0.156162" stopColor="#0D91E1" />
+          <stop offset="0.487484" stopColor="#52B471" />
+          <stop offset="0.652394" stopColor="#98BD42" />
+          <stop offset="0.937361" stopColor="#FFC800" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_56201_15503"
@@ -272,8 +272,8 @@ m-63 -29 c0 -5 -6 -14 -14 -20 -11 -9 -16 -9 -21 0 -4 6 -1 15 6 20 18 11 29
           y2="32.8852"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#3DCBFF" />
-          <stop offset="0.246674" stop-color="#0588F7" stop-opacity="0" />
+          <stop stopColor="#3DCBFF" />
+          <stop offset="0.246674" stopColor="#0588F7" stopOpacity="0" />
         </linearGradient>
         <radialGradient
           id="paint4_radial_56201_15503"
@@ -283,9 +283,9 @@ m-63 -29 c0 -5 -6 -14 -14 -20 -11 -9 -16 -9 -21 0 -4 6 -1 15 6 20 18 11 29
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(41.3187 12.2813) rotate(109.274) scale(38.3873 45.9867)"
         >
-          <stop offset="0.0661714" stop-color="#8C48FF" />
-          <stop offset="0.5" stop-color="#F2598A" />
-          <stop offset="0.895833" stop-color="#FFB152" />
+          <stop offset="0.0661714" stopColor="#8C48FF" />
+          <stop offset="0.5" stopColor="#F2598A" />
+          <stop offset="0.895833" stopColor="#FFB152" />
         </radialGradient>
         <linearGradient
           id="paint5_linear_56201_15503"
@@ -295,8 +295,8 @@ m-63 -29 c0 -5 -6 -14 -14 -20 -11 -9 -16 -9 -21 0 -4 6 -1 15 6 20 18 11 29
           y2="21.2147"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.0581535" stop-color="#F8ADFA" />
-          <stop offset="0.708063" stop-color="#A86EDD" stop-opacity="0" />
+          <stop offset="0.0581535" stopColor="#F8ADFA" />
+          <stop offset="0.708063" stopColor="#A86EDD" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
@@ -316,9 +316,9 @@ m-63 -29 c0 -5 -6 -14 -14 -20 -11 -9 -16 -9 -21 0 -4 6 -1 15 6 20 18 11 29
           gradientUnits="userSpaceOnUse"
           gradientTransform="matrix(16.1326 5.4553 -43.70045 129.2322 1.588 6.503)"
         >
-          <stop offset=".067" stop-color="#9168C0" />
-          <stop offset=".343" stop-color="#5684D1" />
-          <stop offset=".672" stop-color="#1BA1E3" />
+          <stop offset=".067" stopColor="#9168C0" />
+          <stop offset=".343" stopColor="#5684D1" />
+          <stop offset=".672" stopColor="#1BA1E3" />
         </radialGradient>
       </defs>
     </svg>
