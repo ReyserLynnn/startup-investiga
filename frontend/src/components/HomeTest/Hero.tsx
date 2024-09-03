@@ -5,14 +5,7 @@ import { FlipWords } from '../ui/flip-words';
 import { OrbitingCirclesDemo } from './OrbitingCirclesDemo';
 
 export function HeroTest() {
-  const words = [
-    'Descubre',
-    'Mejora',
-    'Descubre',
-    'Transforma',
-    'Expande',
-    'Avanza',
-  ];
+  const words = ['Descubre', 'Mejora', 'Transforma', 'Expande', 'Avanza'];
 
   return (
     <header className="relative bg-white overflow-hidden">

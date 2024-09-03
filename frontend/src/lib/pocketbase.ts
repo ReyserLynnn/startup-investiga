@@ -166,7 +166,7 @@ export class DatabaseClient {
     }
 
     this.client.authStore.loadFromCookie(cookie?.value || '');
-    // await this.client.collection('users').authRefresh();
+    await this.client.collection('users').authRefresh();
     return this.client.authStore.model;
   }
 

@@ -5,7 +5,7 @@ import OrbitingCircles from '@/components/magicui/orbiting-circles';
 export function OrbitingCirclesDemo() {
   return (
     <div className="relative flex h-[400px] w-full flex-col items-center justify-center overflow-hidden">
-      <span className="pointer-events-none h-[70px] whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-6xl font-semibold leading-none text-transparent dark:from-white dark:to-black">
+      <span className="pointer-events-none h-[70px] whitespace-pre-wrap bg-gradient-to-r from-[#f5c996] to-[#fc9d4c] text-transparent bg-clip-text text-center text-6xl font-semibold leading-none ">
         Inveztiga
       </span>
 

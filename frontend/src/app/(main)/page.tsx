@@ -1,6 +1,7 @@
 import { HeroTest } from '@/components/HomeTest/Hero';
 import Bulletin from '@/components/pages/home/Bulletin';
 import { Cta } from '@/components/pages/home/Cta';
+import Cta2 from '@/components/pages/home/Cta2';
 import { Docentes } from '@/components/pages/home/Docentes';
 import Opinions from '@/components/pages/home/Opinions';
 import { PuntosFuertes } from '@/components/pages/home/PuntosFuertes';
@@ -13,9 +14,9 @@ export default function Home() {
       {/* <Hero /> */}
       <HeroTest />
       <PuntosFuertes />
-      {/*
+
       <Cta2 />
-      */}
+
       <ToolsIA />
       <Cta />
       <Docentes />

@@ -30,18 +30,6 @@ export default function NavBarOptions() {
           </NavigationMenuLink>
         </Link>
 
-        <Link href="/cursos" legacyBehavior passHref prefetch={false}>
-          <NavigationMenuLink
-            className={cn(
-              buttonVariants({ variant: 'linkHover2' }),
-              navigationMenuTriggerStyle(),
-              pathname === '/cursos' ? 'text-primary' : '',
-            )}
-          >
-            Cursos Inveztiga
-          </NavigationMenuLink>
-        </Link>
-
         <Link href="/herramientas" legacyBehavior passHref prefetch={false}>
           <NavigationMenuLink
             className={cn(
@@ -50,7 +38,19 @@ export default function NavBarOptions() {
               pathname === '/herramientas' ? 'text-primary' : '',
             )}
           >
-            Herramientas AI
+            Herramientas
+          </NavigationMenuLink>
+        </Link>
+
+        <Link href="/cursos" legacyBehavior passHref prefetch={false}>
+          <NavigationMenuLink
+            className={cn(
+              buttonVariants({ variant: 'linkHover2' }),
+              navigationMenuTriggerStyle(),
+              pathname === '/cursos' ? 'text-primary' : '',
+            )}
+          >
+            Cursos
           </NavigationMenuLink>
         </Link>
 
