@@ -1,4 +1,3 @@
-import { Check } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -10,6 +9,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { getPlanesList } from '@/lib/planesList';
+import { Check } from 'lucide-react';
 
 export default function PlanesPage() {
   const planesList = getPlanesList();
@@ -23,10 +23,10 @@ export default function PlanesPage() {
           Ilimitado{' '}
         </span>
       </h2>
-      <h3 className="text-xl text-center text-muted-foreground pt-4 pb-8">
+      <h3 className="text-lg lg:text-xl text-center text-muted-foreground pt-4 pb-8">
         Elige el plan perfecto para tus necesidades de investigación.
       </h3>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid lg:grid-cols-2 gap-8 md:mx-32 ">
         {planesList.map((pricing) => (
           <Card
             key={pricing.title}
