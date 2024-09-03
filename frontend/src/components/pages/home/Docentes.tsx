@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import Link from 'next/link';
-import { StopCircle } from 'lucide-react';
 import LinkedinIcon from '@/components/icons/LinkedinIcon';
 import TwitterIcon from '@/components/icons/TwitterIcon';
 import { buttonVariants } from '@/components/ui/button';
@@ -13,6 +11,8 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { getDocentesList } from '@/lib/docentes';
+import { StopCircle } from 'lucide-react';
+import Link from 'next/link';
 
 export function Docentes() {
   const docentes = getDocentesList();
@@ -31,9 +31,9 @@ export function Docentes() {
   return (
     <section id="docentes" className="container py-24 sm:py-32">
       <h2 className="text-3xl md:text-4xl font-bold">
-        Conoce a nuetros{' '}
+        Conoce a nuetro{' '}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Docentes
+          Equipo
         </span>
       </h2>
 

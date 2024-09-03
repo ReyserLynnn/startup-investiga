@@ -6,7 +6,7 @@ import { getMenuList } from '@/lib/menuList';
 import { deleteCookie } from 'cookies-next';
 import { LogOut } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { RecordModel } from 'pocketbase';
 import { useEffect, useState } from 'react';
 
@@ -18,8 +18,6 @@ export function SideBarOptions({
   const [user, setUser] = useState<RecordModel | null>(null);
   const pathname = usePathname();
   const menuList = getMenuList(pathname);
-
-  const router = useRouter();
 
   useEffect(() => {
     async function fetchUserData() {
@@ -38,7 +36,7 @@ export function SideBarOptions({
     try {
       deleteCookie('pb_auth');
       localStorage.clear();
-      router.refresh();
+      window.location.reload();
     } catch (err) {
       console.log('Error al cerrar sesión');
     }

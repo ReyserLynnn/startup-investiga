@@ -3,9 +3,9 @@
 
 'use client';
 
+import { cn } from '@/lib/utils';
 import { User } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
 
 type Opinion = {
   text: string;
@@ -15,19 +15,19 @@ type Opinion = {
 
 const OPINIONS: Opinion[] = [
   {
-    text: '“Este curso superó mis expectativas. Los docentes son increíbles, y aprendí herramientas clave para mi carrera científica.”',
-    user: 'Juan Pérez',
-    label: 'Estudiante, Universidad Nacional de San Agustín',
+    text: '“La integración de herramientas de IA en mi investigación ha sido un cambio total. Ahora puedo encontrar y organizar información de manera mucho más eficiente.”',
+    user: 'María Fernández',
+    label: 'Estudiante de Sistemas, Universidad Nacional de San Agustín',
   },
   {
-    text: '“Este curso superó mis expectativas. aprendí herramientas clave para mi carrera científica.”',
-    user: 'Pedro Pérez',
-    label: 'Estudiante, Universidad Nacional de San Agustín',
+    text: '“Los cursos ofrecidos me han ayudado a mejorar significativamente mis habilidades en redacción científica. La plataforma es una excelente adición a mi toolkit.”',
+    user: 'Carlos Mendoza',
+    label: 'Estudiante de Economía, Universidad Nacional de San Agustín',
   },
   {
-    text: '“Este curso superó mis expectativas. Los docentes son increíbles”',
-    user: 'Juan Pérez',
-    label: 'Estudiante, Universidad Nacional de San Agustín',
+    text: '“Gracias a las herramientas de búsqueda y comparación, he acelerado mis procesos de investigación y mejorado la calidad de mis publicaciones.”',
+    user: 'Sofía Vargas',
+    label: 'Estudiante de Psicología, Universidad Nacional de San Agustín',
   },
 ];
 

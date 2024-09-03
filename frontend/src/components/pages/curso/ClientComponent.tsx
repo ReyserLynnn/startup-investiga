@@ -62,17 +62,21 @@ export default function ClientComponent({
               ))}
             </div>
 
-            {info === 'Reseñas' ? (
-              <CommentsCourse comments={comments} />
-            ) : info === 'Conoce más' ? (
-              <AboutCourse course={course} />
-            ) : (
-              <>
-                <ContentCourse course={course} />
-                <AboutCourse course={course} />
-                <CommentsCourse comments={comments} />
-              </>
-            )}
+            {(() => {
+              if (info === 'Reseñas') {
+                return <CommentsCourse comments={comments} />;
+              }
+              if (info === 'Conoce más') {
+                return <AboutCourse course={course} />;
+              }
+              return (
+                <>
+                  <ContentCourse course={course} />
+                  <AboutCourse course={course} />
+                  <CommentsCourse comments={comments} />
+                </>
+              );
+            })()}
           </div>
 
           <PublicityCourse />
