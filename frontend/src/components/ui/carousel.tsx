@@ -1,3 +1,8 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable consistent-return */
+/* eslint-disable react/jsx-no-constructed-context-values */
+
 'use client';
 
 import useEmblaCarousel, {

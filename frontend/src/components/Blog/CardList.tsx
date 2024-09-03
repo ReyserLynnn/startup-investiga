@@ -11,7 +11,7 @@ export default function CardList() {
         <CardBlog />
         <CardBlog />
       </div>
-      <Pagination />
+      <Pagination page={1} hasPrev hasNext />
     </div>
   );
 }
