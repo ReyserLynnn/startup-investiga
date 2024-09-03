@@ -1,8 +1,7 @@
 /* eslint-disable react/no-unused-prop-types */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import {
   Accordion,
   AccordionContent,
@@ -74,8 +73,6 @@ interface Props {
 export default function PlayerCourse({ course, hasAccess }: Props) {
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [selectedSession, setSelectedSession] = useState<string | null>(null);
-  const [posterUrl, setPosterUrl] = useState<string>(getInitialPosterUrl());
-  const [videoUrl, setVideoUrl] = useState<string>(getInitialVideoUrl());
   const [videoEnded, setVideoEnded] = useState<Boolean>(false);
 
   function getInitialVideoUrl() {
@@ -95,6 +92,9 @@ export default function PlayerCourse({ course, hasAccess }: Props) {
       id: course.id,
     });
   }
+
+  const [posterUrl, setPosterUrl] = useState<string>(getInitialPosterUrl());
+  const [videoUrl, setVideoUrl] = useState<string>(getInitialVideoUrl());
 
   useEffect(() => {
     const session = course.expand?.modules
@@ -201,6 +201,13 @@ export default function PlayerCourse({ course, hasAccess }: Props) {
                           key={session.id}
                           className={`flex flex-col gap-2 cursor-pointer hover:bg-gray-100 p-3 rounded-lg ${selectedSession === session.id ? 'bg-gray-100' : ''}`}
                           onClick={() => handleSessionChange(session)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              handleSessionChange(session);
+                            }
+                          }}
+                          role="button"
+                          tabIndex={0}
                         >
                           <span className="font-semibold flex gap-2 items-center">
                             {indexModule + 1}.{index + 1} {session.title}

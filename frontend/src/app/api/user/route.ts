@@ -1,10 +1,13 @@
-import { getServerUser } from '@/lib/serverPocketbase';
+import pb from '@/lib/pocketbase';
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const user = getServerUser();
-    return NextResponse.json(user);
+    const cookieStore = cookies();
+    const result = await pb.getUser(cookieStore);
+
+    return NextResponse.json(result);
   } catch (err: any) {
     return new Response(
       JSON.stringify({ error: err.message || err.toString() }),

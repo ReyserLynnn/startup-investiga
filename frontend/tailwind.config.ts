@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import type { Config } from 'tailwindcss';
 
 const config = {
@@ -18,7 +19,25 @@ const config = {
       },
     },
     extend: {
+      flex: {
+        '2': '2 2 0%',
+        '3': '3 3 0%',
+        '4': '4 4 0%',
+        '5': '5 5 0%',
+        '6': '6 6 0%',
+        '7': '7 7 0%',
+      },
       keyframes: {
+        orbit: {
+          '0%': {
+            transform:
+              'rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)',
+          },
+          '100%': {
+            transform:
+              'rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)',
+          },
+        },
         shine: {
           from: { backgroundPosition: '200% 0' },
           to: { backgroundPosition: '-200% 0' },
@@ -49,6 +68,7 @@ const config = {
         },
       },
       animation: {
+        orbit: 'orbit calc(var(--duration)*1s) linear infinite',
         shine: 'shine 8s ease-in-out infinite',
         'collapsible-down': 'collapsible-down 0.2s ease-out',
         'collapsible-up': 'collapsible-up 0.2s ease-out',

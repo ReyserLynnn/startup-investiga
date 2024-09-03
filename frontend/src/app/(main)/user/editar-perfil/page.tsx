@@ -2,7 +2,7 @@ import pb from '@/lib/pocketbase';
 import { Users } from '@/types/user';
 import { cookies } from 'next/headers';
 import { use } from 'react';
-import RhfWithAction from './Form';
+import EditProfileForm from './EditProfileForm';
 
 const getUser = async () => {
   const cookieStore = cookies();
@@ -14,5 +14,5 @@ const getUser = async () => {
 export default function ContactPage() {
   const user = use(getUser());
 
-  return <RhfWithAction user={user} />;
+  return <EditProfileForm user={user} />;
 }

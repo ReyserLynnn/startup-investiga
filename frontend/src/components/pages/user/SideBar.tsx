@@ -8,11 +8,11 @@ import { usePathname } from 'next/navigation';
 
 const links = [
   { href: '/user/editar-perfil', text: 'Editar perfil' },
-  { href: '/user/editar-cuenta', text: 'Seguridad de la cuenta' },
-  { href: '/user/administrar-membresia', text: 'Membresía' },
-  { href: '/user/editar-metodos-de-pago', text: 'Métodos de pago' },
-  { href: '/user/editar-notificaciones', text: 'Notificaciones' },
-  { href: '/user/editar-privacidad', text: 'privacidad' },
+  // { href: '/user/editar-cuenta', text: 'Seguridad de la cuenta' },
+  // { href: '/user/administrar-membresia', text: 'Membresía' },
+  // { href: '/user/editar-metodos-de-pago', text: 'Métodos de pago' },
+  // { href: '/user/editar-notificaciones', text: 'Notificaciones' },
+  // { href: '/user/editar-privacidad', text: 'Privacidad' },
   // { href: '/user/cerrar-cuenta', text: 'Cerrar cuenta' },
 ];
 
@@ -23,7 +23,7 @@ export default function SideBarUser() {
     <section className="w-full h-full px-4 mt-5">
       <div className="flex flex-col gap-4">
         <span className="font-semibold text-2xl text-center">Mi cuenta</span>
-        <div className="flex gap-1 text-sm items-start justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex gap-1 text-sm items-start lg:justify-center place-items-center">
           {links.map((link) => (
             <Link
               key={link.href}

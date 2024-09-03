@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -7,12 +6,41 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { getCualidades } from '@/lib/cualidades';
+import {
+  BookCheck,
+  ChartBarStacked,
+  ChevronRight,
+  SearchCode,
+} from 'lucide-react';
+import Link from 'next/link';
+
+const puntosFuertes = [
+  {
+    title: 'Búsqueda Eficiente',
+    description:
+      'Encuentra fuentes científicas relevantes en segundos con IA avanzada.',
+    label: 'Compruebalo',
+    color: 'DCA005',
+    icon: SearchCode,
+  },
+  {
+    title: 'Comparación Precisa',
+    description: 'Compara artículos y datos de manera precisa y rápida.',
+    label: 'Ver más',
+    color: '4883FF',
+    icon: ChartBarStacked,
+  },
+  {
+    title: 'Aprendizaje Profundo',
+    description:
+      'Domina técnicas de investigación con nuestros cursos especializados.',
+    label: 'Aprender más',
+    color: 'C11574',
+    icon: BookCheck,
+  },
+];
 
 export function PuntosFuertes() {
-  const cualidades = getCualidades();
-
   return (
     <section
       id="puntosFuertes"
@@ -20,20 +48,19 @@ export function PuntosFuertes() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="md:w-3/4 mx-auto text-3xl md:text-4xl font-bold ">
-          Nuestros{' '}
+          Ventajas{' '}
           <span className="bg-gradient-to-b from-primary/40 to-primary text-transparent bg-clip-text">
-            Puntos{' '}
+            Exclusivas
           </span>
-          Fuertes
         </h2>
 
         <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
-          Promoviendo un entorno dinámico y colaborativo para la investigación
-          científica
+          Descubre las herramientas clave que potencian tu investigación
+          científica.
         </p>
 
         <div className="grid lg:grid-cols-3 gap-12 mt-12 lg:mt-0 text-left">
-          {cualidades.map(
+          {puntosFuertes.map(
             ({ icon: Icon, title, description, label, color }) => (
               <Card
                 key={title}
