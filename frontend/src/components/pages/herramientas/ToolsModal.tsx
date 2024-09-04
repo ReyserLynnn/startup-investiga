@@ -23,7 +23,6 @@ type ToolsModalProps = {
   logo: string;
   name: string;
   homepage: string;
-  video: string;
   tags: Tags[];
   numberLikes: number;
   description: string;
