@@ -35,7 +35,6 @@ export default async function HerramientasPage() {
                   ? herramienta[ToolsIAFields.EXPAND][ToolsIAFields.TAGS]
                   : []
               }
-              video="https://res.cloudinary.com/dazt6g3o1/video/upload/v1724428962/juvdebis2n2bkoioxd08.mp4"
               key={herramienta[ToolsIAFields.ID]}
             />
           ))}
