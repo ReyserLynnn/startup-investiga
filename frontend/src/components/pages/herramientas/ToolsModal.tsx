@@ -36,7 +36,6 @@ export default function ToolsModal({
   name,
   numberLikes,
   tags,
-  video,
 }: ToolsModalProps) {
   return (
     <Dialog>
@@ -106,13 +105,13 @@ export default function ToolsModal({
               dangerouslySetInnerHTML={{ __html: description }}
             />
           </div>
-          <div className="mt-4 w-full flex justify-center">
+          {/* <div className="mt-4 w-full flex justify-center">
             <video
               className="w-full max-w-2xl aspect-video"
               src={video}
               controls
             />
-          </div>
+          </div> */}
         </ScrollArea>
         <DialogFooter>
           <div className="flex justify-between w-full pt-4 border-t-2 border-t-accent">
