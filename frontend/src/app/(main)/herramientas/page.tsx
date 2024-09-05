@@ -12,7 +12,7 @@ export default async function HerramientasPage() {
     <main className="w-full flex-1 flex justify-center items-start py-20">
       <section className="flex flex-col items-center justify-start w-full max-w-6xl gap-20">
         <h2 className="text-3xl md:text-4xl font-bold text-center">
-          Herramientas mas importantes de
+          Herramientas más importantes de
           <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
             {' '}
             IA{' '}
