@@ -32,12 +32,6 @@ export function getMenuList(pathname: string): Group[] {
           active: pathname === '/',
           icon: House,
         },
-        {
-          href: '/herramientas',
-          label: 'Herramientas',
-          active: pathname.includes('/herramientas'),
-          icon: Wrench,
-        },
       ],
     },
     {
