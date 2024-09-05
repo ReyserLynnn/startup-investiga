@@ -26,23 +26,25 @@ export function getPlanesList(): PricingProps[] {
       buttonText: 'Comienza Gratis',
       benefitList: [
         'Acceso a cursos introductorios',
-        'Uso limitado de herramientas de IA',
+        'Ética e integridad de la IA en la investigación científica',
         'Actualizaciones regulares de contenido',
+        'Búsqueda y comparación de herramientas de IA',
       ],
     },
     {
       title: 'Premium',
       popular: 1,
-      price: '10',
+      price: '35',
       href: '/login',
       description:
         'Disfruta de acceso completo a todos los cursos y herramientas avanzadas para maximizar tu investigación.',
       buttonText: 'Únete al Plan Premium',
       benefitList: [
-        'Acceso ilimitado a todos los cursos',
-        'Uso completo de herramientas de IA avanzadas',
+        'Acceso ilimitado a todos los cursos especializados en vivo y grabados',
+        'Acceso completo a talleres y seminarios en línea',
+        'Capacitación completa de herramientas de IA avanzadas',
         'Soporte prioritario y asistencia personalizada',
-        'Contenidos exclusivos y actualizaciones avanzadas',
+        'Contenido exclusivo y actualizaciones avanzadas',
       ],
     },
   ];

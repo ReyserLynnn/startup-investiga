@@ -32,7 +32,7 @@ export default function ButtonCourse({
           Explora nuestros mejores cursos
         </span>
         <div className="hidden sm:flex sm:flex-row gap-2">
-          {tags.map((nameTag) => (
+          {tags.slice(0, 4).map((nameTag) => (
             <Button
               key={nameTag[TagsFields.ID]}
               variant={tag === nameTag ? 'linkHover1' : 'linkHover2'}

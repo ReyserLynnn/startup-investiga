@@ -2,9 +2,10 @@ import {
   House,
   LucideIcon,
   Mail,
-  Settings,
+  SquareChartGantt,
   TvMinimal,
   User,
+  Wallet,
   Wrench,
 } from 'lucide-react';
 
@@ -42,8 +43,21 @@ export function getMenuList(pathname: string): Group[] {
           active: pathname.includes('/cursos'),
           icon: TvMinimal,
         },
+        {
+          href: '/herramientas',
+          label: 'Herramientas',
+          active: pathname.includes('/herramientas'),
+          icon: SquareChartGantt,
+        },
+        {
+          href: '/planes',
+          label: 'Planes',
+          active: pathname.includes('/planes'),
+          icon: Wallet,
+        },
       ],
     },
+
     {
       groupLabel: 'Soporte',
       menus: [
@@ -65,17 +79,17 @@ export function getMenuList(pathname: string): Group[] {
       groupLabel: 'Configuración',
       menus: [
         {
-          href: '/perfil',
+          href: '/user',
           label: 'Mi perfil',
           active: pathname.includes('/user'),
           icon: User,
         },
-        {
-          href: '/cuenta',
-          label: 'Mi cuenta',
-          active: pathname.includes('/account'),
-          icon: Settings,
-        },
+        // {
+        //   href: '/cuenta',
+        //   label: 'Mi cuenta',
+        //   active: pathname.includes('/account'),
+        //   icon: Settings,
+        // },
       ],
     },
   ];
