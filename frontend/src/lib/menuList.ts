@@ -32,6 +32,11 @@ export function getMenuList(pathname: string): Group[] {
           active: pathname === '/',
           icon: House,
         },
+      ],
+    },
+    {
+      groupLabel: '',
+      menus: [
         {
           href: '/cursos',
           label: 'Cursos',
