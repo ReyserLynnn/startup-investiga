@@ -56,11 +56,10 @@ export function getHerramientasIA(): CardIA[] {
 
 export function getTiposIA(): string[] {
   return [
-    'Redactor',
-    'Revisor',
-    'Generativo',
-    'Analizador',
-    'Visualizador',
-    'Resumidor',
+    'Generación de Texto',
+    'Búsqueda Académica',
+    'Gestión de Referencias',
+    'Análisis de Documentos',
+    'Verificación de Autenticidad',
   ];
 }
