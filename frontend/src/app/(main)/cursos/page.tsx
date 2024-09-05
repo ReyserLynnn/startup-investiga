@@ -20,7 +20,7 @@ export default async function CursosPage() {
             Únete a Inveztiga ahora y obtén un 35% de descuento
           </span>
           <span className="font-extralight w-[90%]">
-            Con nuestros cursos grabados y en vivo tenrás una experiencia
+            Con nuestros cursos grabados y en vivo tendrás una experiencia
             inigualable en aprender habilidades de invesitgación científica
           </span>
           <Link

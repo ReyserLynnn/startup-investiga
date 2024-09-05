@@ -31,7 +31,7 @@ export function ToolsIA() {
         </span>
       </h2>
       <p className=" text-center md:w-3/4 mx-auto text-lg text-muted-foreground">
-        Explora y domina cada IA aplicable a lah investigación científica
+        Explora y domina cada IA aplicable a la investigación científica
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-4 my-3">

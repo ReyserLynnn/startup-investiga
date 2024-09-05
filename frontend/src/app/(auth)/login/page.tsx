@@ -29,7 +29,7 @@ const formSchema = z.object({
   email: z
     .string()
     .email({
-      message: 'El correo electónico no es válido',
+      message: 'El correo electrónico no es válido',
     })
     .min(5, {
       message: 'El correo electrónico debe tener al menos 5 caracteres.',
@@ -140,7 +140,7 @@ export default function LoginPage() {
                     })} text-sm text-link`}
                     href="/forgotpassword"
                   >
-                    ¿Olvidate tu contraseña?
+                    ¿Olvidaste tu contraseña?
                   </Link>
                 </div>
 
