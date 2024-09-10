@@ -52,7 +52,7 @@ export default function RegisterPage() {
             <div className="absolute bg-transparent top-[-100px] left-44 z-10">
               <Link href="/" prefetch={false}>
                 <Image
-                  src="logo.svg"
+                  src="/logo.svg"
                   width="0"
                   height="0"
                   alt="Logo de investiga"

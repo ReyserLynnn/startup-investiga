@@ -69,7 +69,7 @@ export default function NavBarOptions() {
         </Link>
 
         <Link
-          href="/herramientas/enviar-herramienta"
+          href="/herramientas/compartir-herramienta"
           legacyBehavior
           passHref
           prefetch={false}
@@ -78,12 +78,12 @@ export default function NavBarOptions() {
             className={cn(
               buttonVariants({ variant: 'linkHover2' }),
               navigationMenuTriggerStyle(),
-              pathname === '/herramientas/enviar-herramienta'
+              pathname === '/herramientas/compartir-herramienta'
                 ? 'text-primary'
                 : '',
             )}
           >
-            Envía una herramienta
+            Compartir una herramienta
           </NavigationMenuLink>
         </Link>
 

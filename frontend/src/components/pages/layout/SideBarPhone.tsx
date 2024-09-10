@@ -45,7 +45,7 @@ export default function SideBarPhone() {
             >
               <Link href="/" className="flex items-center gap-2">
                 <Image
-                  src="logo.svg"
+                  src="/logo.svg"
                   width="0"
                   height="0"
                   alt="Logo de investiga"

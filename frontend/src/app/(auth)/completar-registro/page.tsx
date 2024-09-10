@@ -8,7 +8,7 @@ export default function PageCompleteRegistration() {
       <div className="container mx-auto flex flex-col items-center justify-center h-screen px-6">
         <Link href="/" className=" hidden md:flex" prefetch={false}>
           <Image
-            src="logo.svg"
+            src="/logo.svg"
             width="0"
             height="0"
             alt="Logo de investiga"

@@ -20,9 +20,9 @@ function ShareTool() {
   );
 }
 
-export default function EnviarHerramientaPage() {
+export default function CompartirHerramientaPage() {
   return (
-    <section id="enviar-herramienta" className="bg-white flex-1 ">
+    <section id="compartir-herramienta" className="bg-white flex-1 ">
       <div className="  h-max bg-slate-900 text-white">
         <div className="flex flex-col gap-5 text-white items-center justify-center px-16 py-20 sm:py-32 lg:py-40 text-center">
           <h1 className=" max-w-5xl mx-auto font-medium text-4xl sm:text-6xl mb-6">
@@ -99,7 +99,7 @@ export default function EnviarHerramientaPage() {
           herramienta de IA
         </p>
 
-        <div className="flex flex-col gap-2 mt-4 ">
+        <div className="flex flex-col gap-2 mt-4 px-8 sm:px-0 ">
           <span className="flex gap-2 items-center">
             <Check className="text-primary" size={16} />
             Nombre de la herramienta

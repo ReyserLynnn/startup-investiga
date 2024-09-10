@@ -48,13 +48,13 @@ export function getMenuList(pathname: string): Group[] {
         {
           href: '/herramientas',
           label: 'Herramientas',
-          active: pathname.includes('/herramientas'),
+          active: pathname === '/herramientas',
           icon: SquareChartGantt,
         },
         {
-          href: '/herramientas/enviar-herramienta',
-          label: 'Envía una herarmienta',
-          active: pathname.includes('/herramientas'),
+          href: '/herramientas/compartir-herramienta',
+          label: 'Compartir una herarmienta',
+          active: pathname === '/herramientas/compartir-herramienta',
           icon: BrainCircuit,
         },
         {
