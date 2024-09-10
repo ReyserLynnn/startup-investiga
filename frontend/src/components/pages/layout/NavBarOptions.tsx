@@ -16,7 +16,7 @@ export default function NavBarOptions() {
   const pathname = usePathname();
 
   return (
-    <NavigationMenu className="hidden md:flex ml-auto ">
+    <NavigationMenu className="hidden md:flex ml-auto">
       <NavigationMenuList>
         <Link href="/" legacyBehavior passHref prefetch={false}>
           <NavigationMenuLink
@@ -24,6 +24,7 @@ export default function NavBarOptions() {
               buttonVariants({ variant: 'linkHover2' }),
               navigationMenuTriggerStyle(),
               pathname === '/' ? 'text-primary' : '',
+              'hidden xl:flex',
             )}
           >
             Inicio
@@ -54,12 +55,45 @@ export default function NavBarOptions() {
           </NavigationMenuLink>
         </Link>
 
+        <Link href="/blog" legacyBehavior passHref prefetch={false}>
+          <NavigationMenuLink
+            className={cn(
+              buttonVariants({ variant: 'linkHover2' }),
+              navigationMenuTriggerStyle(),
+              pathname === '/blog' ? 'text-primary' : '',
+              'hidden lg:flex',
+            )}
+          >
+            Blog
+          </NavigationMenuLink>
+        </Link>
+
+        <Link
+          href="/herramientas/enviar-herramienta"
+          legacyBehavior
+          passHref
+          prefetch={false}
+        >
+          <NavigationMenuLink
+            className={cn(
+              buttonVariants({ variant: 'linkHover2' }),
+              navigationMenuTriggerStyle(),
+              pathname === '/herramientas/enviar-herramienta'
+                ? 'text-primary'
+                : '',
+            )}
+          >
+            Envía una herramienta
+          </NavigationMenuLink>
+        </Link>
+
         <Link href="/planes" legacyBehavior passHref prefetch={false}>
           <NavigationMenuLink
             className={cn(
               buttonVariants({ variant: 'linkHover2' }),
               navigationMenuTriggerStyle(),
               pathname === '/planes' ? 'text-primary' : '',
+              'hidden lg:flex',
             )}
           >
             Planes
