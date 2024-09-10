@@ -16,11 +16,12 @@ export default function Soporte() {
   return (
     <NavigationMenuItem>
       <NavigationMenuTrigger
-        className={
+        className={cn(
           pathname === '/soporte' || pathname === '/contacto'
             ? 'text-primary'
-            : ''
-        }
+            : '',
+          'hidden lg:flex',
+        )}
       >
         Conócenos
       </NavigationMenuTrigger>

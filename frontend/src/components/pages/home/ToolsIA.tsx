@@ -11,6 +11,7 @@ import { getHerramientasIA, getTiposIA } from '@/lib/herramientasIA';
 import Autoplay from 'embla-carousel-autoplay';
 import { GalleryVerticalEnd } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function ToolsIA() {
   const tools = getHerramientasIA();
@@ -86,9 +87,11 @@ export function ToolsIA() {
         </Carousel>
       </div>
       <div className="flex justify-center my-3">
-        <Button variant="outline" className="shadow-md">
-          <GalleryVerticalEnd size={18} className="mr-2" />
-          Ver todos
+        <Button variant="outline" className="shadow-md" asChild>
+          <Link href="/herramientas">
+            <GalleryVerticalEnd size={18} className="mr-2" />
+            Ver todos
+          </Link>
         </Button>
       </div>
     </section>

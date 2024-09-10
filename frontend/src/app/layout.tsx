@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Inveztiga',
+  title: 'Investiga',
   description: 'Plataforma educativa educación científica',
 };
 

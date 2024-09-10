@@ -17,7 +17,7 @@ export default async function CursosPage() {
 
         <div className="coantainer w-full flex flex-col gap-5 my-10 justify-center p-8 bg-[#1B283F] rounded-lg h-auto text-white">
           <span className="font-semibold  text-2xl">
-            Únete a Inveztiga ahora y obtén un 35% de descuento
+            Únete a Investiga ahora y obtén un 35% de descuento
           </span>
           <span className="font-extralight w-[90%]">
             Con nuestros cursos grabados y en vivo tendrás una experiencia
@@ -27,7 +27,7 @@ export default async function CursosPage() {
             className="bg-primary rounded-lg px-4 py-2 self-start font-medium"
             href="/register"
           >
-            Unirme a Inveztiga
+            Unirme a Investiga
           </Link>
         </div>
 
@@ -47,7 +47,7 @@ export default async function CursosPage() {
             className="rounded-lg px-4 py-2 bg-transparent border-2 border-black font-medium"
             href="/register"
           >
-            Unirme a Inveztiga
+            Unirme a Investiga
           </Link>
         </div>
       </div>

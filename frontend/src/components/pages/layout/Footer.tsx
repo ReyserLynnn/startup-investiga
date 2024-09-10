@@ -64,7 +64,7 @@ const NAVLINKS = [
   },
   {
     href: '/login',
-    text: 'Unete',
+    text: 'Únete',
     links: [
       {
         name: 'Iniciar sesión',

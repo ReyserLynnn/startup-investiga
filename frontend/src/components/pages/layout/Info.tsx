@@ -24,13 +24,13 @@ export default function InfoPage() {
           </div>
           <div className="flex flex-row gap-2">
             <span className="text-xs text-right">Siguenos en:</span>
-            <Link href="https://www.facebook.com/inveztiga">
+            <Link href="https://www.facebook.com/investiga">
               <FacebookIcon className="w-4 h-4" />
             </Link>
-            <Link href="https://www.facebook.com/inveztiga">
+            <Link href="https://www.facebook.com/investiga">
               <Linkedin className="w-4 h-4" />
             </Link>
-            <Link href="https://www.facebook.com/inveztiga">
+            <Link href="https://www.facebook.com/investiga">
               <TwitterIcon className="w-4 h-4" />
             </Link>
           </div>

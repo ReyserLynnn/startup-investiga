@@ -15,11 +15,11 @@ export default function NavBarBlog() {
           src="/logo.svg"
           width="0"
           height="0"
-          alt="Logo de inveztiga"
+          alt="Logo de investiga"
           className="w-36 md:w-48 h-full"
           priority
         />
-        <span className="sr-only">Inveztiga</span>
+        <span className="sr-only">Investiga</span>
       </Link>
 
       <div className="hidden md:flex flex-1 justify-end items-center gap-4 lg:gap-5">
