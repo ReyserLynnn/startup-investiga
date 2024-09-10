@@ -55,10 +55,10 @@ export default function RegisterPage() {
                   src="logo.svg"
                   width="0"
                   height="0"
-                  alt="Logo de inveztiga"
+                  alt="Logo de investiga"
                   className="lg:w-50 xl:w-52 w-48 mx-auto h-auto"
                 />
-                <span className="sr-only">Inveztiga</span>
+                <span className="sr-only">Investiga</span>
               </Link>
             </div>
             <MarqueeDemo />

@@ -48,10 +48,10 @@ export default function SideBarPhone() {
                   src="logo.svg"
                   width="0"
                   height="0"
-                  alt="Logo de inveztiga"
+                  alt="Logo de investiga"
                   className="w-36 h-auto"
                 />
-                <span className="sr-only">Inveztiga</span>
+                <span className="sr-only">Investiga</span>
               </Link>
             </Button>
           </SheetHeader>

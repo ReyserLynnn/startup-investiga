@@ -5,7 +5,7 @@ export default function Featured() {
   return (
     <section className="mt-8">
       <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-tight">
-        <b className="font-bold">Inveztiga aquí.</b> Descubre las últimas
+        <b className="font-bold">Investiga aquí.</b> Descubre las últimas
         herramientas de IA
       </h1>
       <div className="mt-14 flex items-center gap-12">

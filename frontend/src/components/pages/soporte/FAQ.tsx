@@ -16,7 +16,7 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: '¿Qué tipo de cursos ofrece Inveztiga?',
+    question: '¿Qué tipo de cursos ofrece Investiga?',
     answer:
       'Ofrecemos cursos en vivo especializados en la aplicación de IA en investigación científica.',
     value: 'item-1',

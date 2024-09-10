@@ -7,8 +7,8 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Blog de Inveztiga',
-  decription: 'blog de la plataforma Inveztiga',
+  title: 'Blog de Investiga',
+  decription: 'blog de la plataforma Investiga',
 };
 
 export default function BlogLayout({

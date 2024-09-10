@@ -99,10 +99,10 @@ export default function LoginPage() {
                 src="logo.svg"
                 width="0"
                 height="0"
-                alt="Logo de inveztiga"
+                alt="Logo de investiga"
                 className="lg:w-50 w-full h-auto mb-8"
               />
-              <span className="sr-only">Inveztiga</span>
+              <span className="sr-only">Investiga</span>
             </Link>
 
             <h3 className="text-2xl font-semibold mb-6">
