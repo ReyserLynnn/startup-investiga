@@ -18,7 +18,7 @@ export function Cta() {
         </div>
 
         <Button className="w-full md:w-auto font-medium" asChild>
-          <Link href="/register">Unirme a Inveztiga</Link>
+          <Link href="/register">Unirme a Investiga</Link>
         </Button>
       </div>
     </section>

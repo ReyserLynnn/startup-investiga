@@ -31,7 +31,7 @@ const NAVLINKS = [
     text: 'Soporte',
     links: [
       {
-        name: '¿Quienes somos?',
+        name: '¿Quiénes somos?',
         path: '/quienes-somos',
       },
       {
@@ -64,7 +64,7 @@ const NAVLINKS = [
   },
   {
     href: '/login',
-    text: 'Unete',
+    text: 'Únete',
     links: [
       {
         name: 'Iniciar sesión',

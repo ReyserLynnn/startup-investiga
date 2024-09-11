@@ -9,7 +9,7 @@ export default async function FutureCourses() {
   return (
     <div className=" flex flex-col items-center gap-5 my-5">
       <div className="flex items-center font-semibold text-xl">
-        Proximos Talleres en Vivo
+        Próximos Talleres en Vivo
       </div>
 
       <div className="flex justify-center items-center h-full p-5">

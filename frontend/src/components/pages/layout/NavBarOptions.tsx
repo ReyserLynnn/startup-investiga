@@ -11,12 +11,13 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Soporte from './Soporte';
+import Anuncia from './Anuncia';
 
 export default function NavBarOptions() {
   const pathname = usePathname();
 
   return (
-    <NavigationMenu className="hidden md:flex ml-auto ">
+    <NavigationMenu className="hidden md:flex ml-auto">
       <NavigationMenuList>
         <Link href="/" legacyBehavior passHref prefetch={false}>
           <NavigationMenuLink
@@ -24,6 +25,7 @@ export default function NavBarOptions() {
               buttonVariants({ variant: 'linkHover2' }),
               navigationMenuTriggerStyle(),
               pathname === '/' ? 'text-primary' : '',
+              'hidden xl:flex',
             )}
           >
             Inicio
@@ -54,19 +56,21 @@ export default function NavBarOptions() {
           </NavigationMenuLink>
         </Link>
 
-        <Link href="/planes" legacyBehavior passHref prefetch={false}>
+        <Link href="/blog" legacyBehavior passHref prefetch={false}>
           <NavigationMenuLink
             className={cn(
               buttonVariants({ variant: 'linkHover2' }),
               navigationMenuTriggerStyle(),
-              pathname === '/planes' ? 'text-primary' : '',
+              pathname === '/blog' ? 'text-primary' : '',
+              'hidden lg:flex',
             )}
           >
-            Planes
+            Blog
           </NavigationMenuLink>
         </Link>
 
         <Soporte />
+        <Anuncia />
       </NavigationMenuList>
     </NavigationMenu>
   );

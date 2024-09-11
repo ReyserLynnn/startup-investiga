@@ -32,7 +32,7 @@ export default function FilterTools({
 
     setPool(
       tools.filter((tool) =>
-        tool[ToolsIAFields.TAGS].some((t) => search.includes(t)),
+        search.every((t) => tool[ToolsIAFields.TAGS].includes(t)),
       ),
     );
   }, [search, tools]);

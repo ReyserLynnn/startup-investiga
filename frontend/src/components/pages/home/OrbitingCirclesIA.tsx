@@ -6,7 +6,7 @@ export function OrbitingIAS() {
   return (
     <div className="relative flex h-[450px] w-[800px] flex-col items-center justify-center overflow-hidden">
       <span className="pointer-events-none h-[85px] whitespace-pre-wrap bg-gradient-to-r from-[#f5c996] to-[#fc9d4c] text-transparent bg-clip-text text-center text-7xl font-semibold leading-none ">
-        Inveztiga
+        Investiga
       </span>
 
       <OrbitingCircles

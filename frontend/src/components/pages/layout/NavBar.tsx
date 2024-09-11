@@ -20,11 +20,11 @@ export default function NavBar() {
             src="/logo.svg"
             width="0"
             height="0"
-            alt="Logo de inveztiga"
+            alt="Logo de investiga"
             className=" w-full h-auto lg:ml-3"
             priority
           />
-          <span className="sr-only">Inveztiga</span>
+          <span className="sr-only">Investiga</span>
         </Link>
 
         <NavBarOptions />

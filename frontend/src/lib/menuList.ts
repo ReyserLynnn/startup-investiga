@@ -1,7 +1,9 @@
 import {
+  BrainCircuit,
   House,
   LucideIcon,
   Mail,
+  Newspaper,
   SquareChartGantt,
   TvMinimal,
   User,
@@ -46,18 +48,39 @@ export function getMenuList(pathname: string): Group[] {
         {
           href: '/herramientas',
           label: 'Herramientas',
-          active: pathname.includes('/herramientas'),
+          active: pathname === '/herramientas',
           icon: SquareChartGantt,
-        },
-        {
-          href: '/planes',
-          label: 'Planes',
-          active: pathname.includes('/planes'),
-          icon: Wallet,
         },
       ],
     },
-
+    {
+      groupLabel: 'Anuncia',
+      menus: [
+        {
+          href: '/anuncia/herramienta',
+          label: 'Anuncia una herramienta',
+          active: pathname.includes('/anuncia/herramienta'),
+          icon: Wallet,
+        },
+        {
+          href: '/anuncia/curso',
+          label: 'Anuncia un curso',
+          active: pathname.includes('/anuncia/curso'),
+          icon: BrainCircuit,
+        },
+      ],
+    },
+    {
+      groupLabel: 'Noticias',
+      menus: [
+        {
+          href: '/blog',
+          label: 'Blog',
+          active: pathname === '/',
+          icon: Newspaper,
+        },
+      ],
+    },
     {
       groupLabel: 'Soporte',
       menus: [

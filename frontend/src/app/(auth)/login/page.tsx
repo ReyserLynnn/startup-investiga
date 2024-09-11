@@ -29,7 +29,7 @@ const formSchema = z.object({
   email: z
     .string()
     .email({
-      message: 'El correo electónico no es válido',
+      message: 'El correo electrónico no es válido',
     })
     .min(5, {
       message: 'El correo electrónico debe tener al menos 5 caracteres.',
@@ -96,13 +96,13 @@ export default function LoginPage() {
           <div className="flex flex-col items-center justify-center px-4 py-6 mx-auto max-w-md animate__animated animate__fadeInRight">
             <Link href="/" className=" hidden md:flex" prefetch={false}>
               <Image
-                src="logo.svg"
+                src="/logo.svg"
                 width="0"
                 height="0"
-                alt="Logo de inveztiga"
+                alt="Logo de investiga"
                 className="lg:w-50 w-full h-auto mb-8"
               />
-              <span className="sr-only">Inveztiga</span>
+              <span className="sr-only">Investiga</span>
             </Link>
 
             <h3 className="text-2xl font-semibold mb-6">
@@ -140,7 +140,7 @@ export default function LoginPage() {
                     })} text-sm text-link`}
                     href="/forgotpassword"
                   >
-                    ¿Olvidate tu contraseña?
+                    ¿Olvidaste tu contraseña?
                   </Link>
                 </div>
 

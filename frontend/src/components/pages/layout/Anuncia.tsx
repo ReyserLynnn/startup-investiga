@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function Soporte() {
+export default function Anuncia() {
   const pathname = usePathname();
 
   return (
@@ -23,12 +23,23 @@ export default function Soporte() {
           'hidden lg:flex',
         )}
       >
-        Conócenos
+        Anuncia
       </NavigationMenuTrigger>
       <NavigationMenuContent>
         <div className="grid w-[250px] p-2">
+          <Link href="/anuncia/curso" legacyBehavior passHref prefetch={false}>
+            <NavigationMenuLink
+              className={cn(
+                buttonVariants({ variant: 'linkHover2' }),
+                navigationMenuTriggerStyle(),
+              )}
+            >
+              Anuncia un curso
+            </NavigationMenuLink>
+          </Link>
+
           <Link
-            href="/soporte#quienes-somos"
+            href="/anuncia/herramienta"
             legacyBehavior
             passHref
             prefetch={false}
@@ -39,40 +50,7 @@ export default function Soporte() {
                 navigationMenuTriggerStyle(),
               )}
             >
-              ¿Quienes somos?
-            </NavigationMenuLink>
-          </Link>
-
-          <Link href="/contacto" legacyBehavior passHref prefetch={false}>
-            <NavigationMenuLink
-              className={cn(
-                buttonVariants({ variant: 'linkHover2' }),
-                navigationMenuTriggerStyle(),
-              )}
-            >
-              Contacto
-            </NavigationMenuLink>
-          </Link>
-
-          <Link href="/soporte" legacyBehavior passHref prefetch={false}>
-            <NavigationMenuLink
-              className={cn(
-                buttonVariants({ variant: 'linkHover2' }),
-                navigationMenuTriggerStyle(),
-              )}
-            >
-              Soporte
-            </NavigationMenuLink>
-          </Link>
-
-          <Link href="/soporte#faq" legacyBehavior passHref prefetch={false}>
-            <NavigationMenuLink
-              className={cn(
-                buttonVariants({ variant: 'linkHover2' }),
-                navigationMenuTriggerStyle(),
-              )}
-            >
-              FAQ&apos;s
+              Anuncia una herramienta
             </NavigationMenuLink>
           </Link>
         </div>

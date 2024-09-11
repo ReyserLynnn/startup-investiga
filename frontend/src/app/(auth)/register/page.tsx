@@ -52,13 +52,13 @@ export default function RegisterPage() {
             <div className="absolute bg-transparent top-[-100px] left-44 z-10">
               <Link href="/" prefetch={false}>
                 <Image
-                  src="logo.svg"
+                  src="/logo.svg"
                   width="0"
                   height="0"
-                  alt="Logo de inveztiga"
+                  alt="Logo de investiga"
                   className="lg:w-50 xl:w-52 w-48 mx-auto h-auto"
                 />
-                <span className="sr-only">Inveztiga</span>
+                <span className="sr-only">Investiga</span>
               </Link>
             </div>
             <MarqueeDemo />
