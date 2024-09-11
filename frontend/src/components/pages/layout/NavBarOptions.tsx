@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Soporte from './Soporte';
+import Anuncia from './Anuncia';
 
 export default function NavBarOptions() {
   const pathname = usePathname();
@@ -68,39 +69,8 @@ export default function NavBarOptions() {
           </NavigationMenuLink>
         </Link>
 
-        <Link
-          href="/herramientas/compartir-herramienta"
-          legacyBehavior
-          passHref
-          prefetch={false}
-        >
-          <NavigationMenuLink
-            className={cn(
-              buttonVariants({ variant: 'linkHover2' }),
-              navigationMenuTriggerStyle(),
-              pathname === '/herramientas/compartir-herramienta'
-                ? 'text-primary'
-                : '',
-            )}
-          >
-            Compartir una herramienta
-          </NavigationMenuLink>
-        </Link>
-
-        <Link href="/planes" legacyBehavior passHref prefetch={false}>
-          <NavigationMenuLink
-            className={cn(
-              buttonVariants({ variant: 'linkHover2' }),
-              navigationMenuTriggerStyle(),
-              pathname === '/planes' ? 'text-primary' : '',
-              'hidden lg:flex',
-            )}
-          >
-            Planes
-          </NavigationMenuLink>
-        </Link>
-
         <Soporte />
+        <Anuncia />
       </NavigationMenuList>
     </NavigationMenu>
   );
