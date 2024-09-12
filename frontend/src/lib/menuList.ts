@@ -71,7 +71,7 @@ export function getMenuList(pathname: string): Group[] {
       ],
     },
     {
-      groupLabel: 'Noticias',
+      groupLabel: 'Comunidad',
       menus: [
         {
           href: '/blog',

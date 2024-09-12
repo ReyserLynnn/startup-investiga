@@ -17,6 +17,10 @@ const nextConfig = {
       {
         hostname: 'inveztiga-pb.zapto.org',
       },
+      {
+        hostname: 'ynoa-uploader.ynoacamino.site',
+        protocol: 'https',
+      }
     ],
   },
 };

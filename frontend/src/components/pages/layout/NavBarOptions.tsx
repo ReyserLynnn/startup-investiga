@@ -65,7 +65,7 @@ export default function NavBarOptions() {
               'hidden lg:flex',
             )}
           >
-            Blog
+            Comunidad
           </NavigationMenuLink>
         </Link>
 
