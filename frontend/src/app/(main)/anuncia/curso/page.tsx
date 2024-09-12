@@ -49,7 +49,7 @@ export default function PlanesPage() {
                 ) : null}
               </CardTitle>
               <div>
-                <span className="text-3xl font-bold">S/{pricing.price}</span>
+                <span className="text-3xl font-bold">$ {pricing.price}</span>
                 <span className="text-muted-foreground"> /mes</span>
               </div>
 
