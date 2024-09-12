@@ -5,7 +5,7 @@ import { Courses } from '@/types/courses';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import CtaCourse from '../curso/CtaCourse';
-import CourseCardList from '../cursos/CourseCard';
+// import CourseCardList from '../cursos/CourseCard';
 
 const filters = [
   'Todos mis cursos',
@@ -52,9 +52,9 @@ export default function ClientComponentMisCursos({ courses = [] }: Props) {
         <div className="coantainer h-full px-5 my-10 ">
           {courses.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center">
-              {courses.map((course: Courses) => (
+              {/* {courses.map((course: Courses) => (
                 <CourseCardList key={course.id} course={course} isMyCourse />
-              ))}
+              ))} */}
             </div>
           ) : (
             <div className="text-center flex flex-col items-center justify-center gap-2">

@@ -8,24 +8,26 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { getPlanesList } from '@/lib/planesList';
+import { getPlanesListCourses } from '@/lib/planesList';
 import { Check } from 'lucide-react';
 import Link from 'next/link';
 
 export default function PlanesPage() {
-  const planesList = getPlanesList();
+  const planesList = getPlanesListCourses();
 
   return (
     <section id="planes" className="container py-24 sm:py-32 flex-1">
       <h2 className="text-3xl md:text-4xl font-bold text-center">
-        Consigue Acceso
+        Promociona Tu Curso de IA Sobre Investigación y
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           {' '}
-          Ilimitado{' '}
+          Aumenta Tu Alcance{' '}
         </span>
       </h2>
       <h3 className="text-lg lg:text-xl text-center text-muted-foreground pt-4 pb-8">
-        Elige el plan perfecto para tus necesidades de investigación.
+        Nuestros planes de exposicion están diseñados para llevar tu curso de IA
+        a más estudiantes y profesionales interesados en aprender sobre
+        inteligencia artificial.
       </h3>
       <div className="grid lg:grid-cols-2 gap-8 md:mx-32 ">
         {planesList.map((pricing) => (
