@@ -1,34 +1,36 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { getImageUrl } from '@/lib/utils';
-import { Courses } from '@/types/courses';
-import { BookOpen, Timer, Users, Video, Wallet } from 'lucide-react';
+import { BookOpen, Timer, Video, Wallet, Check, Computer } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 interface Props {
-  course: Courses;
+  course: {
+    id: number;
+    page_url: string;
+    name: string;
+    IE: string;
+    hours: string;
+    price: number;
+    mode: string;
+    Benefits: string[];
+    image_url: string;
+  };
   isMyCourse?: Boolean;
 }
 
 function CourseCardList({ course, isMyCourse = false }: Props) {
-  const urlImage = getImageUrl({
-    collectionId: course.collectionId,
-    id: course.id,
-    url: course.image,
-  });
-
   const router = useRouter();
 
   return (
     <div
-      key={course.id}
+      key={course.name}
       className="bg-white shadow-sm rounded-lg overflow-hidden w-full max-w-xs flex flex-col "
     >
       <div className="relative w-full h-44">
         <Image
-          src={urlImage}
+          src={course.image_url}
           alt={`Imagen de ${course.name}`}
           layout="fill"
           objectFit="cover"
@@ -36,24 +38,32 @@ function CourseCardList({ course, isMyCourse = false }: Props) {
       </div>
 
       <div className="flex flex-col gap-2 p-3 flex-1">
-        <h2 className="text-base font-semibold">{course.name}</h2>
+        <h2 className="text-base font-semibold min-h-28">{course.name}</h2>
 
-        <p className="text-gray-600 text-xs mt-auto">
-          {course.shortDescription}
+        <p className="text-gray-600 text-xs font-semibold min-h-10">
+          {course.IE}
         </p>
 
-        <div className="flex flex-row gap-2 text-xs text-gray-500 justify-between mt-auto">
+        <div className="flex flex-col gap-2 text-xs text-gray-500 justify-between">
+          <span className="flex flex-row gap-1 items-center">
+            <Computer size="14" />
+            {course.mode}
+          </span>
           <span className="flex flex-row gap-1 items-center">
             <Timer size="14" />
-            {course.duration} H
+            {course.hours}
           </span>
           <span className="flex flex-row gap-1 items-center">
             <Video size="14" />
-            {course.modules?.length} sesiones
+            S/. {course.price}
           </span>
-          <span className="flex flex-row gap-1 items-center relative lg:hidden xl:flex">
-            <Users size="14" />
-            {course.alumns?.length} alumnos
+          <span className="flex flex-col gap-1 items-start relative lg:hidden xl:flex">
+            {course?.Benefits?.map((benefit) => (
+              <span key={benefit} className="flex flex-row gap-1 items-center">
+                <Check className="text-green-700 min-w-4 w-4" />
+                {benefit}
+              </span>
+            ))}
           </span>
         </div>
       </div>
@@ -64,7 +74,7 @@ function CourseCardList({ course, isMyCourse = false }: Props) {
           variant="expandIcon"
           Icon={BookOpen}
           iconPlacement="left"
-          onClick={() => router.push(`/cursos/${course.slug}`)}
+          onClick={() => router.push(`/cursos/${course.id}`)}
         >
           Ir
         </Button>
@@ -75,7 +85,7 @@ function CourseCardList({ course, isMyCourse = false }: Props) {
             variant="expandIcon"
             Icon={Wallet}
             iconPlacement="left"
-            onClick={() => router.push(`/cursos/${course.slug}`)}
+            onClick={() => router.push(`/cursos/${course.id}`)}
           >
             Suscribirse
           </Button>

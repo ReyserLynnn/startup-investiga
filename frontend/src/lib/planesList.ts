@@ -13,38 +13,72 @@ type PricingProps = {
   buttonText: string;
   benefitList: string[];
 };
+// heramientas 100 200
+// curso 30 50
 
-export function getPlanesList(): PricingProps[] {
+export function getPlanesListTools(): PricingProps[] {
   return [
     {
-      title: 'Gratuito',
+      title: 'Estándar',
       popular: 0,
-      price: 'Gratis',
+      price: '100',
       href: '/login',
       description:
-        'Accede a cursos básicos y herramientas esenciales sin costo.',
-      buttonText: 'Comienza Gratis',
+        'El plan ideal para usuarios que buscan una solución básica pero efectiva.',
+      buttonText: 'Únete al Plan Estándar',
       benefitList: [
-        'Acceso a cursos introductorios',
-        'Ética e integridad de la IA en la investigación científica',
-        'Actualizaciones regulares de contenido',
-        'Búsqueda y comparación de herramientas de IA',
+        'Verificación',
+        'Listado genérico',
+        'Estadísticas de tráfico',
       ],
     },
     {
       title: 'Premium',
       popular: 1,
-      price: '35',
+      price: '200',
       href: '/login',
       description:
-        'Disfruta de acceso completo a todos los cursos y herramientas avanzadas para maximizar tu investigación.',
+        'Para quienes buscan una exposición mayor y beneficios exclusivos.',
       buttonText: 'Únete al Plan Premium',
       benefitList: [
-        'Acceso ilimitado a todos los cursos especializados en vivo y grabados',
-        'Acceso completo a talleres y seminarios en línea',
-        'Capacitación completa de herramientas de IA avanzadas',
-        'Soporte prioritario y asistencia personalizada',
-        'Contenido exclusivo y actualizaciones avanzadas',
+        'Verificación',
+        'Listado privilegiado',
+        'Estadística de tráfico',
+        'Patrocinio de boletín informativo',
+      ],
+    },
+  ];
+}
+
+export function getPlanesListCourses(): PricingProps[] {
+  return [
+    {
+      title: 'Estándar',
+      popular: 0,
+      price: '30',
+      href: '/login',
+      description:
+        'El plan ideal para usuarios que buscan una solución básica pero efectiva.',
+      buttonText: 'Únete al Plan Estándar',
+      benefitList: [
+        'Verificación',
+        'Listado genérico',
+        'Estadísticas de tráfico',
+      ],
+    },
+    {
+      title: 'Premium',
+      popular: 1,
+      price: '50',
+      href: '/login',
+      description:
+        'Para quienes buscan una exposición mayor y beneficios exclusivos.',
+      buttonText: 'Únete al Plan Premium',
+      benefitList: [
+        'Verificación',
+        'Listado privilegiado',
+        'Estadística de tráfico',
+        'Patrocinio de boletín informativo',
       ],
     },
   ];

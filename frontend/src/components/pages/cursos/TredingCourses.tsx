@@ -1,12 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 import Image from 'next/image';
-import pb from '@/lib/pocketbase';
 import NotCourseCard from './NotCourseCard';
-import CourseCardList from './CourseCard';
 
 export default async function TredingCourses() {
-  const trendingCourses = await pb.getTrendingCourses();
-
   return (
     <div className=" flex flex-col items-center gap-5 my-5">
       <div className="flex items-center font-semibold text-xl">
@@ -35,12 +31,7 @@ export default async function TredingCourses() {
             </div>
           </div>
         </div>
-
-        {trendingCourses.slice(0, 4).map((course) => (
-          <CourseCardList key={course.id} course={course} />
-        ))}
-
-        {[...Array(4 - trendingCourses.length)].map((_, index) => (
+        {[...Array(4)].map((_, index) => (
           <NotCourseCard key={index} />
         ))}
       </div>

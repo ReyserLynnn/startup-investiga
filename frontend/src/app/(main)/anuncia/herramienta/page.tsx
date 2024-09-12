@@ -8,24 +8,25 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { getPlanesList } from '@/lib/planesList';
+import { getPlanesListTools } from '@/lib/planesList';
 import { Check } from 'lucide-react';
 import Link from 'next/link';
 
 export default function PlanesPage() {
-  const planesList = getPlanesList();
+  const planesList = getPlanesListTools();
 
   return (
     <section id="planes" className="container py-24 sm:py-32 flex-1">
       <h2 className="text-3xl md:text-4xl font-bold text-center">
-        Consigue Acceso
+        Impulsa la Visibilidad de Tu
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           {' '}
-          Ilimitado{' '}
+          Herramienta de IA{' '}
         </span>
       </h2>
       <h3 className="text-lg lg:text-xl text-center text-muted-foreground pt-4 pb-8">
-        Elige el plan perfecto para tus necesidades de investigación.
+        Lleva tu solución de IA al siguiente nivel con nuestros planes de
+        publicidad diseñados para maximizar tu alcance y atraer más clientes.
       </h3>
       <div className="grid lg:grid-cols-2 gap-8 md:mx-32 ">
         {planesList.map((pricing) => (
